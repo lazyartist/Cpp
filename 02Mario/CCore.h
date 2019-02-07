@@ -1,0 +1,51 @@
+#pragma once
+#include <iostream>
+#include "value.h"
+#include "CMapManager.h"
+#include "CStage.h"
+#include "Player.h"
+#include "ObjectManager.h"
+#include "FileStream.h"
+#include "InputManager.h"
+
+class CCore {
+	/*
+	10
+	50
+	00000000000000000000000000000000000000000000000000
+	01111141111114111111111111141111111111111111111410
+	01111111111111111100000111111111141110000011111110
+	01111111111111111000001111111111411100000111111110
+	01114111111111111111111111111114111000001111011110
+	01111111111110000011110011114111000001111111111100
+	01111111110000014111111114111000001111101111100000
+	01111110000011111111111111000001411111111110000010
+	01211114111111111411111111111111111114111111114130
+	00000100001000000000000000000000000000000000000000
+	*/
+private:
+	CCore();
+	~CCore();
+
+private:
+	static CCore* m_pInst;
+
+	typedef struct _GameData {
+		int Score = 0;
+		bool GameEnd = false;
+	} GameData;
+
+	GameData _GameData;
+
+public:
+	// 정적 함수 내부에서는 오직 정적 변수만을 사용할 수 있으며 함수도 정적 함수만을 호출할 수 있다.
+	static CCore* GetInst();
+	static void DestroyInst();
+
+public:
+	// 전체 게임을 초기화
+	bool Init();
+
+	// 게임을 동작
+	void Run();
+};
