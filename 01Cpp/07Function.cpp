@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void function07() {
+void _0701_function() {
 
 	int a = 10;
 	int &b = a;
@@ -57,7 +57,7 @@ void function07() {
 			};
 
 			// *** 이동생성자(rvalue reference)가 호출되는 이유 ***
-			// 반환될 임시객체 생성시 인자도 전달되는 tmp는 곧 사라질 객체이므로 
+			// 반환될 임시객체 생성시 인자로 전달되는 tmp는 곧 사라질 객체이므로 
 			// rvalue(값을 대입하고 사라질 임시객체)로 인식해서 이동생성자가 호출된다.
 			// 이동생성자에서는 rvalue의 힙변수를 이동시키고 nullptr로 만들어 메모리 해제되지 않게 한다.
 			// std::move() 함수가 이 작업을 지원한다.

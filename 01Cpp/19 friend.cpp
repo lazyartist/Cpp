@@ -34,7 +34,7 @@ void f() {
 	a.i; // i도 접근 가능
 }
 
-void friend19() {
+void _1901_friend() {
 
 	cout << "함수 프렌드, 클래스 프렌드" << endl;
 	{

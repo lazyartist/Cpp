@@ -14,7 +14,20 @@ struct _tagStudent {
 	float fAvg;
 };
 
-int main() {
+void _0402_string() {
+	cout << "char, char[], const char[]";
+	{
+		const char* str1 = nullptr;
+		{
+			str1 = "Hello";
+			// "Hello"는 const char[] 형식의 지역변수(rvalue)이다.
+			// 따라서 const가 아닌 변수에 대입하여 조작될 수 없다.
+		}
+		cout << str1 << endl;
+
+		char str2[] = "HiHiHi";
+	}
+
 	_tagStudent std;
 	//_tagStudent std = {};
 
@@ -34,6 +47,4 @@ int main() {
 	cout << std.strName << endl;
 	cout << strlen(std.strName) << endl;
 	cout << std.iNumber << endl;
-
-	return 0;
 }

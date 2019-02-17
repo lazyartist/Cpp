@@ -171,7 +171,7 @@ public:
 // ===== [] 배열 접근 연산자 재정의 e ===== 
 
 //int main() {
-void operator14() {
+void _1401_operator() {
 
 	Point pt1(1, 1), pt2(2, 2);
 	// Point 구조체는 +연산자가 operator로 재정의 되어있기 때문에 +연산이 가능하게 되고 pt1의 연산자 함수 +를 호출하며 pt2를 넘겨준다.

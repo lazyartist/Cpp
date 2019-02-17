@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void reference12() {
+void _1201_reference() {
 	cout << "========== reference ==========" << endl;
 
 	cout << "reference" << endl;
@@ -12,6 +12,7 @@ void reference12() {
 		레퍼런스 : 다른 대상을 참조하게 만들어주는 기능
 		참조를 하게 되면 그 대상에 접근하여 값을 변경할 수 있다.
 		단, 레퍼런스는 처음 레퍼런스 변수 생성시 참조하는 대상을 지정해 주어야 한다.
+		다른 대상으로 변경할 수 없다.
 		변수타입 &레퍼런스명 = 참조할 변수명;
 		int &num = num;
 		*/

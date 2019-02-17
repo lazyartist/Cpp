@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Utils.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="02NumberPuzzle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -28,9 +25,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="03BingoWithAI.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="04str.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="04StudentManage.cpp">
@@ -69,9 +63,6 @@
     <ClCompile Include="13FunctionPointer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="14Operator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="15Inheritance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -84,10 +75,34 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="18 const.cpp">
+    <ClCompile Include="19 friend.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="19 friend.cpp">
+    <ClCompile Include="1401 Operator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1402 Operator - smart pointer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1403 Operator - type cast.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1404 Operator - exercise.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0401 char.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0402 string.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1801 const.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1802 literal.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

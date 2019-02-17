@@ -12,37 +12,6 @@ int main() {
 	cout << sizeof(double) << endl;
 	cout << sizeof(double*) << endl;
 
-	cout << "상수 포인터(constant pointer), 상수 지시 포인터(pointer to constant), 상수 지시 상수 포인터(constant pointer to constant), 배열 포인터, 상수 배열 포인터" << endl;
-	{
-		// https://thrillfighter.tistory.com/88
-		char ch = 'a';
-
-		// 상수 포인터(constant pointer): 포인터가 상수라서 포인터를 변경할 수 없다.
-		char* const cp = &ch;
-		//cp = &ch; // 포인터 재할당: 불가
-		cp[0] = 'b'; // 값 할당: 가능
-
-		// 상수 지시 포인터(pointer to constant): 포인터가 가리키는 대상이 상수라서 값을 변경할 수 없다. 포인터는 다른값을 할당할 수 있다.
-		const char* p2c = &ch; // 할당하는 변수가 const가 아니어도 할당하는 변수와 상관없이 p2c 변수는 값을 변경하지 않겠다는 뜻이므로 할당가능.
-		p2c = &ch; // 포인터 재할당: 가능
-		//p2c[0] = 'b'; // 값 할당: 불가(식이 수정할 수 있는 lvalue여야 합니다.)
-
-		// 상수 지시 상수 포인터(constant pointer to constant) : 포인터가 상수이고 가리키는 대상도 상수
-		const char* const cp2c = &ch;
-		//cp2c = &ch; // 포인터 재할당: 불가
-		//cp2c[0] = 'b'; // 값 할당: 불가
-
-		// 배열 포인터: 배열은 포인터 주소를 변경할 수 없는 포인터로서 constant pointer와 같은 기능을 한다.
-		char ap[] = "a";
-		//ap = &ch; // 포인터 재할당: 불가
-		ap[0] = 'b'; // 값 할당: 가능
-
-		// 상수 배열 포인터: 상수를 요소로 가지는 배열
-		const char cap[] = "a";
-		//cap = &ch; // 포인터 재할당: 불가
-		//cap[0] = 'b'; // 값 할당: 불가
-	}
-
 	// 포인터와 배열의 관계 : 배열명은 포인터다.
 
 	cout << "----- 배열과 포인터 -----" << endl;

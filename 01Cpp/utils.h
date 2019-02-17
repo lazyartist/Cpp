@@ -2,9 +2,7 @@
 
 using namespace std;
 
-void printNumbers123();
-
-void printNumbers123(int *numbers, int size) {
+inline void printNumbers123(int *numbers, int size) {
 	for (size_t i = 0; i < size; i++)
 	{
 		cout << *numbers << " ";
@@ -12,3 +10,5 @@ void printNumbers123(int *numbers, int size) {
 	}
 	cout << endl;
 }
+
+#define SAFE_DELETE(p) if(p) delete p;
