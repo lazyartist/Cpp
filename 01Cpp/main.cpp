@@ -15,14 +15,23 @@ void _1401_operator();
 void _1402_operator_smart_pointer();
 void _1403_operator_type_cast();
 void _1404_operator_exercise();
-void _1601_template();
+void _1601_template_function();
+void _1602_template_class();
 void _1801_const();
 void _1802_literal();
 void _1901_friend();
 
 int main() {
+	_1602_template_class();
 
-	_1601_template();
+
+
+
+
+
+
+
+
 
 	//system("pause");
 

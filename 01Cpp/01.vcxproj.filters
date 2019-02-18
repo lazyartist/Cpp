@@ -60,32 +60,14 @@
     <ClCompile Include="15Inheritance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="16Template.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="17TDList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="19 friend.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1401 Operator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="utils.h">
       <Filter>헤더 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1402 Operator - smart pointer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1403 Operator - type cast.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1404 Operator - exercise.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="0401 char.cpp">
       <Filter>소스 파일</Filter>
@@ -112,6 +94,27 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="0704 function-inline.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1901 friend.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1401 operator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1402 operator - smart pointer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1403 operator - type cast.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1404 operator - exercise.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1601 template-function.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1602 template-class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

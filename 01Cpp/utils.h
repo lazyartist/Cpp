@@ -11,4 +11,4 @@ inline void printNumbers123(int *numbers, int size) {
 	cout << endl;
 }
 
-#define SAFE_DELETE(p) if(p) delete p;
+#define SAFE_DELETE(p) if(p) delete p; p = nullptr;

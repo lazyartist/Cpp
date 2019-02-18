@@ -214,28 +214,29 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="0703 function-object.cpp" />
-    <ClCompile Include="1402 Operator - smart pointer.cpp" />
-    <ClCompile Include="1401 Operator.cpp">
+    <ClCompile Include="1402 operator - smart pointer.cpp" />
+    <ClCompile Include="1401 operator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="1403 Operator - type cast.cpp" />
-    <ClCompile Include="1404 Operator - exercise.cpp" />
+    <ClCompile Include="1403 operator - type cast.cpp" />
+    <ClCompile Include="1404 operator - exercise.cpp" />
     <ClCompile Include="15Inheritance.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="16Template.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    <ClCompile Include="1601 template-function.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="1602 template-class.cpp" />
     <ClCompile Include="17TDList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="1801 const.cpp" />
     <ClCompile Include="1802 literal.cpp" />
-    <ClCompile Include="19 friend.cpp" />
+    <ClCompile Include="1901 friend.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utils.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
