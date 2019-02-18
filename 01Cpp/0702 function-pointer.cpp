@@ -52,7 +52,7 @@ public :
 	}
 };
 
-void _1301_function_pointer() {
+void _0702_function_pointer() {
 
 	cout << "===== 정적 함수 포인터 선언 및 실행 =====" << endl;
 	{

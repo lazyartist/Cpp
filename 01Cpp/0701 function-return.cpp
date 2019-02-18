@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void _0701_function() {
+void _0701_function_return() {
 
 	int a = 10;
 	int &b = a;

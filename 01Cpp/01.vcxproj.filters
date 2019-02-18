@@ -36,9 +36,6 @@
     <ClCompile Include="06Pointer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="07Function.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="08Maze.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -102,7 +99,19 @@
     <ClCompile Include="1802 literal.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="1301 function pointer.cpp">
+    <ClCompile Include="0705 function-exercise.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0701 function-return.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0702 function-pointer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0703 function-object.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="0704 function-inline.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
