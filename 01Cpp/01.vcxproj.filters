@@ -60,9 +60,6 @@
     <ClCompile Include="12Class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="13FunctionPointer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="15Inheritance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -103,6 +100,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="1802 literal.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1301 function pointer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
