@@ -2,6 +2,16 @@
 
 using namespace std;
 
+/*
+함수 템플릿
+	여러 함수를 만들어내는 함수의 틀
+
+클래스 템플릿
+	여러 클래스를 만들어내는 클래스의 틀
+
+
+*/
+
 // 함수에 템플릿 적용
 template<typename T>
 void OutputData(T data) {
@@ -16,7 +26,7 @@ public:
 	T a;
 };
 
-int main() {
+void _1601_template() {
 	OutputData(1); // OutputData<int> 이렇게 타입을 지정하지 않아도 1을 보고 컴파일러가 타입을 넣어준다.
 	OutputData<float>(1.f);
 	//OutputData<int>("aaaa"); // 이렇게 실제 인수와 다른 타입을 지정하면 에러난다.
@@ -26,6 +36,4 @@ int main() {
 
 	A<int> a = {};
 	cout << a.a << endl;
-
-	return 0;
 }
