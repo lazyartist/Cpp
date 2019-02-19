@@ -77,8 +77,107 @@ namespace ns1603 {
 	Stack 템플릿 클래스
 	Push(), Pop(), Empty()
 	*/
+	template<typename T>
 	class Stack {
+	public:
+		Stack() : size(0), capacity(10) {
+			arr = new T[capacity];
+		}
 
+		~Stack() {
+			delete[] arr;
+		}
+
+		void Push(const T data) {
+			if (size == capacity) return;
+
+			arr[size++] = data;
+		}
+
+		T Pop() {
+			if (size == 0 || size == capacity) return 0;
+
+			return arr[--size];
+		}
+
+		bool Empty() {
+			return size == 0;
+		}
+
+		void Print() {
+			if (size == 0) {
+				cout << "Empty" << endl;
+			}
+			else {
+				GPrint(arr, size);
+			}
+		}
+
+		int size = 0;
+		const int capacity;
+		T *arr;
+	};
+
+	/*
+	Queue 템플릿 클래스
+	Push(), Pop(), Empty()
+	*/
+	template<typename T>
+	class Queue {
+	public:
+		Queue() : size(0), capacity(3) {
+			arr = new T[capacity];
+		}
+
+		~Queue() {
+			delete[] arr;
+		}
+
+		void Push(const T data) {
+			if (size == capacity) {
+				cout << "Full" << endl;
+				return;
+			}
+
+			arr[end] = data;
+			++size;
+
+			if (++end == capacity) {
+				end = 0;
+			}
+		}
+
+		T Pop() {
+			if (size == 0) return 0;
+
+			int returnFirst = first++;
+
+			if (first == capacity) {
+				first = 0;
+			}
+			--size;
+
+			return arr[returnFirst];
+		}
+
+		bool Empty() {
+			return size == 0;
+		}
+
+		void Print() {
+			if (size == 0) {
+				cout << "Empty" << endl;
+			}
+			else {
+				GPrint(arr, size);
+			}
+		}
+
+		int size = 0;
+		const int capacity;
+		T *arr;
+		int first = 0;
+		int end = 0;
 	};
 }
 
@@ -177,5 +276,67 @@ void _1603_template_exercise() {
 		Copy<const char *const, const char *>(strSrc, strDest, len);
 		GPrint(strDest, len);
 
+	}
+
+	cout << "Stack 클래스" << endl;
+	{
+		Stack<int> intStack;
+
+		intStack.Push(1);
+		intStack.Push(3);
+		intStack.Print(); // 1, 3
+
+		cout << intStack.Pop() << endl; // 3, 뒤에서부터 출력 확인
+		cout << intStack.Pop() << endl; // 1
+
+		cout << "Empty? " << intStack.Empty() << endl; // 1(true)
+
+		cout << "---" << endl;
+
+		Stack<const char*> strStack;
+
+		strStack.Push("a");
+		strStack.Push("b");
+		strStack.Print(); // a, b
+
+		cout << strStack.Pop() << endl; // b, 뒤에서부터 출력 확인
+		cout << strStack.Pop() << endl; // a
+
+		cout << "Empty? " << strStack.Empty() << endl; // 1(true)
+	}
+
+	cout << "Queue 클래스" << endl;
+	{
+		Queue<int> intQueue;
+
+		intQueue.Push(1);
+		intQueue.Push(2);
+		intQueue.Push(3);
+		intQueue.Print(); // 1, 2, 3
+
+		cout << intQueue.Pop() << endl; // 1, 앞에서 부터 출력 확인
+		cout << intQueue.Pop() << endl; // 2
+		cout << intQueue.Pop() << endl; // 3
+
+		intQueue.Push(4);
+		intQueue.Push(5);
+		cout << intQueue.Pop() << endl; // 4
+
+		cout << "Empty? " << intQueue.Empty() << endl; // 0(false)
+
+		intQueue.Print(); // 4, 원래 5가 나와야하지만 GPrint가 처음부터 size만큼 출력하기 때문에 4를 출력한다.(버그)
+
+		cout << "---" << endl;
+
+		Queue<const char*> strQueue;
+
+		strQueue.Push("a");
+		strQueue.Push("b");
+		strQueue.Print(); // a, b
+
+		cout << strQueue.Pop() << endl; // a // 앞에서부터 출력 확인
+		cout << strQueue.Pop() << endl; // b
+
+		cout << "Empty? " << strQueue.Empty() << endl; // 1(true)
 	}
 }
