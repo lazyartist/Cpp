@@ -117,6 +117,9 @@
     <ClCompile Include="1602 template-class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="1603 template-exercise.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="10DoubleLinkedList.h">

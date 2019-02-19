@@ -17,12 +17,14 @@ void _1403_operator_type_cast();
 void _1404_operator_exercise();
 void _1601_template_function();
 void _1602_template_class();
+void _1603_template_exercise();
 void _1801_const();
 void _1802_literal();
 void _1901_friend();
 
 int main() {
-	_1602_template_class();
+
+	_1603_template_exercise();
 
 
 

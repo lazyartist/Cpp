@@ -2,11 +2,18 @@
 
 using namespace std;
 
-inline void printNumbers123(int *numbers, int size) {
+template<typename T>
+inline void GPrint(const T * arr, const size_t size, const char sep = ',') {
+	
+
 	for (size_t i = 0; i < size; i++)
 	{
-		cout << *numbers << " ";
-		numbers++;
+		if (arr[0] == 0) {
+			cout << "Null" << sep;
+		}
+		else {
+			cout << arr[i] << sep;
+		}
 	}
 	cout << endl;
 }
