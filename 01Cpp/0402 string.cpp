@@ -23,3 +23,5 @@ void _0402_string() {
 
 	// 문자열 리터럴 관련해서는 1802 literal 참고
 }
+
+// todo mystring 클래스 제작
