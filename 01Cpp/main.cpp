@@ -21,10 +21,12 @@ void _1603_template_exercise();
 void _1801_const();
 void _1802_literal();
 void _1901_friend();
+void _2001_random();
 
 int main() {
 
-	_1603_template_exercise();
+	_0701_function_return();
+	//_2001_random();
 
 
 

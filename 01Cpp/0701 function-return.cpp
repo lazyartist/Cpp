@@ -20,8 +20,14 @@ void _0701_function_return() {
 	{
 		class A {
 		public:
+			// 일반 생성자
+			A(string name) {
+				this->name = name;
+				cout << "constructor: " << this << ", " << this->name << endl;
+			}
+
 			// 복사 생성자
-			A(const A& other) { // const를 붙여서 코드 안정성을 높인다.
+			A(const A& other) { // const를 붙여서 코드 안정성을 높인다. const 인자는 함수내에서 수정할 수 없다.
 				this->name = "copy" + other.name;
 				cout << "copy constructor this(" << this->name << " " << this << "), other(" << other.name << " " << (&other) << ")" << endl;
 			}
@@ -29,21 +35,20 @@ void _0701_function_return() {
 			// 이동 생성자
 			A(A&& other) { 
 				this->name = "copy" + other.name;
-				cout << "rvalue copy constructor this(" << this->name << " " << this << "), other(" << other.name << " " << (&other) << ")" << endl;
-			}
-
-			A(string name) {
-				this->name = name;
-				cout << "constructor: " << this << ", " << this->name << endl;
+				cout << "move constructor this(" << this->name << " " << this << "), other(" << other.name << " " << (&other) << ")" << endl;
 			}
 
 			~A() {
 				cout << "destructor: " << this << ", " << this->name << endl;
-				//name = nullptr;
+				/*if (name != nullptr) {
+					delete name;
+				}*/
+				name = nullptr;
 			}
 
 			string name;
-			const string* nameP;
+			//const string* nameP;
+			//string name = nullptr; // string name은 포인터가 아니므로 nullptr을 지정할 수 없다.
 		};
 
 		cout << "===== value return =====" << endl;

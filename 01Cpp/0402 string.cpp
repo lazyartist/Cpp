@@ -4,47 +4,22 @@
 
 using namespace std;
 
-struct _tagStudent {
-	char strName[NAME_SIZE];
-	int iNumber;
-	int iKor;
-	int iEng;
-	int iMath;
-	int iTotal;
-	float fAvg;
-};
-
 void _0402_string() {
-	cout << "char, char[], const char[]";
-	{
-		const char* str1 = nullptr;
-		{
-			str1 = "Hello";
-			// "Hello"는 const char[] 형식의 지역변수(rvalue)이다.
-			// 따라서 const가 아닌 변수에 대입하여 조작될 수 없다.
-		}
-		cout << str1 << endl;
+	char name[NAME_SIZE];
 
-		char str2[] = "HiHiHi";
-	}
-
-	_tagStudent std;
-	//_tagStudent std = {};
-
-	// 문자열을 배열에 넣어줄 때에는 단순 대입으로는 불가능하다.
+	// 문자열을 배열에 넣어줄 때에는 단순 대입(name = "aa")으로는 불가능하다.
 	// strcpy_s라는 함수를 이용해서 문자열을 복사해 주어야한다.
-	strcpy_s(std.strName, 3, "aa");
-	//std.strName[0] = 'a';
-	//std.strName[1] = 0;
+	strcpy_s(name, 3, "aa");
+	cout << name << endl;
 
 	// strcat_s 함수는 문자열을 붙여주는 기능
-	// strName에 bb를 붙여서 저장한다.
-	strcat_s(std.strName, "bb");
+	// name에 bb를 붙여서 저장한다.
+	strcat_s(name, "bb");
+	cout << name << endl;
 
-	// strcmp 함수는 두 문자열을 비교하여 같을 경우 0을 반환하고 다를 경우 0이 아닌 값을 반환한다.
-	cout << strcmp(std.strName, "aabb") << endl;
+	// strcmp 함수는 두 문자열을 비교하여 같을 경우 0을 반환하고 다를 경우 0이 아닌 값(-1)을 반환한다.
+	cout << strcmp(name, "aabbz") << endl;
 
-	cout << std.strName << endl;
-	cout << strlen(std.strName) << endl;
-	cout << std.iNumber << endl;
+
+	// 문자열 리터럴 관련해서는 1802 literal 참고
 }

@@ -51,9 +51,6 @@
     <ClCompile Include="11FileIOMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="12Reference.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="12Class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -118,6 +115,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="1603 template-exercise.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2001 Random.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1201 Reference.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

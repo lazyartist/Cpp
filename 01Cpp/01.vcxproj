@@ -205,7 +205,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="12Reference.cpp">
+    <ClCompile Include="1201 Reference.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -238,6 +238,7 @@
     <ClCompile Include="1801 const.cpp" />
     <ClCompile Include="1802 literal.cpp" />
     <ClCompile Include="1901 friend.cpp" />
+    <ClCompile Include="2001 Random.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utils.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
