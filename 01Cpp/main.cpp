@@ -25,7 +25,7 @@ void _2001_random();
 
 int main() {
 
-	_1401_operator();
+	_2001_random();
 	//_2001_random();
 
 

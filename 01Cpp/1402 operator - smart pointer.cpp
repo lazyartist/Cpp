@@ -66,7 +66,7 @@ void _1402_operator_smart_pointer() {
 		//ap-> = new A(); // 함수의 반환값은 rvalue이므로 new A()로 새로운 객체를 할당할 수 없다.
 
 		// ->
-		ap->i = 1; // 암시적 호출
+		ap->i = 1; // 암시적 호출, todo ->를 두 번 쓰지 않아도 되네?
 		ap.operator->()->i = 2; // 명시적 호출
 
 		// *
