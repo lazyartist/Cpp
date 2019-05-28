@@ -25,16 +25,16 @@ void _2001_random();
 
 int main() {
 
-	_2001_random();
+	//_2001_random();
 	//_2001_random();
 
 
-
-
-
-
-
-
+	/*printf("%d", sizeof(int));
+	printf("%d", sizeof(long));
+	printf("%d", sizeof(long long));
+	printf("%d", sizeof(float));
+	printf("%d", sizeof(double));
+	printf("%d", sizeof(int*));*/
 
 
 	//system("pause");
