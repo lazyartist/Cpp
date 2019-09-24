@@ -54,9 +54,6 @@
     <ClCompile Include="12Class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="15Inheritance.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="17TDList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -121,6 +118,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="1201 Reference.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1501 Inheritance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
