@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Smart Pointer
-	ÀÚµ¿À¸·Î °´Ã¼¸¦ ¼Ò¸ê½ÃÄÑÁÖ´Â °´Ã¼
+	ìžë™ìœ¼ë¡œ ê°ì²´ë¥¼ ì†Œë©¸ì‹œì¼œì£¼ëŠ” ê°ì²´
 */
 
 
@@ -37,24 +37,24 @@ void _1402_operator_smart_pointer() {
 			}
 			A* a;
 
-			// Æ÷ÀÎÅÍ º¯¼ö Ã³·³ »ç¿ëÇÒ ¼ö ÀÖ°Ô -> ¿¬»êÀÚ¸¦ ¿À¹ö·ÎµùÇÑ´Ù.
+			// í¬ì¸í„° ë³€ìˆ˜ ì²˜ëŸ¼ ì‚¬ìš©í•  ìˆ˜ ìžˆê²Œ -> ì—°ì‚°ìžë¥¼ ì˜¤ë²„ë¡œë”©í•œë‹¤.
 			A* operator ->() const {
 				return a;
 				/*
-				const ÇÔ¼öÀÎµ¥ ¹ÝÈ¯°ª¿¡ const¸¦ ºÙÀÌÁö ¾Ê¾Æµµ µÇ´Â ÀÌÀ¯
+				const í•¨ìˆ˜ì¸ë° ë°˜í™˜ê°’ì— constë¥¼ ë¶™ì´ì§€ ì•Šì•„ë„ ë˜ëŠ” ì´ìœ 
 
-				const ÇÔ¼ö´Â ¸â¹öº¯¼ö aÀÇ °ª, Áï Æ÷ÀÎÅÍ ÁÖ¼Ò°ªÀ» º¯°æÇÏÁö ¾Ê°Ú´Ù´Â ¶æÀÎµ¥
-				a°¡ °¡Áø °ªÀ» ¹ÝÈ¯¹Þ¾Æ¼­ ¸â¹öº¯¼öÀÎ aÀÇ °ªÀ» º¯°æÇÒ ¼ö´Â ¾ø´Ù.
-				(const ÇÑÁ¤ÀÚ¸¦ ¾ø¾Ö°í ¹ÝÈ¯Å¸ÀÔÀÌ A**, ¹ÝÈ¯°ªÀÌ &a·Î ÁöÁ¤ÇÏ¸é °¡´ÉÇÏ´Ù.)
+				const í•¨ìˆ˜ëŠ” ë©¤ë²„ë³€ìˆ˜ aì˜ ê°’, ì¦‰ í¬ì¸í„° ì£¼ì†Œê°’ì„ ë³€ê²½í•˜ì§€ ì•Šê² ë‹¤ëŠ” ëœ»ì¸ë°
+				aê°€ ê°€ì§„ ê°’ì„ ë°˜í™˜ë°›ì•„ì„œ ë©¤ë²„ë³€ìˆ˜ì¸ aì˜ ê°’ì„ ë³€ê²½í•  ìˆ˜ëŠ” ì—†ë‹¤.
+				(const í•œì •ìžë¥¼ ì—†ì• ê³  ë°˜í™˜íƒ€ìž…ì´ A**, ë°˜í™˜ê°’ì´ &aë¡œ ì§€ì •í•˜ë©´ ê°€ëŠ¥í•˜ë‹¤.)
 				*/
 			}
 
-			// Æ÷ÀÎÅÍ º¯¼öÀÇ °ªÀ» °£Á¢ÂüÁ¶ÇÏ±â À§ÇØ * ¿¬»êÀÚ¸¦ ¿À¹ö·ÎµùÇÑ´Ù.
+			// í¬ì¸í„° ë³€ìˆ˜ì˜ ê°’ì„ ê°„ì ‘ì°¸ì¡°í•˜ê¸° ìœ„í•´ * ì—°ì‚°ìžë¥¼ ì˜¤ë²„ë¡œë”©í•œë‹¤.
 			A& operator *() const {
 				return (*a);
 			}
 
-			// Æ÷ÀÎÅÍ ¹ÝÈ¯À» À§ÇØ & ¿¬»êÀÚ¸¦ ¿À¹ö·ÎµùÇÑ´Ù.
+			// í¬ì¸í„° ë°˜í™˜ì„ ìœ„í•´ & ì—°ì‚°ìžë¥¼ ì˜¤ë²„ë¡œë”©í•œë‹¤.
 			A* operator &() const {
 				return a;
 			}
@@ -63,22 +63,22 @@ void _1402_operator_smart_pointer() {
 		A* a = new A();
 		ASmtPtr ap(a);
 
-		//ap-> = new A(); // ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀº rvalueÀÌ¹Ç·Î new A()·Î »õ·Î¿î °´Ã¼¸¦ ÇÒ´çÇÒ ¼ö ¾ø´Ù.
+		//ap-> = new A(); // í•¨ìˆ˜ì˜ ë°˜í™˜ê°’ì€ rvalueì´ë¯€ë¡œ new A()ë¡œ ìƒˆë¡œìš´ ê°ì²´ë¥¼ í• ë‹¹í•  ìˆ˜ ì—†ë‹¤.
 
 		// ->
-		ap->i = 1; // ¾Ï½ÃÀû È£Ãâ, todo ->¸¦ µÎ ¹ø ¾²Áö ¾Ê¾Æµµ µÇ³×?
-		ap.operator->()->i = 2; // ¸í½ÃÀû È£Ãâ
+		ap->i = 1; // ì•”ì‹œì  í˜¸ì¶œ, todo ->ë¥¼ ë‘ ë²ˆ ì“°ì§€ ì•Šì•„ë„ ë˜ë„¤?
+		ap.operator->()->i = 2; // ëª…ì‹œì  í˜¸ì¶œ
 
 		// *
-		(*ap).i = 3; // ¾Ï½ÃÀû È£Ãâ
-		ap.operator*().i = 4; // ¸í½ÃÀû È£Ãâ
+		(*ap).i = 3; // ì•”ì‹œì  í˜¸ì¶œ
+		ap.operator*().i = 4; // ëª…ì‹œì  í˜¸ì¶œ
 
 		// &
-		(&ap)->i = 5; // ¾Ï½ÃÀû È£Ãâ
-		ap.operator&()->i = 6; // ¸í½ÃÀû È£Ãâ
+		(&ap)->i = 5; // ì•”ì‹œì  í˜¸ì¶œ
+		ap.operator&()->i = 6; // ëª…ì‹œì  í˜¸ì¶œ
 
 		/* Result
-		A¸¦ Èü¿¡ »ý¼ºÇÏ°í ÄÚµå ºí·°À» ºüÁ®³ª°¡µµ Áö¿ªº¯¼ö ASmtPtr°¡ ¼Ò¸êÇÏ¸ç A¸¦ ¼Ò¸ê½ÃÅ²´Ù.
+		Aë¥¼ íž™ì— ìƒì„±í•˜ê³  ì½”ë“œ ë¸”ëŸ­ì„ ë¹ ì ¸ë‚˜ê°€ë„ ì§€ì—­ë³€ìˆ˜ ASmtPtrê°€ ì†Œë©¸í•˜ë©° Aë¥¼ ì†Œë©¸ì‹œí‚¨ë‹¤.
 		
 		A cst 00C18220, -842150451
 		ASmtPtr cst 00C18220
@@ -87,5 +87,5 @@ void _1402_operator_smart_pointer() {
 		*/
 	}
 
-	// todo c++ Ã¥º¸°í ½º¸¶Æ® Æ÷ÀÎÅÍ º¸°­ÇÏ±â
+	// todo c++ ì±…ë³´ê³  ìŠ¤ë§ˆíŠ¸ í¬ì¸í„° ë³´ê°•í•˜ê¸°
 }

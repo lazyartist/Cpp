@@ -5,14 +5,14 @@ using namespace std;
 
 /*
 Type Cast
-	1. »ý¼ºÀÚ¸¦ ÀÌ¿ëÇÑ Å¸ÀÔ º¯È¯
-	2. Å¸ÀÔ º¯È¯ ¿¬»êÀÚ ¿À¹ö·ÎµùÀ» ÀÌ¿ëÇÑ Å¸ÀÔ º¯È¯
+	1. ìƒì„±ìžë¥¼ ì´ìš©í•œ íƒ€ìž… ë³€í™˜
+	2. íƒ€ìž… ë³€í™˜ ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©ì„ ì´ìš©í•œ íƒ€ìž… ë³€í™˜
 */
 
-// A Å¬·¡½º¿¡¼­ B Å¬·¡½ºÀÇ Æ÷ÀÎÅÍ¸¸ »ç¿ëÇÏ¸é ¼±¾ð¸¸À¸·Î »ç¿ëÇÒ ¼ö ÀÖ´Ù.
-// ÇÏÁö¸¸ B Å¬·¡½º °´Ã¼¸¦ »ç¿ëÇÏ°Å³ª ¸â¹ö¿¡ Á¢±ÙÇÏ·Á¸é °á±¹ Å¬·¡½ºÀÇ Å©±â(Á¤ÀÇ)¸¦ ¾Ë¾Æ¾ßÇÏ¹Ç·Î 
-// ÀÌ·¸°Ô ¼±¾ð¸¸ ÇØ¼­´Â ¼Ò¿ë¾ø¾îÁø´Ù.
-// A Å¬·¡½º¿¡¼­ B Å¬·¡½º¸¦ »ç¿ëÇÏ·Á¸é Àü¹æ Á¤ÀÇÇÏ°Å³ª B Å¬·¡½ºÀÇ Çì´õÆÄÀÏÀ» ¸¸µé°í includeÇØ¼­ »ç¿ëÇØ¾ßÇÑ´Ù.
+// A í´ëž˜ìŠ¤ì—ì„œ B í´ëž˜ìŠ¤ì˜ í¬ì¸í„°ë§Œ ì‚¬ìš©í•˜ë©´ ì„ ì–¸ë§Œìœ¼ë¡œ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤.
+// í•˜ì§€ë§Œ B í´ëž˜ìŠ¤ ê°ì²´ë¥¼ ì‚¬ìš©í•˜ê±°ë‚˜ ë©¤ë²„ì— ì ‘ê·¼í•˜ë ¤ë©´ ê²°êµ­ í´ëž˜ìŠ¤ì˜ í¬ê¸°(ì •ì˜)ë¥¼ ì•Œì•„ì•¼í•˜ë¯€ë¡œ 
+// ì´ë ‡ê²Œ ì„ ì–¸ë§Œ í•´ì„œëŠ” ì†Œìš©ì—†ì–´ì§„ë‹¤.
+// A í´ëž˜ìŠ¤ì—ì„œ B í´ëž˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ë ¤ë©´ ì „ë°© ì •ì˜í•˜ê±°ë‚˜ B í´ëž˜ìŠ¤ì˜ í—¤ë”íŒŒì¼ì„ ë§Œë“¤ê³  includeí•´ì„œ ì‚¬ìš©í•´ì•¼í•œë‹¤.
 //class B {};
 
 void _1403_operator_type_cast() {
@@ -37,13 +37,13 @@ void _1403_operator_type_cast() {
 			cout << "A, A to A " << this << ", " << i << endl;
 		}
 
-		// B °´Ã¼·Î A °´Ã¼ »ý¼º
-		A(B& b) { // ¾Ï½ÃÀû »ý¼ºÀÚ È£Ãâ °¡´É
+		// B ê°ì²´ë¡œ A ê°ì²´ ìƒì„±
+		A(B& b) { // ì•”ì‹œì  ìƒì„±ìž í˜¸ì¶œ ê°€ëŠ¥
 			cout << "A, B to A " << this << ", " << i << endl;
 		}
 
-		// int·Î A °´Ã¼ »ý¼º
-		explicit A(int i) { // explicit Å°¿öµå¿¡ ÀÇÇØ ¸í½ÃÀû »ý¼ºÀÚ È£Ãâ¸¸ °¡´É
+		// intë¡œ A ê°ì²´ ìƒì„±
+		explicit A(int i) { // explicit í‚¤ì›Œë“œì— ì˜í•´ ëª…ì‹œì  ìƒì„±ìž í˜¸ì¶œë§Œ ê°€ëŠ¥
 			cout << "A, int to A " << this << ", " << i << endl;
 			this->i = i;
 		}
@@ -53,18 +53,18 @@ void _1403_operator_type_cast() {
 		}
 		int i = 0;
 
-		// operator=°¡ ÀçÁ¤ÀÇ µÇ¾îÀÖÀ¸¸é ´ëÀÔ ¿¬»ê ½Ã A Å¬·¡½º ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇÁö ¾Ê°í ¹Ù·Î =¿¬»êÀÚ°¡ È£ÃâµÈ´Ù.
+		// operator=ê°€ ìž¬ì •ì˜ ë˜ì–´ìžˆìœ¼ë©´ ëŒ€ìž… ì—°ì‚° ì‹œ A í´ëž˜ìŠ¤ ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ì§€ ì•Šê³  ë°”ë¡œ =ì—°ì‚°ìžê°€ í˜¸ì¶œëœë‹¤.
 		/*A& operator=(int i) {
 			cout << "A operator= " << this << ", " << i << endl;
 			return *this;
 		}*/
 
-		// Å¸ÀÔº¯È¯ ¿¬»êÀÚ, ¹ÝÈ¯ Å¸ÀÔÀ» ÁöÁ¤ÇÏÁö ¾Ê´Â´Ù.
+		// íƒ€ìž…ë³€í™˜ ì—°ì‚°ìž, ë°˜í™˜ íƒ€ìž…ì„ ì§€ì •í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		operator B() {
 			cout << "A B() " << this << ", " << i << endl;
 			return B();
 		}
-		operator int() const{ // const ÁöÁ¤ÇÏ¿© const °´Ã¼µµ È£ÃâÇÒ ¼ö ÀÖµµ·Ï ÇÑ´Ù.
+		operator int() const{ // const ì§€ì •í•˜ì—¬ const ê°ì²´ë„ í˜¸ì¶œí•  ìˆ˜ ìžˆë„ë¡ í•œë‹¤.
 			cout << "A int() " << this << ", " << i << endl;
 			return 9;
 		}
@@ -75,11 +75,11 @@ void _1403_operator_type_cast() {
 		A a;
 		B b;
 
-		a = b; // ¾Ï½ÃÀû »ý¼ºÀÚ È£Ãâ
-		// A Å¬·¡½º¿¡ B Å¬·¡½º¸¦ ¹Þ´Â ´ëÀÔ ¿¬»êÀÚ(operator=)°¡ ¾øÀ¸¹Ç·Î ÄÄÆÄÀÏ·¯´Â b¸¦ A·Î º¯°æÇÒ ¼ö ÀÖ´Â ¹æ¹ýÀ» Ã£´Â´Ù.
-		// A Å¬·¡½º »ý¼ºÀÚ Áß¿¡ B¸¦ ¹Þ´Â »ý¼ºÀÚ(explicitÀÌ ¾ø¾î¼­ ¾Ï½ÃÀû È£Ãâ °¡´É)°¡ ÀÖ±â ¶§¹®¿¡ ÄÄÆÄÀÏ·¯´Â ¾Ï½ÃÀûÀ¸·Î b·Î AÀÇ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÑ´Ù.
-		// b¸¦ ÀÎÀÚ·Î »ý¼ºµÈ A ÀÓ½Ã°´Ã¼¸¦ ÄÄÆÄÀÏ·¯¿¡ ÀÇÇØ Á¤ÀÇµÈ operator= ÇÔ¼ö¸¦ È£ÃâÇÏ¿© a°´Ã¼¿¡ º¹»çÇÑ´Ù.
-		// º¹»ç ÈÄ ÀÓ½Ã°´Ã¼°¡ ¼Ò¸êµÈ´Ù.
+		a = b; // ì•”ì‹œì  ìƒì„±ìž í˜¸ì¶œ
+		// A í´ëž˜ìŠ¤ì— B í´ëž˜ìŠ¤ë¥¼ ë°›ëŠ” ëŒ€ìž… ì—°ì‚°ìž(operator=)ê°€ ì—†ìœ¼ë¯€ë¡œ ì»´íŒŒì¼ëŸ¬ëŠ” bë¥¼ Aë¡œ ë³€ê²½í•  ìˆ˜ ìžˆëŠ” ë°©ë²•ì„ ì°¾ëŠ”ë‹¤.
+		// A í´ëž˜ìŠ¤ ìƒì„±ìž ì¤‘ì— Bë¥¼ ë°›ëŠ” ìƒì„±ìž(explicitì´ ì—†ì–´ì„œ ì•”ì‹œì  í˜¸ì¶œ ê°€ëŠ¥)ê°€ ìžˆê¸° ë•Œë¬¸ì— ì»´íŒŒì¼ëŸ¬ëŠ” ì•”ì‹œì ìœ¼ë¡œ bë¡œ Aì˜ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
+		// bë¥¼ ì¸ìžë¡œ ìƒì„±ëœ A ìž„ì‹œê°ì²´ë¥¼ ì»´íŒŒì¼ëŸ¬ì— ì˜í•´ ì •ì˜ëœ operator= í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ì—¬ aê°ì²´ì— ë³µì‚¬í•œë‹¤.
+		// ë³µì‚¬ í›„ ìž„ì‹œê°ì²´ê°€ ì†Œë©¸ëœë‹¤.
 		cout << "-----" << endl;
 		/*
 		A 010FFCD0, 0
@@ -88,10 +88,10 @@ void _1403_operator_type_cast() {
 		~A 010FFBB0, 0
 		*/
 
-		//a = 1; // ¾Ï½ÃÀû »ý¼ºÀÚ È£Ãâ ºÒ°¡
-		// À§ a = b;Ã³·³ ¾Ï½ÃÀû »ý¼ºÀÚ È£ÃâÀ» ¸·±â À§ÇØ expicit Å°¿öµå¸¦ »ç¿ëÇÏ¿© ¸í½ÃÀû »ý¼ºÀÚ È£ÃâÀ» ÇÏµµ·Ï Çß´Ù.
-		A aa(1); // ¸í½ÃÀû »ý¼ºÀÚ È£Ãâ
-		// *** Çüº¯È¯À» ÀÇµµÇÏÁö ¾Ê´ÂÇÑ ÀÎÀÚ¸¦ °®´Â »ý¼ºÀÚ´Â ¸ðµÎ explicit »ý¼ºÀÚ·Î ¸¸µå´Â °ÍÀÌ ÁÁ´Ù. ***
+		//a = 1; // ì•”ì‹œì  ìƒì„±ìž í˜¸ì¶œ ë¶ˆê°€
+		// ìœ„ a = b;ì²˜ëŸ¼ ì•”ì‹œì  ìƒì„±ìž í˜¸ì¶œì„ ë§‰ê¸° ìœ„í•´ expicit í‚¤ì›Œë“œë¥¼ ì‚¬ìš©í•˜ì—¬ ëª…ì‹œì  ìƒì„±ìž í˜¸ì¶œì„ í•˜ë„ë¡ í–ˆë‹¤.
+		A aa(1); // ëª…ì‹œì  ìƒì„±ìž í˜¸ì¶œ
+		// *** í˜•ë³€í™˜ì„ ì˜ë„í•˜ì§€ ì•ŠëŠ”í•œ ì¸ìžë¥¼ ê°–ëŠ” ìƒì„±ìžëŠ” ëª¨ë‘ explicit ìƒì„±ìžë¡œ ë§Œë“œëŠ” ê²ƒì´ ì¢‹ë‹¤. ***
 		/*
 		A, int to A 010FFCB8, 1
 		*/
@@ -106,9 +106,9 @@ void _1403_operator_type_cast() {
 
 	cout << "===== Type Cast by type casting operator  =====" << endl;
 	{
-		A a; // A °´Ã¼ »ý¼º
-		B b = a; // ¾Ï½ÃÀûÀ¸·Î A Å¬·¡½ºÀÇ operator B() ¿¬»êÀÚ È£ÃâÇÏ¿© B °´Ã¼ »ý¼ºÇÏ¿© ´ëÀÔ
-		int i = a; // ¾Ï½ÃÀûÀ¸·Î A Å¬·¡½ºÀÇ operator int() ¿¬»êÀÚ È£ÃâÇÏ¿© int »ý¼ºÇÏ¿© ´ëÀÔ
+		A a; // A ê°ì²´ ìƒì„±
+		B b = a; // ì•”ì‹œì ìœ¼ë¡œ A í´ëž˜ìŠ¤ì˜ operator B() ì—°ì‚°ìž í˜¸ì¶œí•˜ì—¬ B ê°ì²´ ìƒì„±í•˜ì—¬ ëŒ€ìž…
+		int i = a; // ì•”ì‹œì ìœ¼ë¡œ A í´ëž˜ìŠ¤ì˜ operator int() ì—°ì‚°ìž í˜¸ì¶œí•˜ì—¬ int ìƒì„±í•˜ì—¬ ëŒ€ìž…
 		cout << i << endl; // 9;
 		/*
 		A 010FFCAC, 0
@@ -121,8 +121,8 @@ void _1403_operator_type_cast() {
 		cout << "-----" << endl;
 
 		const A aa;
-		//B bb = aa; // aa´Â const °´Ã¼ÀÎµ¥ B() ÇÔ¼ö´Â const ÇÔ¼ö°¡ ¾Æ´Ï¶ó¼­ ÄÄÆÄÀÏ ¿¡·¯³².
-		int ii = aa; // int() ÇÔ¼ö´Â const¶ó¼­ const °´Ã¼¿¡¼­ È£Ãâ °¡´É.
+		//B bb = aa; // aaëŠ” const ê°ì²´ì¸ë° B() í•¨ìˆ˜ëŠ” const í•¨ìˆ˜ê°€ ì•„ë‹ˆë¼ì„œ ì»´íŒŒì¼ ì—ëŸ¬ë‚¨.
+		int ii = aa; // int() í•¨ìˆ˜ëŠ” constë¼ì„œ const ê°ì²´ì—ì„œ í˜¸ì¶œ ê°€ëŠ¥.
 		/*
 		A 010FFC88, 0
 		A int() 010FFC88, 0
