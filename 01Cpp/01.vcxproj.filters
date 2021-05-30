@@ -123,6 +123,9 @@
     <ClCompile Include="1501 Inheritance.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="2101 Cast.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="10DoubleLinkedList.h">

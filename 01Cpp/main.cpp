@@ -23,9 +23,11 @@ void _1801_const();
 void _1802_literal();
 void _1901_friend();
 void _2001_random();
+void _2101_cast();
 
 int main() {
-	_1501_inheritance();
+	_2101_cast();
+	//_1501_inheritance();
 	//_2001_random();
 	//_2001_random();
 
