@@ -1,23 +1,23 @@
 #include <iostream>
 
 /*
-ÇÔ¼ö ÅÛÇÃ¸´
-	¿©·¯ ÇÔ¼ö¸¦ ¸¸µé¾î³»´Â ÇÔ¼öÀÇ Æ²
+í•¨ìˆ˜ í…œí”Œë¦¿
+	ì—¬ëŸ¬ í•¨ìˆ˜ë¥¼ ë§Œë“¤ì–´ë‚´ëŠ” í•¨ìˆ˜ì˜ í‹€
 
-Å¬·¡½º ÅÛÇÃ¸´
-	¿©·¯ Å¬·¡½º¸¦ ¸¸µé¾î³»´Â Å¬·¡½ºÀÇ Æ²
+í´ëž˜ìŠ¤ í…œí”Œë¦¿
+	ì—¬ëŸ¬ í´ëž˜ìŠ¤ë¥¼ ë§Œë“¤ì–´ë‚´ëŠ” í´ëž˜ìŠ¤ì˜ í‹€
 
-ÇÔ¼ö¸¦ È£ÃâÇÏ´Â °÷¿¡¼­ °áÁ¤µÈ Å¸ÀÔ¿¡ ¸Â´Â ÅÛÇÃ¸´ ÀÎ½ºÅÏ½º ÇÔ¼ö¸¦ ÄÄÆÄÀÏ·¯°¡ °¢°¢ »ý¼ºÇÑ´Ù.
-ÄÄÆÄÀÏÀÌ ¿Ï·áµÇ¸é ÅÛÇÃ¸´Àº Á¸ÀçÇÏÁö ¾Ê°í ÀÎ½ºÅÏ½ºÈ­µÈ ÇÔ¼ö¸¸ ÀÖ´Ù.
+í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ëŠ” ê³³ì—ì„œ ê²°ì •ëœ íƒ€ìž…ì— ë§žëŠ” í…œí”Œë¦¿ ì¸ìŠ¤í„´ìŠ¤ í•¨ìˆ˜ë¥¼ ì»´íŒŒì¼ëŸ¬ê°€ ê°ê° ìƒì„±í•œë‹¤.
+ì»´íŒŒì¼ì´ ì™„ë£Œë˜ë©´ í…œí”Œë¦¿ì€ ì¡´ìž¬í•˜ì§€ ì•Šê³  ì¸ìŠ¤í„´ìŠ¤í™”ëœ í•¨ìˆ˜ë§Œ ìžˆë‹¤.
 
 class, typename
-	template<class T> Çü½ÄÀº C++ Ç¥ÁØÈ­ ÀÌÀüºÎÅÍ »ç¿ëÇÏ´ø Çü½Ä
-	template<typename T> Çü½ÄÀº Ç¥ÁØÈ­ ÀÌÈÄ »ç¿ë
-	´ëºÎºÐÀÇ ÄÄÆÄÀÏ·¯´Â µÑ ´Ù Áö¿ø
+	template<class T> í˜•ì‹ì€ C++ í‘œì¤€í™” ì´ì „ë¶€í„° ì‚¬ìš©í•˜ë˜ í˜•ì‹
+	template<typename T> í˜•ì‹ì€ í‘œì¤€í™” ì´í›„ ì‚¬ìš©
+	ëŒ€ë¶€ë¶„ì˜ ì»´íŒŒì¼ëŸ¬ëŠ” ë‘˜ ë‹¤ ì§€ì›
 
-ÇÔ¼ö ÅÛÇÃ¸´ Æ¯¼öÈ­
-	ÇÔ¼ö ÅÛÇÃ¸´ ³»ÀÇ ¿¬»êÀ» Áö¿øÇÏÁö ¾Ê´Â Å¸ÀÔÀ» ÁöÁ¤ÇÏ¸é ÄÄÆÄÀÏ ¿¡·¯³­´Ù.
-	ÀÌ·² °æ¿ì Æ¯¼ö ÇÔ¼ö ÅÛÇÃ¸´À» Á¤ÀÇÇÏ¿© Æ¯Á¤ÇÑ Å¸ÀÔ¿¡ ´ëÇÑ ÇÔ¼ö¸¦ ÀÛ¼ºÇÑ´Ù.
+í•¨ìˆ˜ í…œí”Œë¦¿ íŠ¹ìˆ˜í™”
+	í•¨ìˆ˜ í…œí”Œë¦¿ ë‚´ì˜ ì—°ì‚°ì„ ì§€ì›í•˜ì§€ ì•ŠëŠ” íƒ€ìž…ì„ ì§€ì •í•˜ë©´ ì»´íŒŒì¼ ì—ëŸ¬ë‚œë‹¤.
+	ì´ëŸ´ ê²½ìš° íŠ¹ìˆ˜ í•¨ìˆ˜ í…œí”Œë¦¿ì„ ì •ì˜í•˜ì—¬ íŠ¹ì •í•œ íƒ€ìž…ì— ëŒ€í•œ í•¨ìˆ˜ë¥¼ ìž‘ì„±í•œë‹¤.
 */
 
 namespace ns1601 {
@@ -28,25 +28,25 @@ namespace ns1601 {
 		int i = 1;
 	};
 
-	// ÇÔ¼ö ÅÛÇÃ¸´
+	// í•¨ìˆ˜ í…œí”Œë¦¿
 	template<typename T>
 	void tf(T data) {
 		cout << typeid(T).name() << ", " << data << endl;
 	}
 
-	// ÇÔ¼ö ÅÛÇÃ¸´, °íÁ¤Å¸ÀÔ ÁöÁ¤
+	// í•¨ìˆ˜ í…œí”Œë¦¿, ê³ ì •íƒ€ìž… ì§€ì •
 	template<typename T, int size>
 	void tf(T data) {
 		cout << typeid(T).name() << ", " << data << ", " << size << endl;
 	}
 
-	// A¿¡ ´ëÇÑ Æ¯¼ö ÇÔ¼ö ÅÛÇÃ¸´
+	// Aì— ëŒ€í•œ íŠ¹ìˆ˜ í•¨ìˆ˜ í…œí”Œë¦¿
 	template<>
 	void tf(A data) {
-		cout << "Æ¯¼ö " << typeid(A).name() << ", " << data.i << endl;
+		cout << "íŠ¹ìˆ˜ " << typeid(A).name() << ", " << data.i << endl;
 	}
 
-	// Å¬·¡½º ÅÛÇÃ¸´
+	// í´ëž˜ìŠ¤ í…œí”Œë¦¿
 	template<typename T>
 	class TA {
 	public:
@@ -60,12 +60,12 @@ using namespace ns1601;
 
 void _1601_template_function() {
 	/*
-	Å¸ÀÔÀ» ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ÄÄÆÄÀÏ·¯°¡ °ªÀ» º¸°í Å¸ÀÔÀ» À¯ÃßÇÑ´Ù.
+	íƒ€ìž…ì„ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ì»´íŒŒì¼ëŸ¬ê°€ ê°’ì„ ë³´ê³  íƒ€ìž…ì„ ìœ ì¶”í•œë‹¤.
 	*/
 	{
-		tf(1); // int, 1 : Å¸ÀÔ À¯Ãß
-		tf<int>(1); // int, 1 : Å¸ÀÔ ÁöÁ¤
-		tf<float>(1.f); // float, 1 : Å¸ÀÔ ÁöÁ¤
+		tf(1); // int, 1 : íƒ€ìž… ìœ ì¶”
+		tf<int>(1); // int, 1 : íƒ€ìž… ì§€ì •
+		tf<float>(1.f); // float, 1 : íƒ€ìž… ì§€ì •
 
 		tf("a");				// char const *, a
 		tf<const char*>("a");	// char const *, a
@@ -73,29 +73,29 @@ void _1601_template_function() {
 	}
 
 	/*
-	ÅÛÇÃ¸´¿¡µµ ¿À¹ö·ÎµùÀÌ Àû¿ëµÇ¾î »çÀÎÀÌ ÀÏÄ¡ÇÏ´Â ÇÔ¼ö¸¦ È£ÃâÇÑ´Ù.
-	ÅÛÇÃ¸´ ¸Å°³º¯¼ö·Î Å¸ÀÔ»Ó¸¸ ¾Æ´Ï¶ó Á¤¼öµîµµ °¡´É
-		9¶ó´Â Á¤¼ö°ªÀ» ÄÄÆÄÀÏ·¯°¡ À¯ÃßÇÒ ¼ö¾ø±â ¶§¹®¿¡ ¸í½ÃÀûÀ¸·Î ³Ö¾î¾ßÇÑ´Ù.
+	í…œí”Œë¦¿ì—ë„ ì˜¤ë²„ë¡œë”©ì´ ì ìš©ë˜ì–´ ì‚¬ì¸ì´ ì¼ì¹˜í•˜ëŠ” í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•œë‹¤.
+	í…œí”Œë¦¿ ë§¤ê°œë³€ìˆ˜ë¡œ íƒ€ìž…ë¿ë§Œ ì•„ë‹ˆë¼ ì •ìˆ˜ë“±ë„ ê°€ëŠ¥
+		9ë¼ëŠ” ì •ìˆ˜ê°’ì„ ì»´íŒŒì¼ëŸ¬ê°€ ìœ ì¶”í•  ìˆ˜ì—†ê¸° ë•Œë¬¸ì— ëª…ì‹œì ìœ¼ë¡œ ë„£ì–´ì•¼í•œë‹¤.
 	*/
 	{
 		tf<int, 9>(1); // int, 1, 9
 	}
 
 	/*
-	½ÇÁ¦ ÀÎ¼ö¿Í ´Ù¸¥ Å¸ÀÔÀ» ÁöÁ¤ÇÏ¸é ¿¡·¯
+	ì‹¤ì œ ì¸ìˆ˜ì™€ ë‹¤ë¥¸ íƒ€ìž…ì„ ì§€ì •í•˜ë©´ ì—ëŸ¬
 	*/
 	{
 		//tf<int>("a");
 	}
 
 	/*
-	ÇÔ¼ö ÅÛÇÃ¸´ Æ¯¼öÈ­(Function Template Specialization)
+	í•¨ìˆ˜ í…œí”Œë¦¿ íŠ¹ìˆ˜í™”(Function Template Specialization)
 	*/
 	{
 		/*
-		tf ÇÔ¼ö³»¿¡ ÀÖ´Â << ¿¬»êÀÚ¸¦ A Å¬·¡½º°¡ Áö¿øÇÏÁö ¾Ê¾Æ¼­ ÄÄÆÄÀÏ ¿¡·¯.
-		"ÀÌÇ× '<<': ¿À¸¥ÂÊ ÇÇ¿¬»êÀÚ·Î 'T' Çü½ÄÀ» »ç¿ëÇÏ´Â ¿¬»êÀÚ°¡ ¾ø°Å³ª Çã¿ëµÇ´Â º¯È¯ÀÌ ¾ø½À´Ï´Ù."
-		Æ¯¼ö ÇÔ¼ö ÅÛÇÃ¸´À» Á¤ÀÇÇÏ¿© ÇØ°á
+		tf í•¨ìˆ˜ë‚´ì— ìžˆëŠ” << ì—°ì‚°ìžë¥¼ A í´ëž˜ìŠ¤ê°€ ì§€ì›í•˜ì§€ ì•Šì•„ì„œ ì»´íŒŒì¼ ì—ëŸ¬.
+		"ì´í•­ '<<': ì˜¤ë¥¸ìª½ í”¼ì—°ì‚°ìžë¡œ 'T' í˜•ì‹ì„ ì‚¬ìš©í•˜ëŠ” ì—°ì‚°ìžê°€ ì—†ê±°ë‚˜ í—ˆìš©ë˜ëŠ” ë³€í™˜ì´ ì—†ìŠµë‹ˆë‹¤."
+		íŠ¹ìˆ˜ í•¨ìˆ˜ í…œí”Œë¦¿ì„ ì •ì˜í•˜ì—¬ í•´ê²°
 		*/
 
 		A a;

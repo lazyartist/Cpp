@@ -71,7 +71,7 @@ void RemoveNode(PList list, int idx) {
 			prevNode->pNextNode = it->pNextNode;
 		}
 
-		if (it == list->pEnd) { // ¶Ç´Â : it.pEnd == NULL
+		if (it == list->pEnd) { // ë˜ëŠ” : it.pEnd == NULL
 			list->pEnd = prevNode;
 		}
 
@@ -101,10 +101,10 @@ void RemoveAllNode(const PList list) {
 }
 
 void PrintList(const char name[], const PList list) {
-	// const´Â ÀÌ º¯¼öÀÇ °ªÀ» ¹Ù²ÙÁö ¾Ê°Ú´Ù¶ó´Â ¶æÀÌ±â ¶§¹®¿¡
-	// const PList list ÇÏ¸é list°¡ °¡Áö°í ÀÖ´Â Æ÷ÀÎÅÍ¸¦ ¹Ù²ÙÁö ¾Ê°Ô Á¦ÇÑÇÑ´Ù.
-	// µû¶ó¼­ list°¡ °¡Áø Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò¿¡ÀÖ´Â °ªÀº º¯°æÀÌ °¡´ÉÇÏ´Ù.
-	// list++ : ºÒ°¡, list->iSize++ : °¡´É
+	// constëŠ” ì´ ë³€ìˆ˜ì˜ ê°’ì„ ë°”ê¾¸ì§€ ì•Šê² ë‹¤ë¼ëŠ” ëœ»ì´ê¸° ë•Œë¬¸ì—
+	// const PList list í•˜ë©´ listê°€ ê°€ì§€ê³  ìˆëŠ” í¬ì¸í„°ë¥¼ ë°”ê¾¸ì§€ ì•Šê²Œ ì œí•œí•œë‹¤.
+	// ë”°ë¼ì„œ listê°€ ê°€ì§„ í¬ì¸í„°ì˜ ì£¼ì†Œì—ìˆëŠ” ê°’ì€ ë³€ê²½ì´ ê°€ëŠ¥í•˜ë‹¤.
+	// list++ : ë¶ˆê°€, list->iSize++ : ê°€ëŠ¥
 
 	cout << "============" << name << "============" << endl;
 	PNode it = list->pBegin;
@@ -119,10 +119,10 @@ void PrintList(const char name[], const PList list) {
 }
 
 int main() {
-	// ¸®½ºÆ® »ı¼º
+	// ë¦¬ìŠ¤íŠ¸ ìƒì„±
 	List list;
 
-	// ¸®½ºÆ®¿¡ ¿ä¼Ò Ãß°¡
+	// ë¦¬ìŠ¤íŠ¸ì— ìš”ì†Œ ì¶”ê°€
 	for (size_t i = 0; i < 5; i++)
 	{
 		PNode newNode = new Node();
@@ -131,17 +131,17 @@ int main() {
 	}
 	PrintList("PushNode", &list);
 	
-	// ¸®½ºÆ®¿¡¼­ ³¡ ¿ä¼Ò Á¦°Å
+	// ë¦¬ìŠ¤íŠ¸ì—ì„œ ë ìš”ì†Œ ì œê±°
 	PopNode(&list);
 	PrintList("PopNode", &list);
 
-	// ¸®½ºÆ®¿¡¼­ ÁöÁ¤ÇÑ À§Ä¡ÀÇ ¿ä¼Ò Á¦°Å
+	// ë¦¬ìŠ¤íŠ¸ì—ì„œ ì§€ì •í•œ ìœ„ì¹˜ì˜ ìš”ì†Œ ì œê±°
 	RemoveNode(&list, 1);
 	PrintList("RemoveNode", &list);
 	RemoveNode(&list, 0);
 	PrintList("RemoveNode", &list);
 
-	// ¸ğµç ¸Ş¸ğ¸® ÇØÁ¦
+	// ëª¨ë“  ë©”ëª¨ë¦¬ í•´ì œ
 	RemoveAllNode(&list);
 	PrintList("RemoveAllNode", &list);
 

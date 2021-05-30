@@ -5,29 +5,29 @@ using namespace std;
 int main() {
 	FILE* pFile = NULL;
 
-	// 1 : ÆÄÀÏÀÇ ÀÌÁßÆ÷ÀÎÅÍ
-	// 2 : ÆÄÀÏ °æ·Î, ÆÄÀÏÀÌ »ý¼ºµÇ´Â ±âÁØ °æ·Î´Â ÇöÀç ÇÁ·ÎÁ§Æ®°¡ ÀÖ´Â Æú´õ ±âÁØÀÌ´Ù.
-	// ¸¸¾à ½ÇÇàÆÄÀÏ·Î ½ÇÇàÇßÀ» °æ¿ì¿¡´Â ÇØ´ç exeÆÄÀÏÀÌ ÀÖ´Â °æ·Î¸¦ ±âÁØÀ¸·Î »ý¼ºÇØÁØ´Ù.
-	// 3 : ÆÄÀÏ ¸ðµå, ¸ðµå´Â Å©°Ô 2°¡Áö·Î ±¸ºÐ
-	// ÆÄÀÏ ÀÐ±â, ¾²±â, Á¢±Ù | ÆÄÀÏ ÇüÅÂ(ÅØ½ºÆ®ÆÄÀÏ, ¹ÙÀÌ³Ê¸®ÆÄÀÏ)
-	// ÀÌ 2°¡Áö ¸ðµå¸¦ ÇÕÃÄ¼­ »ç¿ëÇÑ´Ù.
-	// r : ÀÐ±â, w : ¾²±â, a : Á¢±Ù | t : ÅØ½ºÆ® ÆÄÀÏ, b : ¹ÙÀÌ³Ê¸® ÆÄÀÏ
+	// 1 : íŒŒì¼ì˜ ì´ì¤‘í¬ì¸í„°
+	// 2 : íŒŒì¼ ê²½ë¡œ, íŒŒì¼ì´ ìƒì„±ë˜ëŠ” ê¸°ì¤€ ê²½ë¡œëŠ” í˜„ìž¬ í”„ë¡œì íŠ¸ê°€ ìžˆëŠ” í´ë” ê¸°ì¤€ì´ë‹¤.
+	// ë§Œì•½ ì‹¤í–‰íŒŒì¼ë¡œ ì‹¤í–‰í–ˆì„ ê²½ìš°ì—ëŠ” í•´ë‹¹ exeíŒŒì¼ì´ ìžˆëŠ” ê²½ë¡œë¥¼ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±í•´ì¤€ë‹¤.
+	// 3 : íŒŒì¼ ëª¨ë“œ, ëª¨ë“œëŠ” í¬ê²Œ 2ê°€ì§€ë¡œ êµ¬ë¶„
+	// íŒŒì¼ ì½ê¸°, ì“°ê¸°, ì ‘ê·¼ | íŒŒì¼ í˜•íƒœ(í…ìŠ¤íŠ¸íŒŒì¼, ë°”ì´ë„ˆë¦¬íŒŒì¼)
+	// ì´ 2ê°€ì§€ ëª¨ë“œë¥¼ í•©ì³ì„œ ì‚¬ìš©í•œë‹¤.
+	// r : ì½ê¸°, w : ì“°ê¸°, a : ì ‘ê·¼ | t : í…ìŠ¤íŠ¸ íŒŒì¼, b : ë°”ì´ë„ˆë¦¬ íŒŒì¼
 	//fopen_s(&pFile, "test.txt", "wt");
 
-	// ÆÄÀÏ ¾²±â
+	// íŒŒì¼ ì“°ê¸°
 	//fopen_s(&pFile, "test.txt", "wt");
 	//if (pFile != NULL) {
-	//	// fwrite, fread : ¾²±â, ÀÐ±â
-	//	// fputs, fgets : ¾²±â, ÀÐ±â
+	//	// fwrite, fread : ì“°ê¸°, ì½ê¸°
+	//	// fputs, fgets : ì“°ê¸°, ì½ê¸°
 
 	//	const char* pText = "abcd";
-	//	// 1¹ø ÀÎÀÚ·Î void Æ÷ÀÎÅÍ¸¦ ¹Þ±â ¶§¹®¿¡ ¿ä¼ÒÀÇ Å©±â¿Í ±æÀÌ¸¦ ÇÔ²² Àü´ÞÇØ¾ß fwriteÇÔ¼ö³»¿¡¼­ ÆÄÀÏ¿¡ ¾î¶»°Ô ¾µÁö¸¦ °áÁ¤ÇÒ ¼ö ÀÖ´Ù.
+	//	// 1ë²ˆ ì¸ìžë¡œ void í¬ì¸í„°ë¥¼ ë°›ê¸° ë•Œë¬¸ì— ìš”ì†Œì˜ í¬ê¸°ì™€ ê¸¸ì´ë¥¼ í•¨ê»˜ ì „ë‹¬í•´ì•¼ fwriteí•¨ìˆ˜ë‚´ì—ì„œ íŒŒì¼ì— ì–´ë–»ê²Œ ì“¸ì§€ë¥¼ ê²°ì •í•  ìˆ˜ ìžˆë‹¤.
 	//	fwrite(pText, sizeof(char), sizeof(pText) / sizeof(char), pFile);
 
 	//	fclose(pFile);
 	//}
 
-	// ÆÄÀÏ ÀÐ±â
+	// íŒŒì¼ ì½ê¸°
 	fopen_s(&pFile, "test.txt", "rt");
 
 	if (pFile != NULL) {
@@ -38,14 +38,14 @@ int main() {
 		fclose(pFile);
 	}
 
-	// ¹ÙÀÌ³Ê¸® ÆÄÀÏ·Î ÀúÀå 
+	// ë°”ì´ë„ˆë¦¬ íŒŒì¼ë¡œ ì €ìž¥ 
 	char name[10] = "name";
 	FILE* pFileBinary;
 	fopen_s(&pFileBinary, "fileBinary.b", "wb");
 	fwrite(name, 1, 10, pFileBinary);
 	fclose(pFileBinary);
 
-	// ¹ÙÀÌ³Ê¸® ÆÄÀÏ ÀÐ±â
+	// ë°”ì´ë„ˆë¦¬ íŒŒì¼ ì½ê¸°
 	fopen_s(&pFileBinary, "fileBinary.b", "rb");
 	char name2[10];
 	fread_s(name2, 10, 1, 10, pFileBinary);

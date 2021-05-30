@@ -2,34 +2,34 @@
 
 using namespace std;
 
-// °­ÀÇ¿Í ´ÙÀ½ ºí·Î±×¸¦ Âü°í
+// ê°•ì˜ì™€ ë‹¤ìŒ ë¸”ë¡œê·¸ë¥¼ ì°¸ê³ 
 // https://pacs.tistory.com/entry/C-%EC%97%B0%EC%82%B0%EC%9E%90-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9-Operator-Overloading%EC%9D%98-%EB%91%90%EA%B0%80%EC%A7%80-%EB%B0%A9%EB%B2%95?category=367869
 // https://pacs.tistory.com/entry/C-%EB%8B%A8%ED%95%AD-%EC%97%B0%EC%82%B0%EC%9E%90-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9
 
 /*
-¿¬»êÀÚ ¿À¹ö·Îµù
-	´ÜÇ×, ÀÌÇ× ¿¬»êÀÚ¸¦ ¿À¹ö·ÎµùÇÒ ¼ö ÀÖ´Ù.
-	¸â¹ö ¿¬»êÀÚ, Àü¿ª ¿¬»êÀÚ µÎ °¡Áö ¹æ¹ýÀ¸·Î ¿À¹ö·Îµù ÇÒ ¼ö ÀÖ´Ù.
-	»ç¿ëÇÏ´Âµ¥ Â÷ÀÌ´Â ¾ø´Ù.
+ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
+	ë‹¨í•­, ì´í•­ ì—°ì‚°ìžë¥¼ ì˜¤ë²„ë¡œë”©í•  ìˆ˜ ìžˆë‹¤.
+	ë©¤ë²„ ì—°ì‚°ìž, ì „ì—­ ì—°ì‚°ìž ë‘ ê°€ì§€ ë°©ë²•ìœ¼ë¡œ ì˜¤ë²„ë¡œë”© í•  ìˆ˜ ìžˆë‹¤.
+	ì‚¬ìš©í•˜ëŠ”ë° ì°¨ì´ëŠ” ì—†ë‹¤.
 
-¿¬»êÀÚ
-	¿À¹ö·Îµù °¡´ÉÇÑ ´ÜÇ× ¿¬»êÀÚ: !, &, ~, *, +, -, ++, -- µî
-	¿À¹ö·Îµù °¡´ÉÇÑ ÀÌÇ× ¿¬»êÀÚ: +, -, *, /, ==, !=, <, <= µî
+ì—°ì‚°ìž
+	ì˜¤ë²„ë¡œë”© ê°€ëŠ¥í•œ ë‹¨í•­ ì—°ì‚°ìž: !, &, ~, *, +, -, ++, -- ë“±
+	ì˜¤ë²„ë¡œë”© ê°€ëŠ¥í•œ ì´í•­ ì—°ì‚°ìž: +, -, *, /, ==, !=, <, <= ë“±
 	https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B
 
-¸â¹ö ÇÔ¼ö¸¦ ÀÌ¿ëÇÑ ¿¬»êÀÚ ¿À¹ö·ÎµùÀ» ÇÒ ¼ö ¾ø´Â °æ¿ì
-	¿¬»êÀÚ ¿ÞÂÊ¿¡ ¿À´Â ÇÇ¿¬»êÀÚ¸¦ this·Î ÇØ¼­ ¿¬»êÀÚ°¡ È£ÃâµÇ´Âµ¥ 
-	¿ÞÂÊ¿¡ ´Ù¸¥ °´Ã¼°¡ ¿À¸é ¿¬»êÀÚ¸¦ È£ÃâÇÒ ¼ö ¾ø´Ù.(¹°·Ð ¿ÞÂÊÀÇ ´Ù¸¥ °´Ã¼°¡ ¿¬»êÀÚ¸¦ Á¤ÀÇÇß´Ù¸é °¡´É)
-	µû¶ó¼­ ÀÌ·²¶§´Â 'Àü¿ª ÇÔ¼ö ¿¬»êÀÚ ¿À¹ö·Îµù'À» ÀÌ¿ëÇÑ´Ù.
+ë©¤ë²„ í•¨ìˆ˜ë¥¼ ì´ìš©í•œ ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©ì„ í•  ìˆ˜ ì—†ëŠ” ê²½ìš°
+	ì—°ì‚°ìž ì™¼ìª½ì— ì˜¤ëŠ” í”¼ì—°ì‚°ìžë¥¼ thisë¡œ í•´ì„œ ì—°ì‚°ìžê°€ í˜¸ì¶œë˜ëŠ”ë° 
+	ì™¼ìª½ì— ë‹¤ë¥¸ ê°ì²´ê°€ ì˜¤ë©´ ì—°ì‚°ìžë¥¼ í˜¸ì¶œí•  ìˆ˜ ì—†ë‹¤.(ë¬¼ë¡  ì™¼ìª½ì˜ ë‹¤ë¥¸ ê°ì²´ê°€ ì—°ì‚°ìžë¥¼ ì •ì˜í–ˆë‹¤ë©´ ê°€ëŠ¥)
+	ë”°ë¼ì„œ ì´ëŸ´ë•ŒëŠ” 'ì „ì—­ í•¨ìˆ˜ ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©'ì„ ì´ìš©í•œë‹¤.
 
-º¹»ç »ý¼ºÀÚ
-	°´Ã¼ ÃÊ±âÈ­ ½Ã ÁÖ¾îÁø °´Ã¼¸¦ º¹»çÇÏ°Ô ÇÏ´Â »ý¼ºÀÚ
-	¿À¹ö·Îµù ÇÏÁö ¾ÊÀ¸¸é ¾èÀº º¹»ç¸¦ ÇÏ´Â º¹»ç »ý¼ºÀÚ¸¦ ÄÄÆÄÀÏ·¯°¡ ÀÚµ¿À¸·Î ¸¸µç´Ù.
+ë³µì‚¬ ìƒì„±ìž
+	ê°ì²´ ì´ˆê¸°í™” ì‹œ ì£¼ì–´ì§„ ê°ì²´ë¥¼ ë³µì‚¬í•˜ê²Œ í•˜ëŠ” ìƒì„±ìž
+	ì˜¤ë²„ë¡œë”© í•˜ì§€ ì•Šìœ¼ë©´ ì–•ì€ ë³µì‚¬ë¥¼ í•˜ëŠ” ë³µì‚¬ ìƒì„±ìžë¥¼ ì»´íŒŒì¼ëŸ¬ê°€ ìžë™ìœ¼ë¡œ ë§Œë“ ë‹¤.
 
-º¹»ç »ý¼ºÀÚ°¡ È£ÃâµÇ´Â ½ÃÁ¡
-	1. ±âÁ¸¿¡ »ý¼ºµÈ °´Ã¼¸¦ ÀÌ¿ëÇÏ¿© »õ·Î¿î °´Ã¼¸¦ ÃÊ±âÈ­ÇÏ´Â °æ¿ì 
-	2. call-by-value ¹æ½ÄÀ¸·Î ÇÔ¼ö¿¡ ÀÎÀÚ¸¦ Àü´ÞÇÏ´Â °æ¿ì
-	3. °ª ¹æ½ÄÀ¸·Î °´Ã¼¸¦ ¹ÝÈ¯ÇÏ´Â °æ¿ì
+ë³µì‚¬ ìƒì„±ìžê°€ í˜¸ì¶œë˜ëŠ” ì‹œì 
+	1. ê¸°ì¡´ì— ìƒì„±ëœ ê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ ìƒˆë¡œìš´ ê°ì²´ë¥¼ ì´ˆê¸°í™”í•˜ëŠ” ê²½ìš° 
+	2. call-by-value ë°©ì‹ìœ¼ë¡œ í•¨ìˆ˜ì— ì¸ìžë¥¼ ì „ë‹¬í•˜ëŠ” ê²½ìš°
+	3. ê°’ ë°©ì‹ìœ¼ë¡œ ê°ì²´ë¥¼ ë°˜í™˜í•˜ëŠ” ê²½ìš°
 */
 
 typedef struct _tagPoint {
@@ -45,33 +45,33 @@ typedef struct _tagPoint {
 		cout << "init const " << x << endl;
 	}
 
-	// º¹»ç »ý¼ºÀÚ
+	// ë³µì‚¬ ìƒì„±ìž
 	_tagPoint(const _tagPoint& pt) { 
 		cout << "copy const " << pt.x << endl;
-		// this´Â ÀÚ±âÀÚ½ÅÀÇ Æ÷ÀÎÅÍÀÌ°í *À» ºÙ¿©¼­ ÀÚ±âÀÚ½ÅÀ» ¿ªÂüÁ¶ÇÏ¿© ¸ðµç µ¥ÀÌÅÍ¸¦ º¹»çÇÏ°Ô ÇÑ´Ù. ¾èÀº º¹»çÀÌ´Ù.
+		// thisëŠ” ìžê¸°ìžì‹ ì˜ í¬ì¸í„°ì´ê³  *ì„ ë¶™ì—¬ì„œ ìžê¸°ìžì‹ ì„ ì—­ì°¸ì¡°í•˜ì—¬ ëª¨ë“  ë°ì´í„°ë¥¼ ë³µì‚¬í•˜ê²Œ í•œë‹¤. ì–•ì€ ë³µì‚¬ì´ë‹¤.
 		*this = pt;
 
-		// ÀÌµ¿ »ý¼ºÀÚ¸¦ Á¤ÀÇÇÏ´Ï 
-		// "_tagPoint operator=(const _tagPoint& pt) (¾Ï½ÃÀûÀ¸·Î ¼±¾ðµÈ)À» ÂüÁ¶ÇÒ ¼ö ¾ø½À´Ï´Ù. »èÁ¦µÈ ÇÔ¼öÀÔ´Ï´Ù" ¿¡·¯°¡ ¶á´Ù.
-		// °á±¹ ¼±¾ðÇØ¼­ ÇØ°á. ¿Ö±×·²±î?
+		// ì´ë™ ìƒì„±ìžë¥¼ ì •ì˜í•˜ë‹ˆ 
+		// "_tagPoint operator=(const _tagPoint& pt) (ì•”ì‹œì ìœ¼ë¡œ ì„ ì–¸ëœ)ì„ ì°¸ì¡°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì‚­ì œëœ í•¨ìˆ˜ìž…ë‹ˆë‹¤" ì—ëŸ¬ê°€ ëœ¬ë‹¤.
+		// ê²°êµ­ ì„ ì–¸í•´ì„œ í•´ê²°. ì™œê·¸ëŸ´ê¹Œ?
 	}
 
-	// ÀÌµ¿ »ý¼ºÀÚ
+	// ì´ë™ ìƒì„±ìž
 	_tagPoint(_tagPoint&& pt) {
 		cout << "move const " << pt.x << endl;
 		x = pt.x;
-		// this´Â ÀÚ±âÀÚ½ÅÀÇ Æ÷ÀÎÅÍÀÌ°í *À» ºÙ¿©¼­ ÀÚ±âÀÚ½ÅÀ» ¿ªÂüÁ¶ÇÏ¿© ¸ðµç µ¥ÀÌÅÍ¸¦ º¹»çÇÏ°Ô ÇÑ´Ù. ¾èÀº º¹»çÀÌ´Ù.
+		// thisëŠ” ìžê¸°ìžì‹ ì˜ í¬ì¸í„°ì´ê³  *ì„ ë¶™ì—¬ì„œ ìžê¸°ìžì‹ ì„ ì—­ì°¸ì¡°í•˜ì—¬ ëª¨ë“  ë°ì´í„°ë¥¼ ë³µì‚¬í•˜ê²Œ í•œë‹¤. ì–•ì€ ë³µì‚¬ì´ë‹¤.
 		//*this = pt;
 	}
 
 	_tagPoint& operator=(const _tagPoint& pt){
 		cout << "operator=&" << endl;
-		//*this = pt; // ÇÔ¼ö Á¤ÀÇ¿¡¼­ ÇÔ¼ö¸¦ È£ÃâÇÏ¹Ç·Î stack overflow ³­´Ù. 
+		//*this = pt; // í•¨ìˆ˜ ì •ì˜ì—ì„œ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ë¯€ë¡œ stack overflow ë‚œë‹¤. 
 		this->x = pt.x;
 		return *this;
 	}
 
-	// È£ÃâµÇ´Â °÷ÀÌ ¾ø´Ù. ÀÖ¾ú´ø°Å °°Àºµ¥...
+	// í˜¸ì¶œë˜ëŠ” ê³³ì´ ì—†ë‹¤. ìžˆì—ˆë˜ê±° ê°™ì€ë°...
 	_tagPoint& operator=(const _tagPoint&& pt) {
 		cout << "operator=&&" << endl;
 		this->x = pt.x;
@@ -83,100 +83,100 @@ typedef struct _tagPoint {
 		cout << "destr " << x << endl;
 	}
 
-	// + ¿¬»êÀÚ ÀçÁ¤ÀÇ
+	// + ì—°ì‚°ìž ìž¬ì •ì˜
 	_tagPoint operator +(const _tagPoint& ptr) {
 		cout << "operator+ _tagPoint" << endl;
 
 		//_tagPoint result = _tagPoint(this->x + ptr.x);
 		//return result;
 		/*
-		init const // ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇ°í result º¯¼öÀÇ °ªÀ¸·Î ¹Ù·Î ÇÒ´çµÈ´Ù.
-		move const // ¸®ÅÏ ½Ã »õ·Î¿î ÀÓ½Ã °´Ã¼°¡ »ý¼ºµÇ¸ç ÀÌµ¿ »ý¼ºÀÚ°¡ È£ÃâµÈ´Ù.
-		destr // ÇÔ¼ö ³» ÀÓ½Ã°´Ã¼ »èÁ¦
-		destr // ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ »èÁ¦
+		init const // ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ê³  result ë³€ìˆ˜ì˜ ê°’ìœ¼ë¡œ ë°”ë¡œ í• ë‹¹ëœë‹¤.
+		move const // ë¦¬í„´ ì‹œ ìƒˆë¡œìš´ ìž„ì‹œ ê°ì²´ê°€ ìƒì„±ë˜ë©° ì´ë™ ìƒì„±ìžê°€ í˜¸ì¶œëœë‹¤.
+		destr // í•¨ìˆ˜ ë‚´ ìž„ì‹œê°ì²´ ì‚­ì œ
+		destr // ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì‚­ì œ
 		*/
 
 		return _tagPoint(this->x + ptr.x);
 		/*
-		init const // ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇ°í ¹ÝÈ¯ °´Ã¼·Î ¹Ù·Î ÇÒ´çµÈ´Ù.
-		destr 3 // ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ »èÁ¦
+		init const // ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ê³  ë°˜í™˜ ê°ì²´ë¡œ ë°”ë¡œ í• ë‹¹ëœë‹¤.
+		destr 3 // ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì‚­ì œ
 		*/
 	}
 
-	// + ¿¬»êÀÚ ¿À¹ö·Îµù
+	// + ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
 	_tagPoint operator+(int i) {
 		cout << "operator+ int" << endl;
 
-		// ÀÌ·¸°Ô ÇÏ¸é ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇ°í(ÃÊ±âÈ­ »ý¼ºÀÚ È£Ãâ) ¸®ÅÏ½Ã ÀÓ½Ã°´Ã¼°¡ ¶Ç »ý¼ºµÈ´Ù.(ÀÌµ¿ »ý¼ºÀÚ È£Ãâ)
+		// ì´ë ‡ê²Œ í•˜ë©´ ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ê³ (ì´ˆê¸°í™” ìƒì„±ìž í˜¸ì¶œ) ë¦¬í„´ì‹œ ìž„ì‹œê°ì²´ê°€ ë˜ ìƒì„±ëœë‹¤.(ì´ë™ ìƒì„±ìž í˜¸ì¶œ)
 		//_tagPoint result = _tagPoint(this->x + i);
 		
-		// ÀÌ·¸°Ô ÇÏ¸é ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇ°í ¹Ù·Î ¹ÝÈ¯°´Ã¼·Î µÇ±â ¶§¹®¿¡ ¹ÝÈ¯¿ë ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏÁö ¾Ê´Â´Ù. µð¹ö±ë¿¡´Â ºÒ¸®ÇÒ ¼ö ÀÖ´Ù.
+		// ì´ë ‡ê²Œ í•˜ë©´ ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ê³  ë°”ë¡œ ë°˜í™˜ê°ì²´ë¡œ ë˜ê¸° ë•Œë¬¸ì— ë°˜í™˜ìš© ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ì§€ ì•ŠëŠ”ë‹¤. ë””ë²„ê¹…ì—ëŠ” ë¶ˆë¦¬í•  ìˆ˜ ìžˆë‹¤.
 		return _tagPoint(this->x + i);
 	}
 
-	// << ¿¬»êÀÚ ÀçÁ¤ÀÇ
+	// << ì—°ì‚°ìž ìž¬ì •ì˜
 	void operator<<(const _tagPoint& pt) {
 		cout << "operator<<" << endl;
 		this->x = pt.x;
 	}
 
-	// >> ¿¬»êÀÚ ÀçÁ¤ÀÇ
+	// >> ì—°ì‚°ìž ìž¬ì •ì˜
 	void operator>>(_tagPoint& pt) {
 		cout << "operator>>" << endl;
 		pt.x = this->x;
 	}
 
-	// Å¬·¡½º ¿ÜºÎ¿¡¼­ Á¤ÀÇÇÒ ¿¬»êÀÚ ¼±¾ð
-	// Å¬·¡½º ³»ºÎ¿¡¼­ ¼±¾ðÇØÁÖÁö ¾ÊÀ¸¸é ¿ÜºÎ¿¡¼­ Á¤ÀÇÇÒ ¼ö ¾ø´Ù.
-		// IDE(Integrated Development Environment)¿¡¼­ "operator +=¿¡ ´ëÇÑ ÇÔ¼ö Á¤ÀÇ°¡ ¾ø½À´Ï´Ù." °æ°í ¶ß´Â °æ¿ì´Â 
-		// ´ÙÀ½°ú °°ÀÌ ½ºÄÚÇÁ ÁöÁ¤À» Point µîÀÇ º°ÄªÀ¸·Î ÇØ¼­ ±×·¸´Ù. void Point::operator += (int i) 
+	// í´ëž˜ìŠ¤ ì™¸ë¶€ì—ì„œ ì •ì˜í•  ì—°ì‚°ìž ì„ ì–¸
+	// í´ëž˜ìŠ¤ ë‚´ë¶€ì—ì„œ ì„ ì–¸í•´ì£¼ì§€ ì•Šìœ¼ë©´ ì™¸ë¶€ì—ì„œ ì •ì˜í•  ìˆ˜ ì—†ë‹¤.
+		// IDE(Integrated Development Environment)ì—ì„œ "operator +=ì— ëŒ€í•œ í•¨ìˆ˜ ì •ì˜ê°€ ì—†ìŠµë‹ˆë‹¤." ê²½ê³  ëœ¨ëŠ” ê²½ìš°ëŠ” 
+		// ë‹¤ìŒê³¼ ê°™ì´ ìŠ¤ì½”í”„ ì§€ì •ì„ Point ë“±ì˜ ë³„ì¹­ìœ¼ë¡œ í•´ì„œ ê·¸ë ‡ë‹¤. void Point::operator += (int i) 
 	void operator+= (_tagPoint&);
 	void operator+= (int);
 
-	// ++p ¿¬»ê
-	// ÂüÁ¶°ªÀ» ¹ÝÈ¯ÇÏ´Â ÀÌÀ¯ : ++(++p)¿Í °°ÀÌ ÇöÀç °´Ã¼°¡ ¿¬¼ÓÀûÀ¸·Î ¿¬»êµÇ°Ô ÇÏ±â À§ÇÔÀÌ´Ù.
-	// ÂüÁ¶°ªÀ» ¹ÝÈ¯ÇÏÁö ¾ÊÀ¸¸é °´Ã¼ÀÇ º¹»çº»ÀÌ ¹ÝÈ¯µÇ±â ¶§¹®¿¡ ¹Ù±ùÂÊ ++¿¬»êÀÇ °´Ã¼¿Í ¾ÈÂÊ ++¿¬»ê°´Ã¼ÀÎ p¿Í ´Ù¸¥ °´Ã¼°¡ µÈ´Ù.
-	// ¸¸¾à ÂüÁ¶´ë½Å Æ÷ÀÎÅÍ¸¦ ¹ÝÈ¯ÇÏ¸é ++(*(++pt3));¿Í °°ÀÌ ½á¾ßÇØ¼­ ºÒÆíÇÏ´Ù.
+	// ++p ì—°ì‚°
+	// ì°¸ì¡°ê°’ì„ ë°˜í™˜í•˜ëŠ” ì´ìœ  : ++(++p)ì™€ ê°™ì´ í˜„ìž¬ ê°ì²´ê°€ ì—°ì†ì ìœ¼ë¡œ ì—°ì‚°ë˜ê²Œ í•˜ê¸° ìœ„í•¨ì´ë‹¤.
+	// ì°¸ì¡°ê°’ì„ ë°˜í™˜í•˜ì§€ ì•Šìœ¼ë©´ ê°ì²´ì˜ ë³µì‚¬ë³¸ì´ ë°˜í™˜ë˜ê¸° ë•Œë¬¸ì— ë°”ê¹¥ìª½ ++ì—°ì‚°ì˜ ê°ì²´ì™€ ì•ˆìª½ ++ì—°ì‚°ê°ì²´ì¸ pì™€ ë‹¤ë¥¸ ê°ì²´ê°€ ëœë‹¤.
+	// ë§Œì•½ ì°¸ì¡°ëŒ€ì‹  í¬ì¸í„°ë¥¼ ë°˜í™˜í•˜ë©´ ++(*(++pt3));ì™€ ê°™ì´ ì¨ì•¼í•´ì„œ ë¶ˆíŽ¸í•˜ë‹¤.
 	_tagPoint& operator++ () {
 		cout << "operator++" << endl;
 		this->x += 1;
 
-		// ¸®ÅÏ°ªÀÌ ÂüÁ¶ÀÌ±â ¶§¹®¿¡ ¿ªÂüÁ¶°ªÀ» ¹ÝÈ¯ÇÑ´Ù.
+		// ë¦¬í„´ê°’ì´ ì°¸ì¡°ì´ê¸° ë•Œë¬¸ì— ì—­ì°¸ì¡°ê°’ì„ ë°˜í™˜í•œë‹¤.
 		return *this;
 	}
 
-	// p++ ¿¬»ê
-	// º¹»ç °´Ã¼¸¦ ¹ÝÈ¯ÇÏ´Â ÀÌÀ¯ : ÇöÀç ÄÚµå¿¡¼­ Áõ°¡µÈ °ªÀÌ ¾Æ´Ñ ÀÌÀü °ªÀ» »ç¿ëÇÏ±â ¶§¹®¿¡ º¹»çµÈ ÀÌÀü°ªÀ» ¹ÝÈ¯ÇÑ´Ù. ±×·¸´Ù°í _tagPoint&¸¦ ¹ÝÈ¯ÇÏ¸é ¹ÝÈ¯ Áï½Ã »ç¶óÁö´Â °´Ã¼±â ¶§¹®¿¡ ¾ÈµÈ´Ù. µû¶ó¼­ _tagPoint¸¦ ¹ÝÈ¯ÇÑ´Ù.
-	// int dummy´Â p++ ²Ã·Î ÀÛµ¿ÇÏ°Ô ÇÏ´Â ¿ªÇÒ¸¸ ÇÑ´Ù.
-	// ÈÄÀ§ Áõ°¡ ¿¬»êÀÚÀÇ ¹ÝÈ¯ÇüÀº ÀÌÀü °ªÀ» °¡Áø ÀÓ½Ã °´Ã¼·Î ÀÌ °´Ã¼¸¦ »ç¿ëÇØ¼­ ++¿¬»êÀ» ´Ù½ÃÇÏ´Â °ÍÀº ÀÇ¹Ì°¡ ¾øÀ¸¹Ç·Î const¸¦ ºÙ¿©¼­ ¸·¾Æ¾ßÇÑ´Ù. ¿©±â¼­´Â Å×½ºÆ®¸¦ À§ÇØ const¸¦ ºÙÀÌÁö ¾Ê¾Ò´Ù.
+	// p++ ì—°ì‚°
+	// ë³µì‚¬ ê°ì²´ë¥¼ ë°˜í™˜í•˜ëŠ” ì´ìœ  : í˜„ìž¬ ì½”ë“œì—ì„œ ì¦ê°€ëœ ê°’ì´ ì•„ë‹Œ ì´ì „ ê°’ì„ ì‚¬ìš©í•˜ê¸° ë•Œë¬¸ì— ë³µì‚¬ëœ ì´ì „ê°’ì„ ë°˜í™˜í•œë‹¤. ê·¸ë ‡ë‹¤ê³  _tagPoint&ë¥¼ ë°˜í™˜í•˜ë©´ ë°˜í™˜ ì¦‰ì‹œ ì‚¬ë¼ì§€ëŠ” ê°ì²´ê¸° ë•Œë¬¸ì— ì•ˆëœë‹¤. ë”°ë¼ì„œ _tagPointë¥¼ ë°˜í™˜í•œë‹¤.
+	// int dummyëŠ” p++ ê¼´ë¡œ ìž‘ë™í•˜ê²Œ í•˜ëŠ” ì—­í• ë§Œ í•œë‹¤.
+	// í›„ìœ„ ì¦ê°€ ì—°ì‚°ìžì˜ ë°˜í™˜í˜•ì€ ì´ì „ ê°’ì„ ê°€ì§„ ìž„ì‹œ ê°ì²´ë¡œ ì´ ê°ì²´ë¥¼ ì‚¬ìš©í•´ì„œ ++ì—°ì‚°ì„ ë‹¤ì‹œí•˜ëŠ” ê²ƒì€ ì˜ë¯¸ê°€ ì—†ìœ¼ë¯€ë¡œ constë¥¼ ë¶™ì—¬ì„œ ë§‰ì•„ì•¼í•œë‹¤. ì—¬ê¸°ì„œëŠ” í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ constë¥¼ ë¶™ì´ì§€ ì•Šì•˜ë‹¤.
 		//const _tagPoint operator++ (int dummy)
-		// ¹ÝÈ¯ÇÏ´Â °´Ã¼ÀÇ Å¸ÀÔÀÌ constÀÏ »Ó ¹ÝÈ¯ °´Ã¼¸¦ ¹Þ´Â º¯¼öÀÇ Å¸ÀÔÀÌ const°¡ ¾Æ´Ï¶ó¸é ¹ÞÀº º¯¼öÀÇ °ªÀ» ¹Ù²Ù´Â °ÍÀº °¡´ÉÇÏ´Ù.
-	_tagPoint operator++ (int dummy) { // dummy´Â int Å¸ÀÔÀÌ¾î¾ßÇÑ´Ù. 17TemplateDoubleLinkedList¿¡¼­ ´Ù¸¥ Å¸ÀÔ »ç¿ëÇØº¸´Ï ¿¡·¯³².
+		// ë°˜í™˜í•˜ëŠ” ê°ì²´ì˜ íƒ€ìž…ì´ constì¼ ë¿ ë°˜í™˜ ê°ì²´ë¥¼ ë°›ëŠ” ë³€ìˆ˜ì˜ íƒ€ìž…ì´ constê°€ ì•„ë‹ˆë¼ë©´ ë°›ì€ ë³€ìˆ˜ì˜ ê°’ì„ ë°”ê¾¸ëŠ” ê²ƒì€ ê°€ëŠ¥í•˜ë‹¤.
+	_tagPoint operator++ (int dummy) { // dummyëŠ” int íƒ€ìž…ì´ì–´ì•¼í•œë‹¤. 17TemplateDoubleLinkedListì—ì„œ ë‹¤ë¥¸ íƒ€ìž… ì‚¬ìš©í•´ë³´ë‹ˆ ì—ëŸ¬ë‚¨.
 		cout << "operator++ dummy" << endl;
 
-		Point temp(x); // Áõ°¡ ¿¬»ê ÀÌÀüÀÇ °ªÀ» º¹»ç
-		//Point temp = *this; // ÀÌ·¸°Ô ÇÏ¸é º¹»ç »ý¼ºÀÚ°¡ È£Ãâ
+		Point temp(x); // ì¦ê°€ ì—°ì‚° ì´ì „ì˜ ê°’ì„ ë³µì‚¬
+		//Point temp = *this; // ì´ë ‡ê²Œ í•˜ë©´ ë³µì‚¬ ìƒì„±ìžê°€ í˜¸ì¶œ
 
-		// Áõ°¡¿¬»ê
+		// ì¦ê°€ì—°ì‚°
 		this->x += 1;
 
-		// temp´Â Áö¿ªº¯¼öÀÌ±â ¶§¹®¿¡ ÂüÁ¶·Î ¹ÝÈ¯ÇÏÁö ¾Ê´Â´Ù.
-		return temp; // Áõ°¡ ¿¬»êÀÌÀüÀÇ °ªÀ» ¹ÝÈ¯
+		// tempëŠ” ì§€ì—­ë³€ìˆ˜ì´ê¸° ë•Œë¬¸ì— ì°¸ì¡°ë¡œ ë°˜í™˜í•˜ì§€ ì•ŠëŠ”ë‹¤.
+		return temp; // ì¦ê°€ ì—°ì‚°ì´ì „ì˜ ê°’ì„ ë°˜í™˜
 	}
 
-	// ¿ÜºÎ¿¡¼­ Àü¿ª ÇÔ¼ö·Î ¿¬»êÀÚ ¿À¹ö·ÎµùÇÒ ¿¬»êÀÚ
-	// ¼±¾ðÇÏÁö ¾Ê¾Æµµ ¿ÜºÎ¿¡¼­ Àü¿ªÇÔ¼ö·Î ¿¬»êÀÚ ÀçÁ¤ÀÇ¸¦ ÇÒ ¼ö ÀÖÁö¸¸ (¼±¾ðÇÏÁö ¾ÊÀ¸¸é ¸â¹ö ÇÔ¼ö ¿¬»êÀÚ ÀçÁ¤ÀÇ´Â ¾ÈµÈ´Ù)
-	// ¿¬»êÀÚ ÇÔ¼ö ³»ºÎ¿¡¼­ private ¸â¹ö¿¡ Á¢±ÙÇÏ·Á¸é friend ¼±¾ðÀ» ÇØÁà¾ßÇÑ´Ù.
+	// ì™¸ë¶€ì—ì„œ ì „ì—­ í•¨ìˆ˜ë¡œ ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©í•  ì—°ì‚°ìž
+	// ì„ ì–¸í•˜ì§€ ì•Šì•„ë„ ì™¸ë¶€ì—ì„œ ì „ì—­í•¨ìˆ˜ë¡œ ì—°ì‚°ìž ìž¬ì •ì˜ë¥¼ í•  ìˆ˜ ìžˆì§€ë§Œ (ì„ ì–¸í•˜ì§€ ì•Šìœ¼ë©´ ë©¤ë²„ í•¨ìˆ˜ ì—°ì‚°ìž ìž¬ì •ì˜ëŠ” ì•ˆëœë‹¤)
+	// ì—°ì‚°ìž í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ private ë©¤ë²„ì— ì ‘ê·¼í•˜ë ¤ë©´ friend ì„ ì–¸ì„ í•´ì¤˜ì•¼í•œë‹¤.
 	friend _tagPoint& operator--(_tagPoint&);
-	//_tagPoint& operator--(_tagPoint& p); // ¿ÜºÎ Àü¿ª ÇÔ¼ö·Î Á¤ÀÇ ½Ã friend Å°¿öµå ¾øÀÌ ÇÏ¸é "operator--¿¡ ´ëÇÑ ÇÔ¼öÁ¤ÀÇ°¡ ¾ø½À´Ï´Ù." ¿¡·¯³­´Ù.
+	//_tagPoint& operator--(_tagPoint& p); // ì™¸ë¶€ ì „ì—­ í•¨ìˆ˜ë¡œ ì •ì˜ ì‹œ friend í‚¤ì›Œë“œ ì—†ì´ í•˜ë©´ "operator--ì— ëŒ€í•œ í•¨ìˆ˜ì •ì˜ê°€ ì—†ìŠµë‹ˆë‹¤." ì—ëŸ¬ë‚œë‹¤.
 
 	private :
 		int y;
 } Point, *PPoint;
 
-// Å¬·¡½º ¸â¹ö ¿¬»êÀÚ ¿À¹ö·Îµù, ¿¬»êÀÚ ÀçÁ¤ÀÇ¸¦ Å¬·¡½º ºí·° ¿ÜºÎ¿¡¼­ ÇÑ´Ù.
-// ¿¬»êÀÚ ÀÌ¸§ ¾Õ¿¡ ¹üÀ§ÁöÁ¤ ¿¬»êÀÚ¸¦ ¾²´Â °Í ¸»°í´Â µ¿ÀÏÇÑ´Ù.
-// Å¬·¡½º Å¸ÀÔÀ» ¾Æ·¡Ã³·³ º°ÄªÀ¸·ÎÇÏ¸é ÇÔ¼öÀÇ Á¤ÀÇ¸¦ Ã£À» ¼ö ¾ø´Ù°í ¶á´Ù. ÄÄÆÄÀÏ¿¡´Â ¹®Á¦ ¾ø´Ù.
+// í´ëž˜ìŠ¤ ë©¤ë²„ ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©, ì—°ì‚°ìž ìž¬ì •ì˜ë¥¼ í´ëž˜ìŠ¤ ë¸”ëŸ­ ì™¸ë¶€ì—ì„œ í•œë‹¤.
+// ì—°ì‚°ìž ì´ë¦„ ì•žì— ë²”ìœ„ì§€ì • ì—°ì‚°ìžë¥¼ ì“°ëŠ” ê²ƒ ë§ê³ ëŠ” ë™ì¼í•œë‹¤.
+// í´ëž˜ìŠ¤ íƒ€ìž…ì„ ì•„ëž˜ì²˜ëŸ¼ ë³„ì¹­ìœ¼ë¡œí•˜ë©´ í•¨ìˆ˜ì˜ ì •ì˜ë¥¼ ì°¾ì„ ìˆ˜ ì—†ë‹¤ê³  ëœ¬ë‹¤. ì»´íŒŒì¼ì—ëŠ” ë¬¸ì œ ì—†ë‹¤.
 	//void Point::operator+= (_tagPoint& other) {
 void _tagPoint::operator+= (_tagPoint& other) {
 	cout << "operator+= _tagPoint&" << endl;
@@ -188,73 +188,73 @@ void _tagPoint::operator+= (int i) {
 	this->x += i;
 }
 
-// ===== Àü¿ªÇÔ¼ö·Î ´ÜÇ× ¿¬»êÀÚ ÀçÁ¤ÀÇ s ===== 
-// Àü¿ªÇÔ¼ö·Î ¿¬»êÀÚ ÀçÁ¤ÀÇ´Â this¸¦ Ã£À» ¼ö ¾ø±â ¶§¹®¿¡ ´ÜÇ× ¿¬»êÀÚ¶óµµ ´ë»ó °´Ã¼¸¦ ¹Þ¾Æ¾ßÇÑ´Ù.
-// È£Ãâ Çü½Ä : --(Point)
+// ===== ì „ì—­í•¨ìˆ˜ë¡œ ë‹¨í•­ ì—°ì‚°ìž ìž¬ì •ì˜ s ===== 
+// ì „ì—­í•¨ìˆ˜ë¡œ ì—°ì‚°ìž ìž¬ì •ì˜ëŠ” thisë¥¼ ì°¾ì„ ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— ë‹¨í•­ ì—°ì‚°ìžë¼ë„ ëŒ€ìƒ ê°ì²´ë¥¼ ë°›ì•„ì•¼í•œë‹¤.
+// í˜¸ì¶œ í˜•ì‹ : --(Point)
 _tagPoint& operator-- (_tagPoint& p) {
 	cout << "operator-- front global" << endl;
 	p.x--;
-	//p.y = 0; // ÀÌ ÇÔ¼ö´Â Å¬·¡½º ³»ºÎ¿¡¼­ friend ¼±¾ðÇßÀ¸¹Ç·Î private ¸â¹ö¿¡ Á¢±ÙÇÒ ¼ö ÀÖ´Ù.
+	//p.y = 0; // ì´ í•¨ìˆ˜ëŠ” í´ëž˜ìŠ¤ ë‚´ë¶€ì—ì„œ friend ì„ ì–¸í–ˆìœ¼ë¯€ë¡œ private ë©¤ë²„ì— ì ‘ê·¼í•  ìˆ˜ ìžˆë‹¤.
 
 	return p;
 }
 
-// È£Ãâ Çü½Ä : (Point)--
-// int dummy´Â ÈÄÀ§¿¬»êÀÚÀÓÀ» ³ªÅ¸³»´Â ´õ¹Ì ÀÎÀÚ
-// ¿ø·¡´Â ¹ÝÈ¯°ªÀÌ const¸¦ ºÙ¿©¼­ ¹ÝÈ¯µÇ´Â ÀÓ½Ã°´Ã¼ ÀÚÃ¼¸¦ »ç¿ëÇÒ ¼ö ¾ø°Ô ÇØ¾ßÇÑ´Ù. ÀÌ·¸°Ô ¸·¾Æµµ ÀÓ½Ã°´Ã¼¸¦ ¹Ù·Î »ç¿ëÇÏ´Â °ÍÀÌ ¾Æ´Ñ const ¾Æ´Ñ º¯¼ö¿¡ ´ã¾Æ¼­ »ç¿ëÀº °¡´ÉÇÏ´Ù.
+// í˜¸ì¶œ í˜•ì‹ : (Point)--
+// int dummyëŠ” í›„ìœ„ì—°ì‚°ìžìž„ì„ ë‚˜íƒ€ë‚´ëŠ” ë”ë¯¸ ì¸ìž
+// ì›ëž˜ëŠ” ë°˜í™˜ê°’ì´ constë¥¼ ë¶™ì—¬ì„œ ë°˜í™˜ë˜ëŠ” ìž„ì‹œê°ì²´ ìžì²´ë¥¼ ì‚¬ìš©í•  ìˆ˜ ì—†ê²Œ í•´ì•¼í•œë‹¤. ì´ë ‡ê²Œ ë§‰ì•„ë„ ìž„ì‹œê°ì²´ë¥¼ ë°”ë¡œ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ ì•„ë‹Œ const ì•„ë‹Œ ë³€ìˆ˜ì— ë‹´ì•„ì„œ ì‚¬ìš©ì€ ê°€ëŠ¥í•˜ë‹¤.
 _tagPoint operator-- (_tagPoint& p, int dummy) {
 	cout << "operator-- back global" << endl;
 	_tagPoint tmp = p;
 	p.x--;
 
-	//p.y = 0; // ÀÌ ÇÔ¼ö´Â Å¬·¡½º ³»ºÎ¿¡¼­ friend ¼±¾ðÇÏÁö ¾Ê¾ÒÀ¸¹Ç·Î private ¸â¹ö¿¡ Á¢±ÙÇÒ ¼ö ¾ø´Ù.
+	//p.y = 0; // ì´ í•¨ìˆ˜ëŠ” í´ëž˜ìŠ¤ ë‚´ë¶€ì—ì„œ friend ì„ ì–¸í•˜ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ private ë©¤ë²„ì— ì ‘ê·¼í•  ìˆ˜ ì—†ë‹¤.
 
 	return tmp;
 }
 
-// ±»ÀÌ (_tagPoint--)-- ¸¦ ¾²±â À§ÇÑ ÄÚµå
-// ÀÓ½Ã °´Ã¼¸¦ ¹ÝÈ¯ÇÏ°í ±× ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼°¡ ¸Å°³º¯¼ö°¡ µÇ±â ¶§¹®¿¡ ¿ìÃø°ª ·¹ÆÛ·±½º¸¦ ¹Þ´Â ÇÔ¼ö¸¦ Á¤ÀÇÇØ¾ßÇÑ´Ù.
-// ¿¬»êÀÚ ÀçÁ¤ÀÇ¸¦ ¸â¹ö ÇÔ¼ö·Î Çß´Ù¸é ¹ÝÈ¯µÇ´Â °ªÀÌ ¿¬»êÀÚ ÇÔ¼ö È£Ãâ ½Ã this°¡ µÇ¾î rvalue°¡ ¾Æ´ÏÁö¸¸
-	// Àü¿ª ÇÔ¼ö·Î ÀçÁ¤ÀÇ ½Ã ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼´Â Àü¿ª ÇÔ¼öÀÇ ÀÎÀÚ°¡ µÇ¾î rvalue¸¦ ¹Þ´Â ÇÔ¼ö°¡ ÀÖ¾î¾ßÇÑ´Ù.
-	// ¾î·Æ´Ù.
-// ÀÌ·¸°Ô ²¿À» ¼öµµ ÀÖ´Ù´Â °Í¸¸ ¾Ë¾ÆµÎ°í ÀÌ·¸°Ô »ç¿ëÇÏ¸é ¾ÈµÈ´Ù.
+// êµ³ì´ (_tagPoint--)-- ë¥¼ ì“°ê¸° ìœ„í•œ ì½”ë“œ
+// ìž„ì‹œ ê°ì²´ë¥¼ ë°˜í™˜í•˜ê³  ê·¸ ë°˜í™˜ëœ ìž„ì‹œê°ì²´ê°€ ë§¤ê°œë³€ìˆ˜ê°€ ë˜ê¸° ë•Œë¬¸ì— ìš°ì¸¡ê°’ ë ˆí¼ëŸ°ìŠ¤ë¥¼ ë°›ëŠ” í•¨ìˆ˜ë¥¼ ì •ì˜í•´ì•¼í•œë‹¤.
+// ì—°ì‚°ìž ìž¬ì •ì˜ë¥¼ ë©¤ë²„ í•¨ìˆ˜ë¡œ í–ˆë‹¤ë©´ ë°˜í™˜ë˜ëŠ” ê°’ì´ ì—°ì‚°ìž í•¨ìˆ˜ í˜¸ì¶œ ì‹œ thisê°€ ë˜ì–´ rvalueê°€ ì•„ë‹ˆì§€ë§Œ
+	// ì „ì—­ í•¨ìˆ˜ë¡œ ìž¬ì •ì˜ ì‹œ ë°˜í™˜ëœ ìž„ì‹œê°ì²´ëŠ” ì „ì—­ í•¨ìˆ˜ì˜ ì¸ìžê°€ ë˜ì–´ rvalueë¥¼ ë°›ëŠ” í•¨ìˆ˜ê°€ ìžˆì–´ì•¼í•œë‹¤.
+	// ì–´ë µë‹¤.
+// ì´ë ‡ê²Œ ê¼¬ì„ ìˆ˜ë„ ìžˆë‹¤ëŠ” ê²ƒë§Œ ì•Œì•„ë‘ê³  ì´ë ‡ê²Œ ì‚¬ìš©í•˜ë©´ ì•ˆëœë‹¤.
 _tagPoint operator-- (_tagPoint&& p, int dummy) {
 	cout << "operator-- back && global" << endl;
 	_tagPoint tmp = p;
 	p.x--;
 
-	//p.y = 0; // ÀÌ ÇÔ¼ö´Â Å¬·¡½º ³»ºÎ¿¡¼­ friend ¼±¾ðÇÏÁö ¾Ê¾ÒÀ¸¹Ç·Î private ¸â¹ö¿¡ Á¢±ÙÇÒ ¼ö ¾ø´Ù.
+	//p.y = 0; // ì´ í•¨ìˆ˜ëŠ” í´ëž˜ìŠ¤ ë‚´ë¶€ì—ì„œ friend ì„ ì–¸í•˜ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ private ë©¤ë²„ì— ì ‘ê·¼í•  ìˆ˜ ì—†ë‹¤.
 
 	return tmp;
 }
-// ===== Àü¿ªÇÔ¼ö·Î ´ÜÇ× ¿¬»êÀÚ ÀçÁ¤ÀÇ e ===== 
+// ===== ì „ì—­í•¨ìˆ˜ë¡œ ë‹¨í•­ ì—°ì‚°ìž ìž¬ì •ì˜ e ===== 
 
 
-// ===== Àü¿ªÇÔ¼ö·Î ÀÌÇ× ¿¬»êÀÚ ÀçÁ¤ÀÇ s ===== 
-// È£Ãâ Çü½Ä :Point - Point
+// ===== ì „ì—­í•¨ìˆ˜ë¡œ ì´í•­ ì—°ì‚°ìž ìž¬ì •ì˜ s ===== 
+// í˜¸ì¶œ í˜•ì‹ :Point - Point
 Point operator- (Point& lp, Point& rp) {
 	cout << "operator- global" << endl;
 
-	// ÀÌ·¸°Ô ÇÏ¸é ÃÊ±âÈ­ »ý¼ºÀÚ, ÀÌµ¿ »ý¼ºÀÚ È£Ãâ
+	// ì´ë ‡ê²Œ í•˜ë©´ ì´ˆê¸°í™” ìƒì„±ìž, ì´ë™ ìƒì„±ìž í˜¸ì¶œ
 	//Point result(lp.x - rp.x);
 	//return result;
 
-	// ÀÌ·¸°Ô ÇÏ¸é ÃÊ±âÈ­ »ý¼ºÀÚ¸¸ È£Ãâ µÊ. ¹ÝÈ¯°ª¿¡ Á÷Á¢ ÇÒ´çµÇ±â ¶§¹®
+	// ì´ë ‡ê²Œ í•˜ë©´ ì´ˆê¸°í™” ìƒì„±ìžë§Œ í˜¸ì¶œ ë¨. ë°˜í™˜ê°’ì— ì§ì ‘ í• ë‹¹ë˜ê¸° ë•Œë¬¸
 	return Point(lp.x - rp.x);
 }
-// ===== Àü¿ªÇÔ¼ö·Î ÀÌÇ× ¿¬»êÀÚ ÀçÁ¤ÀÇ e ===== 
+// ===== ì „ì—­í•¨ìˆ˜ë¡œ ì´í•­ ì—°ì‚°ìž ìž¬ì •ì˜ e ===== 
 
 
-// ===== () ÇÔ¼ö È£Ãâ ¿¬»êÀÚ ÀçÁ¤ÀÇ(ÇÔ¼ö°´Ã¼) s ===== 
+// ===== () í•¨ìˆ˜ í˜¸ì¶œ ì—°ì‚°ìž ìž¬ì •ì˜(í•¨ìˆ˜ê°ì²´) s ===== 
 /*
-f(); ÀÌ È£Ãâ ¹®ÀåÀº ´ÙÀ½°ú °°ÀÌ ÇØ¼® °¡´É
-	1. f¶ó´Â ÀÌ¸§ÀÇ ÇÔ¼ö¸¦ È£Ãâ
-	2. f¶ó´Â ÀÌ¸§ÀÇ ÇÔ¼ö Æ÷ÀÎÅÍ È£Ãâ
-	3. f¶ó´Â ÀÌ¸§ÀÇ ÇÔ¼ö °´Ã¼ÀÇ ()¿¬»êÀÚ È£Ãâ
+f(); ì´ í˜¸ì¶œ ë¬¸ìž¥ì€ ë‹¤ìŒê³¼ ê°™ì´ í•´ì„ ê°€ëŠ¥
+	1. fë¼ëŠ” ì´ë¦„ì˜ í•¨ìˆ˜ë¥¼ í˜¸ì¶œ
+	2. fë¼ëŠ” ì´ë¦„ì˜ í•¨ìˆ˜ í¬ì¸í„° í˜¸ì¶œ
+	3. fë¼ëŠ” ì´ë¦„ì˜ í•¨ìˆ˜ ê°ì²´ì˜ ()ì—°ì‚°ìž í˜¸ì¶œ
 */
 class FO {
 public:
-	// () ¿¬»êÀÚ ¿À¹ö·Îµù
+	// () ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
 	void operator()() {
 		cout << "FO operator()" << endl;
 	}
@@ -263,44 +263,44 @@ public:
 		cout << "FO operator() " << i << endl;
 	}
 };
-// ===== () ÇÔ¼ö È£Ãâ ¿¬»êÀÚ ÀçÁ¤ÀÇ(ÇÔ¼ö°´Ã¼) e ===== 
+// ===== () í•¨ìˆ˜ í˜¸ì¶œ ì—°ì‚°ìž ìž¬ì •ì˜(í•¨ìˆ˜ê°ì²´) e ===== 
 
-// ===== [] ¹è¿­ Á¢±Ù ¿¬»êÀÚ ÀçÁ¤ÀÇ s ===== 
+// ===== [] ë°°ì—´ ì ‘ê·¼ ì—°ì‚°ìž ìž¬ì •ì˜ s ===== 
 class Container {
 public:
-	//int is[]; // ¹è¿­ °³¼ö¸¦ ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ¹è¿­ Æ÷ÀÎÅÍ¸¦ °®´Â º¯¼ö·Î »ý¼ºÀÌ µÊ. ÄÄÆÄÀÏ ¿¡·¯ ¾È³².
-	int is[2] = {1, 2}; // °³¼ö¸¦ ³ÖÁö ¾ÊÀ¸¸é "±âº» ¸â¹ö ÀÌ´Ï¼È¶óÀÌÀú¿¡¼­ ¹è¿­ ¹üÀ§¸¦ Ãß·ÐÇÒ ¼ö ¾ø½À´Ï´Ù." ¿¡·¯³².
+	//int is[]; // ë°°ì—´ ê°œìˆ˜ë¥¼ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ë°°ì—´ í¬ì¸í„°ë¥¼ ê°–ëŠ” ë³€ìˆ˜ë¡œ ìƒì„±ì´ ë¨. ì»´íŒŒì¼ ì—ëŸ¬ ì•ˆë‚¨.
+	int is[2] = {1, 2}; // ê°œìˆ˜ë¥¼ ë„£ì§€ ì•Šìœ¼ë©´ "ê¸°ë³¸ ë©¤ë²„ ì´ë‹ˆì…œë¼ì´ì €ì—ì„œ ë°°ì—´ ë²”ìœ„ë¥¼ ì¶”ë¡ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." ì—ëŸ¬ë‚¨.
 
-	// const ÁöÁ¤ÇÑ ÇÔ¼ö¿¡¼­ ÂüÁ¶¸¦ ¹ÝÈ¯ÇÏ¸é ÂüÁ¶·Î ÀÎÇØ ¸â¹öº¯¼öÀÇ °ªÀÌ º¯°æµÉ ¼ö ÀÖ±â ¶§¹®¿¡ ÄÄÆÄÀÏ ¿¡·¯³²
-	// "int& Çü½Ä¿¡¼­ const int Çü½Ä ÀÌ´Ï¼È¶óÀÌÀú·ÎÀÇ ¹ÙÀÎµù ÂüÁ¶¿¡¼­ ÇÑÁ¤ÀÚ°¡ »èÁ¦µÇ¾ú½À´Ï´Ù."
-	// µû¶ó¼­ ¹ÝÈ¯°ª¿¡ const¸¦ ºÙ¿©Áà¾ßÇÔ
+	// const ì§€ì •í•œ í•¨ìˆ˜ì—ì„œ ì°¸ì¡°ë¥¼ ë°˜í™˜í•˜ë©´ ì°¸ì¡°ë¡œ ì¸í•´ ë©¤ë²„ë³€ìˆ˜ì˜ ê°’ì´ ë³€ê²½ë  ìˆ˜ ìžˆê¸° ë•Œë¬¸ì— ì»´íŒŒì¼ ì—ëŸ¬ë‚¨
+	// "int& í˜•ì‹ì—ì„œ const int í˜•ì‹ ì´ë‹ˆì…œë¼ì´ì €ë¡œì˜ ë°”ì¸ë”© ì°¸ì¡°ì—ì„œ í•œì •ìžê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤."
+	// ë”°ë¼ì„œ ë°˜í™˜ê°’ì— constë¥¼ ë¶™ì—¬ì¤˜ì•¼í•¨
 	const int& operator[](const int& idx) const {
 		return is[idx];
 	}
 
-	// const ÁöÁ¤ÇÑ ÇÔ¼ö¿¡¼­ ¹ÝÈ¯°ªÀ¸·Î Æ÷ÀÎÅÍ¸¦ ¹ÝÈ¯ÇÏ¸é Æ÷ÀÎÅÍ¿¡ ÀÇÇØ ¸â¹öº¯¼öÀÇ °ªÀÌ º¯°æµÉ ¼ö ÀÖ±â ¶§¹®¿¡ ÄÄÆÄÀÏ ¿¡·¯³²
-	// todo ÀÌÀ¯´Â ÂüÁ¶¿Í °°Àºµ¥ ¿¡·¯ ¸Þ½ÃÁö°¡ ´Ù¸§? ¾Æ´Ï¸é ÀÌÀ¯µµ ´Ù¸§?
-	// "¹ÝÈ¯°ª Çü½ÄÀÌ ÇÔ¼ö Çü½Ä°ú ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù."
+	// const ì§€ì •í•œ í•¨ìˆ˜ì—ì„œ ë°˜í™˜ê°’ìœ¼ë¡œ í¬ì¸í„°ë¥¼ ë°˜í™˜í•˜ë©´ í¬ì¸í„°ì— ì˜í•´ ë©¤ë²„ë³€ìˆ˜ì˜ ê°’ì´ ë³€ê²½ë  ìˆ˜ ìžˆê¸° ë•Œë¬¸ì— ì»´íŒŒì¼ ì—ëŸ¬ë‚¨
+	// todo ì´ìœ ëŠ” ì°¸ì¡°ì™€ ê°™ì€ë° ì—ëŸ¬ ë©”ì‹œì§€ê°€ ë‹¤ë¦„? ì•„ë‹ˆë©´ ì´ìœ ë„ ë‹¤ë¦„?
+	// "ë°˜í™˜ê°’ í˜•ì‹ì´ í•¨ìˆ˜ í˜•ì‹ê³¼ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤."
 	const int* operator()(const int& idx) const {
 		return &(is[idx]);
 
-		// ´ÙÀ½°ú °°ÀÌ Áö¿ªº¯¼ö¿¡ °ªÀ» º¹»çÇÑ ÈÄ Áö¿ªº¯¼öÀÇ Æ÷ÀÎÅÍ ¹ÝÈ¯Àº °¡´ÉÇÔ(Áö¿ªº¯¼ö´Â ¸â¹öº¯¼ö°¡ ¾Æ´Ï´Ù.)
-		// (¹°·Ð ¿ÜºÎ¿¡¼­ ÀÌ °ªÀ» »ç¿ëÇÏ·ÁÇÏ¸é ¸Þ¸ð¸® ÇØÁ¦µÆ±â ¶§¹®¿¡ Á¤»ó ÀÛµ¿ÇÏÁø ¾ÊÀ½)
+		// ë‹¤ìŒê³¼ ê°™ì´ ì§€ì—­ë³€ìˆ˜ì— ê°’ì„ ë³µì‚¬í•œ í›„ ì§€ì—­ë³€ìˆ˜ì˜ í¬ì¸í„° ë°˜í™˜ì€ ê°€ëŠ¥í•¨(ì§€ì—­ë³€ìˆ˜ëŠ” ë©¤ë²„ë³€ìˆ˜ê°€ ì•„ë‹ˆë‹¤.)
+		// (ë¬¼ë¡  ì™¸ë¶€ì—ì„œ ì´ ê°’ì„ ì‚¬ìš©í•˜ë ¤í•˜ë©´ ë©”ëª¨ë¦¬ í•´ì œëê¸° ë•Œë¬¸ì— ì •ìƒ ìž‘ë™í•˜ì§„ ì•ŠìŒ)
 		//auto a = is[idx];
 		//return &a;
 	}
 
-	// cntr[0] = 9; Çü½ÄÀ¸·Î °ªÀ» ÇÒ´ç ¹Þ±â À§ÇØ ºñ const ÇÔ¼öµµ Á¤ÀÇÇØÁØ´Ù.
+	// cntr[0] = 9; í˜•ì‹ìœ¼ë¡œ ê°’ì„ í• ë‹¹ ë°›ê¸° ìœ„í•´ ë¹„ const í•¨ìˆ˜ë„ ì •ì˜í•´ì¤€ë‹¤.
 	int& operator[](const int& idx) {
 		return is[idx];
 
 		/*
-		ÂüÁ¶ ¹ÝÈ¯ ½Ã ÂüÁ¶·Î ¹ÞÀ¸¸é ¿ÜºÎ¿¡¼­ ³»ºÎ ¸â¹ö¸¦ º¯°æÇÒ ¼ö ÀÖ°í
-		ÂüÁ¶ ¹ÝÈ¯ ½Ã ÀÏ¹Ý º¯¼ö·Î ¹ÞÀ¸¸é °ªÀÌ º¹»çµÇ¹Ç·Î ³»ºÎ ¸â¹ö¿Í »ó°ü¾ø¾îÁø´Ù.
+		ì°¸ì¡° ë°˜í™˜ ì‹œ ì°¸ì¡°ë¡œ ë°›ìœ¼ë©´ ì™¸ë¶€ì—ì„œ ë‚´ë¶€ ë©¤ë²„ë¥¼ ë³€ê²½í•  ìˆ˜ ìžˆê³ 
+		ì°¸ì¡° ë°˜í™˜ ì‹œ ì¼ë°˜ ë³€ìˆ˜ë¡œ ë°›ìœ¼ë©´ ê°’ì´ ë³µì‚¬ë˜ë¯€ë¡œ ë‚´ë¶€ ë©¤ë²„ì™€ ìƒê´€ì—†ì–´ì§„ë‹¤.
 		*/
 	}
 };
-// ===== [] ¹è¿­ Á¢±Ù ¿¬»êÀÚ ÀçÁ¤ÀÇ e ===== 
+// ===== [] ë°°ì—´ ì ‘ê·¼ ì—°ì‚°ìž ìž¬ì •ì˜ e ===== 
 
 //int main() {
 void _1401_operator() {
@@ -325,19 +325,19 @@ void _1401_operator() {
 	{
 		Point p = Point();
 		/*
-		const 0 // ÄÄÆÄÀÏ·¯ ÃÖÀûÈ­·Î »ý¼ºµÈ °´Ã¼¸¦ ¹Ù·Î º¯¼öÀÇ °ªÀ¸·Î ¸¸µé±â ¶§¹®¿¡ ÀÏ¹Ý »ý¼ºÀÚ°¡ ÇÑ¹ø¸¸ È£ÃâµÈ´Ù.
+		const 0 // ì»´íŒŒì¼ëŸ¬ ìµœì í™”ë¡œ ìƒì„±ëœ ê°ì²´ë¥¼ ë°”ë¡œ ë³€ìˆ˜ì˜ ê°’ìœ¼ë¡œ ë§Œë“¤ê¸° ë•Œë¬¸ì— ì¼ë°˜ ìƒì„±ìžê°€ í•œë²ˆë§Œ í˜¸ì¶œëœë‹¤.
 		destr
 
-		rvalue¸¦ ¸¸µå·Á¸é ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀÌ À¯ÀÏÇÑ°¡?
+		rvalueë¥¼ ë§Œë“œë ¤ë©´ í•¨ìˆ˜ì˜ ë°˜í™˜ê°’ì´ ìœ ì¼í•œê°€?
 		*/
 	}
 
 	cout << "===== operator+ _tagPoint =====" << endl;
 	p1 + p2;
 	/*
-	operator+ _tagPoint // operator+ ÇÔ¼ö È£Ãâ
-	init const 3 // operator+ ÇÔ¼ö ³»ºÎ¿¡¼­ »õ·Î¿î ÀÓ½Ã°´Ã¼ »ý¼º
-	destr 3 // ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ Á¦°Å
+	operator+ _tagPoint // operator+ í•¨ìˆ˜ í˜¸ì¶œ
+	init const 3 // operator+ í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ìƒˆë¡œìš´ ìž„ì‹œê°ì²´ ìƒì„±
+	destr 3 // ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì œê±°
 	*/
 
 	cout << "===== operator+ _tagPoint, operator= =====" << endl;
@@ -345,11 +345,11 @@ void _1401_operator() {
 		Point pt3 = p1 + p2;
 		cout << "end " << endl;
 		/*
-		operator+ _tagPoint // operator+ ÇÔ¼ö È£Ãâ
-		init const 3 // operator+ ÇÔ¼ö ³»ºÎ¿¡¼­ »õ·Î¿î ÀÓ½Ã°´Ã¼ »ý¼º
-		// ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼°¡ pt3 º¯¼ö¿¡ ¹Ù·Î ÇÒ´ç(ÄÄÆÄÀÏ·¯ ÃÖÀûÈ­)
-		end // destr 3ÀÌ ÂïÈ÷±â Àü¿¡ ÀÌ°Ô ÂïÇû´Ù´Â°Ç ¹ÝÈ¯µÇ°í °ð ¹Ù·Î Á¦°ÅµÈ°Ô ¾Æ´Ï¶ó´Â ¶æ
-		destr 3 // ÄÚµåºí·° ³ª°¡¸ç Á¦°Å
+		operator+ _tagPoint // operator+ í•¨ìˆ˜ í˜¸ì¶œ
+		init const 3 // operator+ í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ìƒˆë¡œìš´ ìž„ì‹œê°ì²´ ìƒì„±
+		// ë°˜í™˜ëœ ìž„ì‹œê°ì²´ê°€ pt3 ë³€ìˆ˜ì— ë°”ë¡œ í• ë‹¹(ì»´íŒŒì¼ëŸ¬ ìµœì í™”)
+		end // destr 3ì´ ì°ížˆê¸° ì „ì— ì´ê²Œ ì°í˜”ë‹¤ëŠ”ê±´ ë°˜í™˜ë˜ê³  ê³§ ë°”ë¡œ ì œê±°ëœê²Œ ì•„ë‹ˆë¼ëŠ” ëœ»
+		destr 3 // ì½”ë“œë¸”ëŸ­ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -358,10 +358,10 @@ void _1401_operator() {
 		Point pt3 = p1 + 10;
 		cout << "end " << endl;
 		/*
-		operator+ int // operator+ int ¿¬»êÀÚ È£Ãâ
-		init const 11 // ³»ºÎ¿¡¼­ 10À» ´õÇÑ ÀÓ½Ã°´Ã¼ »ý¼º, ¹ÝÈ¯µÇ¸ç pt3¿¡ ¹Ù·Î ÇÒ´ç
-		end // ¹ÝÈ¯ ÀÓ½Ã°´Ã¼°¡ ¹Ù·Î »èÁ¦µÇÁö ¾Ê¾ÒÀ½
-		destr 11 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		operator+ int // operator+ int ì—°ì‚°ìž í˜¸ì¶œ
+		init const 11 // ë‚´ë¶€ì—ì„œ 10ì„ ë”í•œ ìž„ì‹œê°ì²´ ìƒì„±, ë°˜í™˜ë˜ë©° pt3ì— ë°”ë¡œ í• ë‹¹
+		end // ë°˜í™˜ ìž„ì‹œê°ì²´ê°€ ë°”ë¡œ ì‚­ì œë˜ì§€ ì•Šì•˜ìŒ
+		destr 11 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -371,10 +371,10 @@ void _1401_operator() {
 		p += p1;
 		cout << "end " << endl;
 		/*
-		const 0 // º¯¼ö p »ý¼º
-		operator+= _tagPoint& // operator+= È£Ãâ
+		const 0 // ë³€ìˆ˜ p ìƒì„±
+		operator+= _tagPoint& // operator+= í˜¸ì¶œ
 		end
-		destr 1 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		destr 1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -384,10 +384,10 @@ void _1401_operator() {
 		p += 10;
 		cout << "end " << endl;
 		/*
-		const 0 // º¯¼ö p »ý¼º
-		operator+= int // operator+= È£Ãâ
+		const 0 // ë³€ìˆ˜ p ìƒì„±
+		operator+= int // operator+= í˜¸ì¶œ
 		end
-		destr 10 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		destr 10 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -398,12 +398,12 @@ void _1401_operator() {
 		p1 << p2;
 		cout << p1.x << ", " << p2.x << endl;
 		/*
-		init const 1 // º¯¼ö p1 »ý¼º
-		init const 2 // º¯¼ö p2 »ý¼º
-		operator<< // operator<< È£Ãâ
-		2, 2 // p1ÀÇ °ª º¯°æµÊ
-		destr 2 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
-		destr 2 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		init const 1 // ë³€ìˆ˜ p1 ìƒì„±
+		init const 2 // ë³€ìˆ˜ p2 ìƒì„±
+		operator<< // operator<< í˜¸ì¶œ
+		2, 2 // p1ì˜ ê°’ ë³€ê²½ë¨
+		destr 2 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
+		destr 2 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -414,12 +414,12 @@ void _1401_operator() {
 		p1 >> p2;
 		cout << p1.x << ", " << p2.x << endl;
 		/*
-		init const 1 // º¯¼ö p1 »ý¼º
-		init const 2 // º¯¼ö p2 »ý¼º
-		operator>> // operator>> È£Ãâ
-		1, 1 // p2ÀÇ °ª º¯°æµÊ
-		destr 1 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
-		destr 1 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		init const 1 // ë³€ìˆ˜ p1 ìƒì„±
+		init const 2 // ë³€ìˆ˜ p2 ìƒì„±
+		operator>> // operator>> í˜¸ì¶œ
+		1, 1 // p2ì˜ ê°’ ë³€ê²½ë¨
+		destr 1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
+		destr 1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
@@ -428,8 +428,8 @@ void _1401_operator() {
 		Point p;
 		++p;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator++ // operator++ ÇÔ¼ö È£Ãâ
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator++ // operator++ í•¨ìˆ˜ í˜¸ì¶œ
 		*/
 	}
 
@@ -439,13 +439,13 @@ void _1401_operator() {
 		p++;
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator++ dummy // operator++ dummy ÇÔ¼ö È£Ãâ
-		init const 0 // ÀÌÀü°ªÀ» º¹»çÇÏ¸ç ÀÓ½Ã°´Ã¼ »ý¼º
-		move const 0 // ¹ÝÈ¯ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç ÀÎÀÚ°ªÀ¸·Î ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼¸¦ Àü´Þ. °ð »ç¶óÁú rvalue°ªÀÌ¹Ç·Î ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ÀÇ ÀÌµ¿ »ý¼ºÀÚ È£Ãâ.
-		destr 0 // ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼ Á¦°Å
-		destr 0 // ÇÔ¼ö¿¡¼­ ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ Á¦°Å, ¸¸¾à Point pp = p++;ÀÌ·¸°Ô º¯¼ö·Î ¹Þ¾Ò´Ù¸é ¹Ù·Î Á¦°ÅµÇÁö ¾ÊÀ½.
-		1 // pÀÇ °ª 1·Î Áõ°¡
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator++ dummy // operator++ dummy í•¨ìˆ˜ í˜¸ì¶œ
+		init const 0 // ì´ì „ê°’ì„ ë³µì‚¬í•˜ë©° ìž„ì‹œê°ì²´ ìƒì„±
+		move const 0 // ë°˜í™˜ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ì¸ìžê°’ìœ¼ë¡œ í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ë¥¼ ì „ë‹¬. ê³§ ì‚¬ë¼ì§ˆ rvalueê°’ì´ë¯€ë¡œ ë°˜í™˜ ìž„ì‹œê°ì²´ì˜ ì´ë™ ìƒì„±ìž í˜¸ì¶œ.
+		destr 0 // í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ ì œê±°
+		destr 0 // í•¨ìˆ˜ì—ì„œ ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì œê±°, ë§Œì•½ Point pp = p++;ì´ë ‡ê²Œ ë³€ìˆ˜ë¡œ ë°›ì•˜ë‹¤ë©´ ë°”ë¡œ ì œê±°ë˜ì§€ ì•ŠìŒ.
+		1 // pì˜ ê°’ 1ë¡œ ì¦ê°€
 		*/
 	}
 
@@ -454,31 +454,31 @@ void _1401_operator() {
 		Point p;
 		++(++p);
 		/*
-		operator++ // operator++ ÇÔ¼ö È£Ãâ
-		operator++ // operator++ ÇÔ¼ö È£Ãâ
-		destr 3 // ÄÚµåºí·Ï ³ª°¡¸ç Á¦°Å
+		operator++ // operator++ í•¨ìˆ˜ í˜¸ì¶œ
+		operator++ // operator++ í•¨ìˆ˜ í˜¸ì¶œ
+		destr 3 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° ì œê±°
 		*/
 	}
 
 	cout << "===== operator++ back nest =====" << endl;
 	{
 		Point p;
-		(p++)++; // Å×½ºÆ®¸¦ À§ÇÑ °ÍÀÏ »Ó, ¹ÝÈ¯µÈ ÀÓ½Ã °´Ã¼¸¦ º¯°æÇÏ´Â °ÍÀº ¹«ÀÇ¹ÌÇÏ±â ¶§¹®¿¡ ÈÄÀ§ ¿¬»êÀÚ¸¦ ¿¬¼ÓÇØ¼­ ¾²¸é ¾ÈµÈ´Ù. 
+		(p++)++; // í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•œ ê²ƒì¼ ë¿, ë°˜í™˜ëœ ìž„ì‹œ ê°ì²´ë¥¼ ë³€ê²½í•˜ëŠ” ê²ƒì€ ë¬´ì˜ë¯¸í•˜ê¸° ë•Œë¬¸ì— í›„ìœ„ ì—°ì‚°ìžë¥¼ ì—°ì†í•´ì„œ ì“°ë©´ ì•ˆëœë‹¤. 
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator++ dummy // operator++ dummy ÇÔ¼ö È£Ãâ
-		init const 0 // ÀÌÀü°ªÀ» º¹»çÇÏ¸ç ÀÓ½Ã°´Ã¼ »ý¼º
-		move const 0 // ¹ÝÈ¯ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç ÀÎÀÚ°ªÀ¸·Î ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼¸¦ Àü´Þ. °ð »ç¶óÁú rvalue°ªÀÌ¹Ç·Î ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ÀÇ ÀÌµ¿ »ý¼ºÀÚ È£Ãâ.
-		destr 0 // Ã¹¹øÂ° È£ÃâµÈ ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼ Á¦°Å
-		operator++ dummy // ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼¸¦ ´ë»óÀ¸·Î(ÀÎÀÚ´Â ¾Æ´Ï´Ù) operator++ dummy ÇÔ¼ö È£Ãâ
-		init const 0 // ÀÌÀü°ªÀ» º¹»çÇÏ¸ç ÀÓ½Ã°´Ã¼ »ý¼º
-		move const 0 // ¹ÝÈ¯ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç ÀÎÀÚ°ªÀ¸·Î ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼¸¦ Àü´Þ. °ð »ç¶óÁú rvalue°ªÀÌ¹Ç·Î ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ÀÇ ÀÌµ¿ »ý¼ºÀÚ È£Ãâ.
-		destr 0 // µÎ¹øÂ° È£ÃâµÈ ÇÔ¼ö³»¿¡¼­ »ý¼ºµÈ ÀÓ½Ã°´Ã¼ Á¦°Å
-		destr 0 // µÎ¹øÂ° È£ÃâµÈ ÇÔ¼öÀÇ ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ Á¦°Å
-		destr 1 // Ã¹¹øÂ° È£ÃâµÈ ÇÔ¼öÀÇ ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ Á¦°Å, µÎ¹øÀç operator++ dummy ÇÔ¼ö°¡ È£ÃâµÇ¸ç ÀÌ °´Ã¼ÀÇ x°ªÀÌ 1·Î Áõ°¡µÊ.
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator++ dummy // operator++ dummy í•¨ìˆ˜ í˜¸ì¶œ
+		init const 0 // ì´ì „ê°’ì„ ë³µì‚¬í•˜ë©° ìž„ì‹œê°ì²´ ìƒì„±
+		move const 0 // ë°˜í™˜ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ì¸ìžê°’ìœ¼ë¡œ í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ë¥¼ ì „ë‹¬. ê³§ ì‚¬ë¼ì§ˆ rvalueê°’ì´ë¯€ë¡œ ë°˜í™˜ ìž„ì‹œê°ì²´ì˜ ì´ë™ ìƒì„±ìž í˜¸ì¶œ.
+		destr 0 // ì²«ë²ˆì§¸ í˜¸ì¶œëœ í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ ì œê±°
+		operator++ dummy // ë°˜í™˜ëœ ìž„ì‹œê°ì²´ë¥¼ ëŒ€ìƒìœ¼ë¡œ(ì¸ìžëŠ” ì•„ë‹ˆë‹¤) operator++ dummy í•¨ìˆ˜ í˜¸ì¶œ
+		init const 0 // ì´ì „ê°’ì„ ë³µì‚¬í•˜ë©° ìž„ì‹œê°ì²´ ìƒì„±
+		move const 0 // ë°˜í™˜ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ì¸ìžê°’ìœ¼ë¡œ í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ë¥¼ ì „ë‹¬. ê³§ ì‚¬ë¼ì§ˆ rvalueê°’ì´ë¯€ë¡œ ë°˜í™˜ ìž„ì‹œê°ì²´ì˜ ì´ë™ ìƒì„±ìž í˜¸ì¶œ.
+		destr 0 // ë‘ë²ˆì§¸ í˜¸ì¶œëœ í•¨ìˆ˜ë‚´ì—ì„œ ìƒì„±ëœ ìž„ì‹œê°ì²´ ì œê±°
+		destr 0 // ë‘ë²ˆì§¸ í˜¸ì¶œëœ í•¨ìˆ˜ì˜ ë°˜í™˜ ìž„ì‹œê°ì²´ ì œê±°
+		destr 1 // ì²«ë²ˆì§¸ í˜¸ì¶œëœ í•¨ìˆ˜ì˜ ë°˜í™˜ ìž„ì‹œê°ì²´ ì œê±°, ë‘ë²ˆìž¬ operator++ dummy í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ë©° ì´ ê°ì²´ì˜ xê°’ì´ 1ë¡œ ì¦ê°€ë¨.
 		1
-		destr 1 // ÄÚµåºí·Ï ³ª°¡¸ç pº¯¼ö Á¦°Å
+		destr 1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° pë³€ìˆ˜ ì œê±°
 		*/
 	}
 
@@ -488,10 +488,10 @@ void _1401_operator() {
 		--p;
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator-- f global // Àü¿ªÀ¸·Î Á¤ÀÇµÈ operator-- ÇÔ¼ö È£Ãâ
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator-- f global // ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ operator-- í•¨ìˆ˜ í˜¸ì¶œ
 		-1 
-		destr -1 // ÄÚµåºí·Ï ³ª°¡¸ç pº¯¼ö Á¦°Å
+		destr -1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° pë³€ìˆ˜ ì œê±°
 		*/
 	}
 
@@ -501,15 +501,15 @@ void _1401_operator() {
 		p--;
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator-- b global // Àü¿ªÀ¸·Î Á¤ÀÇµÈ operator-- ÇÔ¼ö È£Ãâ
-		copy const 0 // ÇöÀç °ª ¹ÝÈ¯À» À§ÇÑ ÇÔ¼ö ³» ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç º¹»ç »ý¼ºÀÚ È£Ãâ
-		operator=& // º¹»ç »ý¼ºÀÚ ³»¿¡¼­ operator= È£Ãâ
-		move const 0 // ÇÔ¼öÀÇ ¹ÝÈ¯ ÀÓ½Ã°´Ã¼°¡ »ý¼ºµÇ¸ç ÀÌµ¿ »ý¼ºÀÚ È£Ãâ
-		destr 0 // ÇÔ¼ö ³» ÀÓ½Ã°´Ã¼ ¼Ò¸ê
-		destr 0 // ÇÔ¼öÀÇ ¹ÝÈ¯ ÀÓ½Ã°´Ã¼ ¼Ò¸ê
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator-- b global // ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ operator-- í•¨ìˆ˜ í˜¸ì¶œ
+		copy const 0 // í˜„ìž¬ ê°’ ë°˜í™˜ì„ ìœ„í•œ í•¨ìˆ˜ ë‚´ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
+		operator=& // ë³µì‚¬ ìƒì„±ìž ë‚´ì—ì„œ operator= í˜¸ì¶œ
+		move const 0 // í•¨ìˆ˜ì˜ ë°˜í™˜ ìž„ì‹œê°ì²´ê°€ ìƒì„±ë˜ë©° ì´ë™ ìƒì„±ìž í˜¸ì¶œ
+		destr 0 // í•¨ìˆ˜ ë‚´ ìž„ì‹œê°ì²´ ì†Œë©¸
+		destr 0 // í•¨ìˆ˜ì˜ ë°˜í™˜ ìž„ì‹œê°ì²´ ì†Œë©¸
 		-1 
-		destr -1 // ÄÚµåºí·Ï ³ª°¡¸ç pº¯¼ö Á¦°Å
+		destr -1 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° pë³€ìˆ˜ ì œê±°
 		*/
 	}
 
@@ -519,11 +519,11 @@ void _1401_operator() {
 		--(--p);
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator-- f global // Àü¿ªÀ¸·Î Á¤ÀÇµÈ operator-- ÇÔ¼ö È£Ãâ
-		operator-- f global // Àü¿ªÀ¸·Î Á¤ÀÇµÈ operator-- ÇÔ¼ö È£Ãâ
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator-- f global // ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ operator-- í•¨ìˆ˜ í˜¸ì¶œ
+		operator-- f global // ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ operator-- í•¨ìˆ˜ í˜¸ì¶œ
 		-2
-		destr -2 // ÄÚµåºí·Ï ³ª°¡¸ç pº¯¼ö Á¦°Å
+		destr -2 // ì½”ë“œë¸”ë¡ ë‚˜ê°€ë©° pë³€ìˆ˜ ì œê±°
 		*/
 	}
 
@@ -533,21 +533,21 @@ void _1401_operator() {
 		(p--)--;
 		cout << p.x << endl;
 		/*
-		const 0 // pº¯¼ö »ý¼º
-		operator-- back global  // pº¯¼ö¸¦ Àü¿ªÀ¸·Î Á¤ÀÇµÈ _tagPoint operator-- (_tagPoint& p, int dummy) ÇÔ¼öÀÇ ÀÎÀÚ·Î Àü´ÞÇÏ¸ç È£Ãâ
-		copy const 0 // ÀÌÀü °´Ã¼ °ªÀ» ¹ÝÈ¯ÇÏ±â À§ÇØ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç º¹»ç »ý¼ºÀÚ È£Ãâ
-		operator=& // º¹»ç »ý¼ºÀÚ ³»ºÎ¿¡¼­ operator= È£Ãâ
-		move const 0 // ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀ» À§ÇÑ °´Ã¼ »ý¼º ½Ã ÀÌµ¿ »ý¼ºÀÚ È£Ãâ
-		destr 0 // ÇÔ¼ö ³» ÀÓ½Ã°´Ã¼ ¼Ò¸ê
-		operator-- back && global // ¹ÝÈ¯µÈ °´Ã¼¸¦ Àü¿ªÀ¸·Î Á¤ÀÇµÈ _tagPoint operator-- (_tagPoint&& p, int dummy) ÇÔ¼öÀÇ ÀÎÀÚ·Î Àü´ÞÇÏ¸ç È£Ãâ
-		copy const 0 // ÀÌÀü °´Ã¼ °ªÀ» ¹ÝÈ¯ÇÏ±â À§ÇØ ÀÓ½Ã°´Ã¼¸¦ »ý¼ºÇÏ¸ç º¹»ç »ý¼ºÀÚ È£Ãâ
-		operator=& // º¹»ç »ý¼ºÀÚ ³»ºÎ¿¡¼­ operator= È£Ãâ
-		move const 0 // ÇÔ¼öÀÇ ¹ÝÈ¯°ªÀ» À§ÇÑ °´Ã¼ »ý¼º ½Ã ÀÌµ¿ »ý¼ºÀÚ È£Ãâ
-		destr 0 // ÇÔ¼ö ³» ÀÓ½Ã°´Ã¼ ¼Ò¸ê
-		destr 0 // ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ ¼Ò¸ê
-		destr -1 // Ã³À½ ¹ÝÈ¯µÈ ÀÓ½Ã°´Ã¼ ¼Ò¸ê
+		const 0 // pë³€ìˆ˜ ìƒì„±
+		operator-- back global  // pë³€ìˆ˜ë¥¼ ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ _tagPoint operator-- (_tagPoint& p, int dummy) í•¨ìˆ˜ì˜ ì¸ìžë¡œ ì „ë‹¬í•˜ë©° í˜¸ì¶œ
+		copy const 0 // ì´ì „ ê°ì²´ ê°’ì„ ë°˜í™˜í•˜ê¸° ìœ„í•´ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
+		operator=& // ë³µì‚¬ ìƒì„±ìž ë‚´ë¶€ì—ì„œ operator= í˜¸ì¶œ
+		move const 0 // í•¨ìˆ˜ì˜ ë°˜í™˜ê°’ì„ ìœ„í•œ ê°ì²´ ìƒì„± ì‹œ ì´ë™ ìƒì„±ìž í˜¸ì¶œ
+		destr 0 // í•¨ìˆ˜ ë‚´ ìž„ì‹œê°ì²´ ì†Œë©¸
+		operator-- back && global // ë°˜í™˜ëœ ê°ì²´ë¥¼ ì „ì—­ìœ¼ë¡œ ì •ì˜ëœ _tagPoint operator-- (_tagPoint&& p, int dummy) í•¨ìˆ˜ì˜ ì¸ìžë¡œ ì „ë‹¬í•˜ë©° í˜¸ì¶œ
+		copy const 0 // ì´ì „ ê°ì²´ ê°’ì„ ë°˜í™˜í•˜ê¸° ìœ„í•´ ìž„ì‹œê°ì²´ë¥¼ ìƒì„±í•˜ë©° ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
+		operator=& // ë³µì‚¬ ìƒì„±ìž ë‚´ë¶€ì—ì„œ operator= í˜¸ì¶œ
+		move const 0 // í•¨ìˆ˜ì˜ ë°˜í™˜ê°’ì„ ìœ„í•œ ê°ì²´ ìƒì„± ì‹œ ì´ë™ ìƒì„±ìž í˜¸ì¶œ
+		destr 0 // í•¨ìˆ˜ ë‚´ ìž„ì‹œê°ì²´ ì†Œë©¸
+		destr 0 // ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì†Œë©¸
+		destr -1 // ì²˜ìŒ ë°˜í™˜ëœ ìž„ì‹œê°ì²´ ì†Œë©¸
 		-1
-		destr -1 // ÄÚµåºí·ÏÀ» ³ª°¡¸ç pº¯¼ö Á¦°Å
+		destr -1 // ì½”ë“œë¸”ë¡ì„ ë‚˜ê°€ë©° pë³€ìˆ˜ ì œê±°
 		*/
 	}
 
@@ -558,55 +558,55 @@ void _1401_operator() {
 		Point p3 = p1 - p2;
 		cout << p3.x << endl;
 		/*
-		init const 1 // p1 º¯¼ö »ý¼º
-		init const 2 // p2 º¯¼ö »ý¼º
-		operator- global // Àü¿ª ¿¬»êÀÚ ÀçÁ¤ÀÇ ÇÔ¼ö operator- È£Ãâ
-		init const -1 // ÀÓ½Ã°´Ã¼ »ý¼º(¹Ù·Î ¸®ÅÏÇÏµµ·ÏÇØ¼­ ¹ÝÈ¯ °´Ã¼·Î Á÷Á¢ ÇÒ´ç)
-		-1 // ¹ÝÈ¯°ªÀÌ p3 º¯¼ö¿¡ Á÷Á¢ ÇÒ´ç
-		destr -1 // ÄÚµåºí·ÏÀ» ³ª°¡¸ç º¯¼ö p3 Á¦°Å
-		destr 2 // ÄÚµåºí·ÏÀ» ³ª°¡¸ç º¯¼ö p2 Á¦°Å
-		destr 1 // ÄÚµåºí·ÏÀ» ³ª°¡¸ç º¯¼ö p1 Á¦°Å
-		// »ý¼º ¼ø¼­ ¹Ý´ë·Î Á¦°ÅµÇ³ª?
+		init const 1 // p1 ë³€ìˆ˜ ìƒì„±
+		init const 2 // p2 ë³€ìˆ˜ ìƒì„±
+		operator- global // ì „ì—­ ì—°ì‚°ìž ìž¬ì •ì˜ í•¨ìˆ˜ operator- í˜¸ì¶œ
+		init const -1 // ìž„ì‹œê°ì²´ ìƒì„±(ë°”ë¡œ ë¦¬í„´í•˜ë„ë¡í•´ì„œ ë°˜í™˜ ê°ì²´ë¡œ ì§ì ‘ í• ë‹¹)
+		-1 // ë°˜í™˜ê°’ì´ p3 ë³€ìˆ˜ì— ì§ì ‘ í• ë‹¹
+		destr -1 // ì½”ë“œë¸”ë¡ì„ ë‚˜ê°€ë©° ë³€ìˆ˜ p3 ì œê±°
+		destr 2 // ì½”ë“œë¸”ë¡ì„ ë‚˜ê°€ë©° ë³€ìˆ˜ p2 ì œê±°
+		destr 1 // ì½”ë“œë¸”ë¡ì„ ë‚˜ê°€ë©° ë³€ìˆ˜ p1 ì œê±°
+		// ìƒì„± ìˆœì„œ ë°˜ëŒ€ë¡œ ì œê±°ë˜ë‚˜?
 		*/
 	}
 
-	cout << "() ÇÔ¼öÈ£Ãâ ¿¬»êÀÚ ÀçÁ¤ÀÇ(ÇÔ¼ö°´Ã¼)" << endl;
+	cout << "() í•¨ìˆ˜í˜¸ì¶œ ì—°ì‚°ìž ìž¬ì •ì˜(í•¨ìˆ˜ê°ì²´)" << endl;
 	{
 		FO fo;
-		fo(); // void operator()() ÇÔ¼ö È£Ãâ, FO operator()
-		fo(1); // void operator()(int i) ÇÔ¼ö È£Ãâ, FO operator() 1
+		fo(); // void operator()() í•¨ìˆ˜ í˜¸ì¶œ, FO operator()
+		fo(1); // void operator()(int i) í•¨ìˆ˜ í˜¸ì¶œ, FO operator() 1
 
-		fo(); // °´Ã¼ »ý¼º ÈÄ È£Ãâ(¾Ï½ÃÀû)
-		fo.operator()(); // °´Ã¼ »ý¼º ÈÄ È£Ãâ(¸í½ÃÀû)
-		FO()(); // ÀÓ½Ã °´Ã¼ »ý¼º ÈÄ È£Ãâ(¾Ï½ÃÀû)
-		FO().operator()(); // ÀÓ½Ã °´Ã¼ »ý¼º ÈÄ È£Ãâ(¸í½ÃÀû)
+		fo(); // ê°ì²´ ìƒì„± í›„ í˜¸ì¶œ(ì•”ì‹œì )
+		fo.operator()(); // ê°ì²´ ìƒì„± í›„ í˜¸ì¶œ(ëª…ì‹œì )
+		FO()(); // ìž„ì‹œ ê°ì²´ ìƒì„± í›„ í˜¸ì¶œ(ì•”ì‹œì )
+		FO().operator()(); // ìž„ì‹œ ê°ì²´ ìƒì„± í›„ í˜¸ì¶œ(ëª…ì‹œì )
 	}
 
-	cout << "[] ¹è¿­ Á¢±Ù ¿¬»êÀÚ ÀçÁ¤ÀÇ" << endl;
+	cout << "[] ë°°ì—´ ì ‘ê·¼ ì—°ì‚°ìž ìž¬ì •ì˜" << endl;
 	{
 		const Container ctnr1;
 		cout << ctnr1[0] << endl; // 1
 		cout << ctnr1[1] << endl; // 2
-		cout << ctnr1[2] << endl; // -858993460 ¾²·¹±â°ª
-		//ctnr1[0] = 9; // const °´Ã¼ÀÌ¹Ç·Î °ª¼öÁ¤À» Çã¿ëÇÏÁö ¾Ê´Â´Ù, const int* operator()(const int& idx) const ÇÔ¼ö¸¸ È£ÃâÇÒ ¼ö ÀÖ´Ù.
+		cout << ctnr1[2] << endl; // -858993460 ì“°ë ˆê¸°ê°’
+		//ctnr1[0] = 9; // const ê°ì²´ì´ë¯€ë¡œ ê°’ìˆ˜ì •ì„ í—ˆìš©í•˜ì§€ ì•ŠëŠ”ë‹¤, const int* operator()(const int& idx) const í•¨ìˆ˜ë§Œ í˜¸ì¶œí•  ìˆ˜ ìžˆë‹¤.
 
-		//int& b = ctnr1[0]; // const °´Ã¼ÀÌ¹Ç·Î const int* operator()(const int& idx) const ÇÔ¼ö°¡ È£ÃâµÇ¾î ¹ÝÈ¯°ªÀÌ const int& ÀÌ¹Ç·Î ºñ const º¯¼ö·Î ¹ÞÀ» ¼ö ¾ø´Ù.
-		//int* b = ctnr1(0); // const °´Ã¼ÀÌ¹Ç·Î const int* operator()(const int& idx) const ÇÔ¼ö°¡ È£ÃâµÇ¾î ¹ÝÈ¯°ªÀÌ const int* ÀÌ¹Ç·Î ºñ const Æ÷ÀÎÅÍ º¯¼ö·Î ¹ÞÀ» ¼ö ¾ø´Ù.
+		//int& b = ctnr1[0]; // const ê°ì²´ì´ë¯€ë¡œ const int* operator()(const int& idx) const í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ì–´ ë°˜í™˜ê°’ì´ const int& ì´ë¯€ë¡œ ë¹„ const ë³€ìˆ˜ë¡œ ë°›ì„ ìˆ˜ ì—†ë‹¤.
+		//int* b = ctnr1(0); // const ê°ì²´ì´ë¯€ë¡œ const int* operator()(const int& idx) const í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ì–´ ë°˜í™˜ê°’ì´ const int* ì´ë¯€ë¡œ ë¹„ const í¬ì¸í„° ë³€ìˆ˜ë¡œ ë°›ì„ ìˆ˜ ì—†ë‹¤.
 
 		cout << "-----" << endl;
 
 		Container ctnr2;
 
-		int& a = ctnr2[0]; // ºñ const °´Ã¼ÀÌ¹Ç·Î int& operator[](const int& idx)°¡ È£ÃâµÇ¾î ¿ÜºÎ¿¡¼­ ÂüÁ¶ º¯¼ö·Î ¹ÞÀº µÚ º¯°æ °¡´ÉÇÏ´Ù.
+		int& a = ctnr2[0]; // ë¹„ const ê°ì²´ì´ë¯€ë¡œ int& operator[](const int& idx)ê°€ í˜¸ì¶œë˜ì–´ ì™¸ë¶€ì—ì„œ ì°¸ì¡° ë³€ìˆ˜ë¡œ ë°›ì€ ë’¤ ë³€ê²½ ê°€ëŠ¥í•˜ë‹¤.
 		a = 11;
 		cout << ctnr2[0] << endl; // 11
 
 		cout << ctnr2[1] << endl; // 2
-		ctnr2[1] = 9; // ºñ const °´Ã¼ÀÌ¹Ç·Î °ª¼öÁ¤ °¡´É, int& operator[](const int& idx) ÇÔ¼ö È£Ãâ
+		ctnr2[1] = 9; // ë¹„ const ê°ì²´ì´ë¯€ë¡œ ê°’ìˆ˜ì • ê°€ëŠ¥, int& operator[](const int& idx) í•¨ìˆ˜ í˜¸ì¶œ
 		cout << ctnr2[1] << endl; // 9
 	}
 
-	cout << "º¹»ç »ý¼ºÀÚ¿Í ´ëÀÔ ¿¬»êÀÚ È£Ãâ ½ÃÁ¡" << endl;
+	cout << "ë³µì‚¬ ìƒì„±ìžì™€ ëŒ€ìž… ì—°ì‚°ìž í˜¸ì¶œ ì‹œì " << endl;
 	{
 		class A {
 		public:
@@ -639,31 +639,31 @@ void _1401_operator() {
 		};
 
 		/*
-		º¹»ç »ý¼ºÀÚ È£Ãâ 1. : ±âÁ¸¿¡ »ý¼ºµÈ °´Ã¼¸¦ ÀÌ¿ëÇÏ¿© »õ·Î¿î °´Ã¼¸¦ ÃÊ±âÈ­ÇÏ´Â °æ¿ì 
-			º¹»ç »ý¼ºÀÚ¿¡ explicit ÁöÁ¤ÇÏ¸é ¾Ï½ÃÀû È£ÃâÀÌ ¾ÈµÇ¹Ç·Î º¹»ç »ý¼ºÀÚ¸¦ Ã£Áö ¸øÇØ¼­ ÄÄÆÄÀÏ ¿¡·¯³².
-			todo ÇÔ¼ö ÀÎÀÚ, ¸®ÅÏ¿¡µµ ¾î¶² °á°ú°¡ ³ª¿À´ÂÁö È®ÀÎ¿ä.
+		ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ 1. : ê¸°ì¡´ì— ìƒì„±ëœ ê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ ìƒˆë¡œìš´ ê°ì²´ë¥¼ ì´ˆê¸°í™”í•˜ëŠ” ê²½ìš° 
+			ë³µì‚¬ ìƒì„±ìžì— explicit ì§€ì •í•˜ë©´ ì•”ì‹œì  í˜¸ì¶œì´ ì•ˆë˜ë¯€ë¡œ ë³µì‚¬ ìƒì„±ìžë¥¼ ì°¾ì§€ ëª»í•´ì„œ ì»´íŒŒì¼ ì—ëŸ¬ë‚¨.
+			todo í•¨ìˆ˜ ì¸ìž, ë¦¬í„´ì—ë„ ì–´ë–¤ ê²°ê³¼ê°€ ë‚˜ì˜¤ëŠ”ì§€ í™•ì¸ìš”.
 		*/
 		{
 			/*
-			°´Ã¼¸¦ ÃÊ±âÈ­ÇÒ ¶§ ±âÁ¸ °´Ã¼¸¦ ´ëÀÔÇÏ¸é º¹»ç »ý¼ºÀÚ È£Ãâ
+			ê°ì²´ë¥¼ ì´ˆê¸°í™”í•  ë•Œ ê¸°ì¡´ ê°ì²´ë¥¼ ëŒ€ìž…í•˜ë©´ ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
 			*/
-			A a(1); // A(int) 0116F81C : »ý¼ºÀÚ È£Ãâ
-			A b = a; // A(A) 0116F810 : º¹»ç »ý¼ºÀÚ È£Ãâ
-			//A b(a); // A(A) : º¹»ç »ý¼ºÀÚ È£Ãâ
+			A a(1); // A(int) 0116F81C : ìƒì„±ìž í˜¸ì¶œ
+			A b = a; // A(A) 0116F810 : ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
+			//A b(a); // A(A) : ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ
 
 			/*
-			ÃÊ±âÈ­°¡ ³¡³­ °´Ã¼¿¡ ´ëÀÔÇÏ¸é operator= ¿¬»êÀÚ È£Ãâ
+			ì´ˆê¸°í™”ê°€ ëë‚œ ê°ì²´ì— ëŒ€ìž…í•˜ë©´ operator= ì—°ì‚°ìž í˜¸ì¶œ
 			*/
 			a = b; // A operator=
 			//a = A(2); // A operator=
 		}
 
 		/*
-		º¹»ç »ý¼ºÀÚ È£Ãâ 2. : call-by-value ¹æ½ÄÀ¸·Î ÇÔ¼ö¿¡ ÀÎÀÚ¸¦ Àü´ÞÇÏ´Â °æ¿ì
+		ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ 2. : call-by-value ë°©ì‹ìœ¼ë¡œ í•¨ìˆ˜ì— ì¸ìžë¥¼ ì „ë‹¬í•˜ëŠ” ê²½ìš°
 		*/
 
 		/*
-		º¹»ç »ý¼ºÀÚ È£Ãâ 3. : ÂüÁ¶°¡ ¾Æ´Ñ ¹æ½Ä(Æ÷ÀÎÅÍµµ ¾Æ´Ñ ÀÏ¹Ý Å¸ÀÔ)À¸·Î °´Ã¼¸¦ ¹ÝÈ¯ÇÏ´Â °æ¿ì
+		ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ 3. : ì°¸ì¡°ê°€ ì•„ë‹Œ ë°©ì‹(í¬ì¸í„°ë„ ì•„ë‹Œ ì¼ë°˜ íƒ€ìž…)ìœ¼ë¡œ ê°ì²´ë¥¼ ë°˜í™˜í•˜ëŠ” ê²½ìš°
 		*/
 	}
 }

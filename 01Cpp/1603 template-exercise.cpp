@@ -10,9 +10,9 @@ namespace ns1603 {
 	using namespace std;
 
 	/*
-	ForEach ÇÔ¼ö ÅÛºí¸´
-		¹è¿­ÀÇ ½ÃÀÛ ÁÖ¼Ò, ³¡ ÁÖ¼Ò¸¦ ¹Ş¾Æ ³¡±îÁö ¼øÈ¸ÇÑ´Ù.
-		Å¬¶óÀÌ¾ğÆ® Ãø¿¡¼­ Á¦°øÇÑ ÇÔ¼ö¸¦ ¸Å¹ø È£ÃâÇÏ¸ç ÇöÀç ¿ä¼Ò¸¦ ÀÎÀÚ·Î Á¦°øÇÑ´Ù.
+	ForEach í•¨ìˆ˜ í…œë¸”ë¦¿
+		ë°°ì—´ì˜ ì‹œì‘ ì£¼ì†Œ, ë ì£¼ì†Œë¥¼ ë°›ì•„ ëê¹Œì§€ ìˆœíšŒí•œë‹¤.
+		í´ë¼ì´ì–¸íŠ¸ ì¸¡ì—ì„œ ì œê³µí•œ í•¨ìˆ˜ë¥¼ ë§¤ë²ˆ í˜¸ì¶œí•˜ë©° í˜„ì¬ ìš”ì†Œë¥¼ ì¸ìë¡œ ì œê³µí•œë‹¤.
 	*/
 	template<typename IterT, typename FuncT>
 	void ForEach(IterT* begin, IterT* end, FuncT f) {
@@ -28,7 +28,7 @@ namespace ns1603 {
 	}
 
 	/*
-	Less ÇÔ¼ö °´Ã¼ ÅÛÇÃ¸´
+	Less í•¨ìˆ˜ ê°ì²´ í…œí”Œë¦¿
 	*/
 	template<typename T1, typename T2>
 	struct Less {
@@ -38,7 +38,7 @@ namespace ns1603 {
 	};
 
 	/*
-	¹İÈ¯Å¸ÀÔ°ú ¸Å°³º¯¼ö Å¸ÀÔÀ» Å¸ÀÔÀ¸·Î ¹Ş´Â ÅÛÇÃ¸´ ÇÔ¼ö
+	ë°˜í™˜íƒ€ì…ê³¼ ë§¤ê°œë³€ìˆ˜ íƒ€ì…ì„ íƒ€ì…ìœ¼ë¡œ ë°›ëŠ” í…œí”Œë¦¿ í•¨ìˆ˜
 	*/
 	template<typename ReturnT, typename ArgT>
 	ReturnT ReturnArgFunction(ArgT arg) {
@@ -47,7 +47,7 @@ namespace ns1603 {
 	}
 
 	/*
-	pair Å¬·¡½º ±¸Çö
+	pair í´ë˜ìŠ¤ êµ¬í˜„
 	*/
 	template<typename T1, typename T2>
 	struct Pair {
@@ -62,8 +62,8 @@ namespace ns1603 {
 	};
 
 	/*
-	¹è¿­ º¹»ç ÅÛÇÃ¸´ ÇÔ¼ö
-	1¹øÀç ÀÎÀÚÀÇ °ªÀ» 2¹øÂ° ÀÎÀÚ¿¡ º¹»çÇÏ±â
+	ë°°ì—´ ë³µì‚¬ í…œí”Œë¦¿ í•¨ìˆ˜
+	1ë²ˆì¬ ì¸ìì˜ ê°’ì„ 2ë²ˆì§¸ ì¸ìì— ë³µì‚¬í•˜ê¸°
 	*/
 	template<typename T1, typename T2>
 	void Copy(T1* src, T2*dest, size_t size) {
@@ -74,7 +74,7 @@ namespace ns1603 {
 	}
 
 	/*
-	Stack ÅÛÇÃ¸´ Å¬·¡½º
+	Stack í…œí”Œë¦¿ í´ë˜ìŠ¤
 	Push(), Pop(), Empty()
 	*/
 	template<typename T>
@@ -119,7 +119,7 @@ namespace ns1603 {
 	};
 
 	/*
-	Queue ÅÛÇÃ¸´ Å¬·¡½º
+	Queue í…œí”Œë¦¿ í´ë˜ìŠ¤
 	Push(), Pop(), Empty()
 	*/
 	template<typename T>
@@ -185,49 +185,49 @@ using namespace std;
 using namespace ns1603;
 
 void _1603_template_exercise() {
-	cout << "ForEach ÇÔ¼ö ÅÛÇÃ¸´" << endl;
+	cout << "ForEach í•¨ìˆ˜ í…œí”Œë¦¿" << endl;
 	{
-		// int, ¶÷´Ù
+		// int, ëŒë‹¤
 		auto intLd = [](int&i) -> int {
 			cout << "f() " << i << endl;
 			return i;
 		};
 
 		int iarr[] = { 1, 2, 3, 4, 5 };
-		ForEach(iarr, iarr + 5, intLd); // ¾Ï½ÃÀû È£Ãâ, ÄÄÆÄÀÏ·¯°¡ ÅÛÇÃ¸´ Å¸ÀÔÀ» À¯ÃßÇÏ°í ¶÷´Ù ÇÔ¼öµµ ¹ŞÀ» ¼ö ÀÖ´Ù.
-		ForEach<int, int(*)(int&)>(iarr, iarr + 5, intLd); // ¸í½ÃÀû È£Ãâ
+		ForEach(iarr, iarr + 5, intLd); // ì•”ì‹œì  í˜¸ì¶œ, ì»´íŒŒì¼ëŸ¬ê°€ í…œí”Œë¦¿ íƒ€ì…ì„ ìœ ì¶”í•˜ê³  ëŒë‹¤ í•¨ìˆ˜ë„ ë°›ì„ ìˆ˜ ìˆë‹¤.
+		ForEach<int, int(*)(int&)>(iarr, iarr + 5, intLd); // ëª…ì‹œì  í˜¸ì¶œ
 
-		// char*, ¶÷´Ù
-		auto strLd = [](const char* &str) { // & : Æ÷ÀÎÅÍÀÇ ÂüÁ¶¸¦ ¹Ş´Â °Íµµ °¡´ÉÇÔ
+		// char*, ëŒë‹¤
+		auto strLd = [](const char* &str) { // & : í¬ì¸í„°ì˜ ì°¸ì¡°ë¥¼ ë°›ëŠ” ê²ƒë„ ê°€ëŠ¥í•¨
 			cout << str << endl;
 		};
 		const char* str[] = { "a", "b", "c", "d", "e" };
-		ForEach<>(str, str + 5, strLd); // ¾Ï½ÃÀû È£Ãâ
-		ForEach<const char*, void(*)(const char*&)>(str, str + 5, strLd); // ¸í½ÃÀû È£Ãâ
+		ForEach<>(str, str + 5, strLd); // ì•”ì‹œì  í˜¸ì¶œ
+		ForEach<const char*, void(*)(const char*&)>(str, str + 5, strLd); // ëª…ì‹œì  í˜¸ì¶œ
 
-		// double, ÇÔ¼ö °´Ã¼
+		// double, í•¨ìˆ˜ ê°ì²´
 		struct doubleFtr {
 			void operator()(double d) {
 				cout << d << endl;
 			}
 		};
 		double ds[] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
-		ForEach<>(ds, ds + 5, doubleFtr()); // ¾Ï½ÃÀû È£Ãâ
-		ForEach<double, doubleFtr>(ds, ds + 5, doubleFtr()); // ¸í½ÃÀû È£Ãâ
+		ForEach<>(ds, ds + 5, doubleFtr()); // ì•”ì‹œì  í˜¸ì¶œ
+		ForEach<double, doubleFtr>(ds, ds + 5, doubleFtr()); // ëª…ì‹œì  í˜¸ì¶œ
 	}
 
-	cout << "Less ÇÔ¼ö °´Ã¼ ÅÛÇÃ¸´" << endl;
+	cout << "Less í•¨ìˆ˜ ê°ì²´ í…œí”Œë¦¿" << endl;
 	{
-		cout << Less<int, int>()(1, 2) << endl; // ¸í½ÃÀû È£Ãâ
-//		cout << Less<>()(1, 2) << endl; // ¾Ï½ÃÀû È£Ãâ ¿¡·¯
+		cout << Less<int, int>()(1, 2) << endl; // ëª…ì‹œì  í˜¸ì¶œ
+//		cout << Less<>()(1, 2) << endl; // ì•”ì‹œì  í˜¸ì¶œ ì—ëŸ¬
 	}
 
-	cout << "¹İÈ¯Å¸ÀÔ°ú ¸Å°³º¯¼ö Å¸ÀÔÀ» Å¸ÀÔÀ¸·Î ¹Ş´Â ÅÛÇÃ¸´ ÇÔ¼ö" << endl;
+	cout << "ë°˜í™˜íƒ€ì…ê³¼ ë§¤ê°œë³€ìˆ˜ íƒ€ì…ì„ íƒ€ì…ìœ¼ë¡œ ë°›ëŠ” í…œí”Œë¦¿ í•¨ìˆ˜" << endl;
 	{
 		cout << ReturnArgFunction<int, int>(1) << endl; // 1, 0
 	}
 
-	cout << "pair Å¬·¡½º ±¸Çö" << endl;
+	cout << "pair í´ë˜ìŠ¤ êµ¬í˜„" << endl;
 	{
 		Pair<int, int> pair(1, 1);
 		pair.print(); // 1, 1
@@ -236,7 +236,7 @@ void _1603_template_exercise() {
 		Pair<int, int> pair2(i, i);
 	}
 
-	cout << "pair Å¬·¡½º ±¸Çö" << endl;
+	cout << "pair í´ë˜ìŠ¤ êµ¬í˜„" << endl;
 	{
 		Pair<int, int> pair(1, 1);
 		pair.print(); // 1, 1
@@ -245,7 +245,7 @@ void _1603_template_exercise() {
 		Pair<int, int> pair2(i, i);
 	}
 
-	cout << "¹è¿­ º¹»ç ÅÛÇÃ¸´ ÇÔ¼ö" << endl;
+	cout << "ë°°ì—´ ë³µì‚¬ í…œí”Œë¦¿ í•¨ìˆ˜" << endl;
 	{
 		const size_t len = 5;
 
@@ -265,10 +265,10 @@ void _1603_template_exercise() {
 
 		// char * array
 		/*
-		const char * arr[] : const charÀÇ Æ÷ÀÎÅÍ ¹è¿­
-			¹è¿­Àº const°¡ ¾Æ´Ï¹Ç·Î ¿ä¼Ò°ª(Æ÷ÀÎÅÍ) º¯°æ °¡´É
-			¿ä¼Ò°ª(Æ÷ÀÎÅÍ)¸¦ ¿ªÂüÁ¶°£ ¹®ÀÚ°ªÀº º¯°æ ºÒ°¡
-			µû¶ó¼­ ¾Æ·¡Ã³·³ strDestÀÇ Å¸ÀÔÀÌ const char¶óµµ ¹è¿­Àº const°¡ ¾Æ´Ï±â ¶§¹®¿¡ ¿ä¼Ò°ª(Æ÷ÀÎÅÍ)´Â º¯°æ °¡´ÉÇÏ´Ù.
+		const char * arr[] : const charì˜ í¬ì¸í„° ë°°ì—´
+			ë°°ì—´ì€ constê°€ ì•„ë‹ˆë¯€ë¡œ ìš”ì†Œê°’(í¬ì¸í„°) ë³€ê²½ ê°€ëŠ¥
+			ìš”ì†Œê°’(í¬ì¸í„°)ë¥¼ ì—­ì°¸ì¡°ê°„ ë¬¸ìê°’ì€ ë³€ê²½ ë¶ˆê°€
+			ë”°ë¼ì„œ ì•„ë˜ì²˜ëŸ¼ strDestì˜ íƒ€ì…ì´ const charë¼ë„ ë°°ì—´ì€ constê°€ ì•„ë‹ˆê¸° ë•Œë¬¸ì— ìš”ì†Œê°’(í¬ì¸í„°)ëŠ” ë³€ê²½ ê°€ëŠ¥í•˜ë‹¤.
 		*/
 		const char *strSrc[] = { "abc", "def", "ghi", "jkl", "mno" };
 		const char *strDest[len] = {nullptr};
@@ -278,7 +278,7 @@ void _1603_template_exercise() {
 
 	}
 
-	cout << "Stack Å¬·¡½º" << endl;
+	cout << "Stack í´ë˜ìŠ¤" << endl;
 	{
 		Stack<int> intStack;
 
@@ -286,7 +286,7 @@ void _1603_template_exercise() {
 		intStack.Push(3);
 		intStack.Print(); // 1, 3
 
-		cout << intStack.Pop() << endl; // 3, µÚ¿¡¼­ºÎÅÍ Ãâ·Â È®ÀÎ
+		cout << intStack.Pop() << endl; // 3, ë’¤ì—ì„œë¶€í„° ì¶œë ¥ í™•ì¸
 		cout << intStack.Pop() << endl; // 1
 
 		cout << "Empty? " << intStack.Empty() << endl; // 1(true)
@@ -299,13 +299,13 @@ void _1603_template_exercise() {
 		strStack.Push("b");
 		strStack.Print(); // a, b
 
-		cout << strStack.Pop() << endl; // b, µÚ¿¡¼­ºÎÅÍ Ãâ·Â È®ÀÎ
+		cout << strStack.Pop() << endl; // b, ë’¤ì—ì„œë¶€í„° ì¶œë ¥ í™•ì¸
 		cout << strStack.Pop() << endl; // a
 
 		cout << "Empty? " << strStack.Empty() << endl; // 1(true)
 	}
 
-	cout << "Queue Å¬·¡½º" << endl;
+	cout << "Queue í´ë˜ìŠ¤" << endl;
 	{
 		Queue<int> intQueue;
 
@@ -314,7 +314,7 @@ void _1603_template_exercise() {
 		intQueue.Push(3);
 		intQueue.Print(); // 1, 2, 3
 
-		cout << intQueue.Pop() << endl; // 1, ¾Õ¿¡¼­ ºÎÅÍ Ãâ·Â È®ÀÎ
+		cout << intQueue.Pop() << endl; // 1, ì•ì—ì„œ ë¶€í„° ì¶œë ¥ í™•ì¸
 		cout << intQueue.Pop() << endl; // 2
 		cout << intQueue.Pop() << endl; // 3
 
@@ -324,7 +324,7 @@ void _1603_template_exercise() {
 
 		cout << "Empty? " << intQueue.Empty() << endl; // 0(false)
 
-		intQueue.Print(); // 4, ¿ø·¡ 5°¡ ³ª¿Í¾ßÇÏÁö¸¸ GPrint°¡ Ã³À½ºÎÅÍ size¸¸Å­ Ãâ·ÂÇÏ±â ¶§¹®¿¡ 4¸¦ Ãâ·ÂÇÑ´Ù.(¹ö±×)
+		intQueue.Print(); // 4, ì›ë˜ 5ê°€ ë‚˜ì™€ì•¼í•˜ì§€ë§Œ GPrintê°€ ì²˜ìŒë¶€í„° sizeë§Œí¼ ì¶œë ¥í•˜ê¸° ë•Œë¬¸ì— 4ë¥¼ ì¶œë ¥í•œë‹¤.(ë²„ê·¸)
 
 		cout << "---" << endl;
 
@@ -334,7 +334,7 @@ void _1603_template_exercise() {
 		strQueue.Push("b");
 		strQueue.Print(); // a, b
 
-		cout << strQueue.Pop() << endl; // a // ¾Õ¿¡¼­ºÎÅÍ Ãâ·Â È®ÀÎ
+		cout << strQueue.Pop() << endl; // a // ì•ì—ì„œë¶€í„° ì¶œë ¥ í™•ì¸
 		cout << strQueue.Pop() << endl; // b
 
 		cout << "Empty? " << strQueue.Empty() << endl; // 1(true)

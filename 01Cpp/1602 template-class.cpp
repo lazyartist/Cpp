@@ -2,12 +2,12 @@
 #include "utils.h"
 
 /*
-Å¬·¡½º ÅÛÇÃ¸´
-	Å¬·¡½º¸¦ ¸¸µé¾î³»´Â Æ²(¸ÞÅ¸ÄÚµå)
-	ÅÛÇÃ¸´Àº ¸ÞÅ¸ ÄÚµåÀ» »ÓÀÌ°í ÄÄÆÄÀÏ·¯°¡ ½ÇÁ¦ Å¬·¡½º¸¦ »ý¼ºÇÑ´Ù.
+í´ëž˜ìŠ¤ í…œí”Œë¦¿
+	í´ëž˜ìŠ¤ë¥¼ ë§Œë“¤ì–´ë‚´ëŠ” í‹€(ë©”íƒ€ì½”ë“œ)
+	í…œí”Œë¦¿ì€ ë©”íƒ€ ì½”ë“œì„ ë¿ì´ê³  ì»´íŒŒì¼ëŸ¬ê°€ ì‹¤ì œ í´ëž˜ìŠ¤ë¥¼ ìƒì„±í•œë‹¤.
 
-Å¬·¡½º ÅÛÇÃ¸´ Æ¯¼öÈ­
-	ÇÔ¼ö ÅÛÇÃ¸´ Æ¯¼öÈ­¿Í »ç¿ë¹ýÀº °°´Ù.
+í´ëž˜ìŠ¤ í…œí”Œë¦¿ íŠ¹ìˆ˜í™”
+	í•¨ìˆ˜ í…œí”Œë¦¿ íŠ¹ìˆ˜í™”ì™€ ì‚¬ìš©ë²•ì€ ê°™ë‹¤.
 */
 
 #define ArrSize 3
@@ -16,16 +16,16 @@ namespace ns1602 {
 	using namespace std;
 
 	/*
-	°£´ÜÇÑ Array Å¬·¡½º ¿ä±¸»çÇ×
-	- int, double, char[]À» Å¸ÀÔÀ¸·Î ¹ÞÀ» ¼ö ÀÖ´Ù.
-	- Array(int cap) : »ý¼ºÀÚ´Â ÀúÀå °¡´ÉÇÑ ÃÖ´ë¿ø¼ÒÀÇ °³¼ö¸¦ ÀÎÀÚ·Î ¹Þ¾Æ ¸Þ¸ð¸®¸¦ »ý¼º
-	- ~Array() : ¼Ò¸êÀÚ´Â »ý¼ºÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦
-	- Add(int data) : °´Ã¼¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡
-	- operator[](int idx) : ÀÎµ¦½º ¿ø¼ÒÀÇ °ªÀ» ¹ÝÈ¯
-	- GetSize() : °´Ã¼ÀÇ ¿ø¼Ò °³¼ö¸¦ ¹ÝÈ¯
+	ê°„ë‹¨í•œ Array í´ëž˜ìŠ¤ ìš”êµ¬ì‚¬í•­
+	- int, double, char[]ì„ íƒ€ìž…ìœ¼ë¡œ ë°›ì„ ìˆ˜ ìžˆë‹¤.
+	- Array(int cap) : ìƒì„±ìžëŠ” ì €ìž¥ ê°€ëŠ¥í•œ ìµœëŒ€ì›ì†Œì˜ ê°œìˆ˜ë¥¼ ì¸ìžë¡œ ë°›ì•„ ë©”ëª¨ë¦¬ë¥¼ ìƒì„±
+	- ~Array() : ì†Œë©¸ìžëŠ” ìƒì„±í•œ ë©”ëª¨ë¦¬ë¥¼ í•´ì œ
+	- Add(int data) : ê°ì²´ì— ë°ì´í„°ë¥¼ ì¶”ê°€
+	- operator[](int idx) : ì¸ë±ìŠ¤ ì›ì†Œì˜ ê°’ì„ ë°˜í™˜
+	- GetSize() : ê°ì²´ì˜ ì›ì†Œ ê°œìˆ˜ë¥¼ ë°˜í™˜
 
-	ÅÛÇÃ¸´ ¸Å°³º¯¼ö µðÆúÆ® °ª ÁöÁ¤
-	»ý¼ºÀÚ ÇÔ¼ö¸¦ ¸í½ÃÀû È£Ãâ·Î ÁöÁ¤
+	í…œí”Œë¦¿ ë§¤ê°œë³€ìˆ˜ ë””í´íŠ¸ ê°’ ì§€ì •
+	ìƒì„±ìž í•¨ìˆ˜ë¥¼ ëª…ì‹œì  í˜¸ì¶œë¡œ ì§€ì •
 	*/
 	template<typename T = int, int initCapacity = ArrSize>
 	class Array {
@@ -68,8 +68,8 @@ namespace ns1602 {
 	};
 
 	/*
-	cout << ¿¡ Array °´Ã¼¸¦ Àü´ÞÇÒ ¼ö ÀÖ°Ô << ¿¬»êÀÚ ¿À¹ö·Îµù
-		T Å¸ÀÔÀ» ÄÄÆÄÀÏ·¯°¡ ¾î¶»°Ô À¯ÃßÇßÀ»±î?
+	cout << ì— Array ê°ì²´ë¥¼ ì „ë‹¬í•  ìˆ˜ ìžˆê²Œ << ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
+		T íƒ€ìž…ì„ ì»´íŒŒì¼ëŸ¬ê°€ ì–´ë–»ê²Œ ìœ ì¶”í–ˆì„ê¹Œ?
 	*/
 	template<typename T>
 	ostream& operator<<(ostream& o, Array<T>& arr) {
@@ -78,7 +78,7 @@ namespace ns1602 {
 	};
 
 	/*
-	Å¬·¡½º ÅÛÇÃ¸´ ÀÏ¹Ý
+	í´ëž˜ìŠ¤ í…œí”Œë¦¿ ì¼ë°˜
 	*/
 	template<typename T>
 	class SpecialPrint {
@@ -89,7 +89,7 @@ namespace ns1602 {
 	};
 
 	/*
-	Å¬·¡½º ÅÛÇÃ¸´ string¿¡ ´ëÇØ Æ¯¼öÈ­
+	í´ëž˜ìŠ¤ í…œí”Œë¦¿ stringì— ëŒ€í•´ íŠ¹ìˆ˜í™”
 	*/
 	template<>
 	class SpecialPrint<string> {
@@ -116,10 +116,10 @@ void _1602_template_class() {
 			arr.print();
 
 			/*
-			À§¿¡¼­ Á¤ÀÇÇÑ operator<< ÇÔ¼ö ÀçÁ¤ÀÇ°¡ Àß ÀÛµ¿ÇÏ´ÂÁö È®ÀÎ
+			ìœ„ì—ì„œ ì •ì˜í•œ operator<< í•¨ìˆ˜ ìž¬ì •ì˜ê°€ ìž˜ ìž‘ë™í•˜ëŠ”ì§€ í™•ì¸
 			*/
-			cout << "size " << arr << endl; // operator<< ¿¬»êÀÚ ÇÔ¼ö ¾Ï¹¬Àû È£Ãâ
-			operator<<(cout << "size ", arr) << endl; // operator<< ¿¬»êÀÚ ÇÔ¼ö ¸í½ÃÀû È£Ãâ
+			cout << "size " << arr << endl; // operator<< ì—°ì‚°ìž í•¨ìˆ˜ ì•”ë¬µì  í˜¸ì¶œ
+			operator<<(cout << "size ", arr) << endl; // operator<< ì—°ì‚°ìž í•¨ìˆ˜ ëª…ì‹œì  í˜¸ì¶œ
 		}
 
 		cout << "--- string" << endl;
@@ -134,15 +134,15 @@ void _1602_template_class() {
 			}
 			arr.print();
 
-			cout << "size " << arr << endl; // operator<< ¿¬»êÀÚ ÇÔ¼ö ¾Ï¹¬Àû È£Ãâ
+			cout << "size " << arr << endl; // operator<< ì—°ì‚°ìž í•¨ìˆ˜ ì•”ë¬µì  í˜¸ì¶œ
 		}
 
 		cout << "--- int" << endl;
 		{
 			/*
-			Å¸ÀÔÀ» ÁöÁ¤ÇÏÁö ¾Ê°í ÅÛÇÃ¸´ÀÇ µðÆúÆ® ¸Å°³º¯¼ö¸¦ »ç¿ë
-				Å¸ÀÔ¸íÀ» ¾²Áö ¾Ê´Â´Ù
-				<>´Â ½áÁà¾ßÇÑ´Ù.
+			íƒ€ìž…ì„ ì§€ì •í•˜ì§€ ì•Šê³  í…œí”Œë¦¿ì˜ ë””í´íŠ¸ ë§¤ê°œë³€ìˆ˜ë¥¼ ì‚¬ìš©
+				íƒ€ìž…ëª…ì„ ì“°ì§€ ì•ŠëŠ”ë‹¤
+				<>ëŠ” ì¨ì¤˜ì•¼í•œë‹¤.
 			*/
 			Array<> arr;
 			for (size_t i = 0; i < ArrSize; i++)
@@ -151,7 +151,7 @@ void _1602_template_class() {
 			}
 			arr.print();
 
-			cout << "size " << arr << endl; // operator<< ¿¬»êÀÚ ÇÔ¼ö ¾Ï¹¬Àû È£Ãâ
+			cout << "size " << arr << endl; // operator<< ì—°ì‚°ìž í•¨ìˆ˜ ì•”ë¬µì  í˜¸ì¶œ
 		}
 
 		cout << "--- SpecialPrint" << endl;
@@ -162,7 +162,7 @@ void _1602_template_class() {
 			SpecialPrint<char *>()(sz);
 
 			string str = "string";
-			SpecialPrint<string>()(str); // Å¬·¡½º ÇÔ¼ö Æ¯¼öÈ­ °´Ã¼°¡ »ý¼ºµÈ´Ù.
+			SpecialPrint<string>()(str); // í´ëž˜ìŠ¤ í•¨ìˆ˜ íŠ¹ìˆ˜í™” ê°ì²´ê°€ ìƒì„±ëœë‹¤.
 		}
 	}
 }

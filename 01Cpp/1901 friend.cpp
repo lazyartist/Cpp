@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-ÇÔ¼ö³ª Å¬·¡½º¸¦ ÇÁ·»µå·Î ÁöÁ¤ÇÏ¸é Å¬·¡½ºÀÇ ¸ðµç ¸â¹ö(º¯¼ö, ÇÔ¼ö)¿¡ Á¢±ÙÇÒ ¼ö ÀÖ´Ù.
+í•¨ìˆ˜ë‚˜ í´ëž˜ìŠ¤ë¥¼ í”„ë Œë“œë¡œ ì§€ì •í•˜ë©´ í´ëž˜ìŠ¤ì˜ ëª¨ë“  ë©¤ë²„(ë³€ìˆ˜, í•¨ìˆ˜)ì— ì ‘ê·¼í•  ìˆ˜ ìžˆë‹¤.
 */
 
 class A {
@@ -14,7 +14,7 @@ private:
 
 	int i = 0;
 
-	// friend ÁöÁ¤
+	// friend ì§€ì •
 	friend class B;
 	friend void f();
 };
@@ -23,20 +23,20 @@ class B {
 public:
 	void f() {
 		A a;
-		a.pf(); // AÅ¬·¡½º¿¡¼­ BÅ¬·¹½º¸¦ ÇÁ·»µå ÁöÁ¤ÇØ¼­ private ¸â¹ö¿¡ Á¢±Ù °¡´É. ¾ÈÇÏ¸é ÄÄÆÄÀÏ ¿¡·¯.
-		a.i; // iµµ Á¢±Ù °¡´É
+		a.pf(); // Aí´ëž˜ìŠ¤ì—ì„œ Bí´ë ˆìŠ¤ë¥¼ í”„ë Œë“œ ì§€ì •í•´ì„œ private ë©¤ë²„ì— ì ‘ê·¼ ê°€ëŠ¥. ì•ˆí•˜ë©´ ì»´íŒŒì¼ ì—ëŸ¬.
+		a.i; // ië„ ì ‘ê·¼ ê°€ëŠ¥
 	}
 };
 
 void f() {
 	A a;
-	a.pf(); // AÅ¬·¡½º¿¡¼­ ÀÌ Àü¿ªÇÔ¼ö¸¦ ÇÁ·»µå·Î ÁöÁ¤ÇØ¼­ private ¸â¹ö¿¡ Á¢±Ù °¡´É. ¾ÈÇÏ¸é ÄÄÆÄÀÏ ¿¡·¯.
-	a.i; // iµµ Á¢±Ù °¡´É
+	a.pf(); // Aí´ëž˜ìŠ¤ì—ì„œ ì´ ì „ì—­í•¨ìˆ˜ë¥¼ í”„ë Œë“œë¡œ ì§€ì •í•´ì„œ private ë©¤ë²„ì— ì ‘ê·¼ ê°€ëŠ¥. ì•ˆí•˜ë©´ ì»´íŒŒì¼ ì—ëŸ¬.
+	a.i; // ië„ ì ‘ê·¼ ê°€ëŠ¥
 }
 
 void _1901_friend() {
 
-	cout << "ÇÔ¼ö ÇÁ·»µå, Å¬·¡½º ÇÁ·»µå" << endl;
+	cout << "í•¨ìˆ˜ í”„ë Œë“œ, í´ëž˜ìŠ¤ í”„ë Œë“œ" << endl;
 	{
 		B b;
 		b.f();

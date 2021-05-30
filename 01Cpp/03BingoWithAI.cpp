@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-// ÄÜ¼ÖÃ¢¿¡¼­ ÀÔÃâ·ÂÇÏ´Â ±â´ÉÀ» Á¦°øÇÏ´Â Çì´õÆÄÀÏ
+// ì½˜ì†”ì°½ì—ì„œ ìž…ì¶œë ¥í•˜ëŠ” ê¸°ëŠ¥ì„ ì œê³µí•˜ëŠ” í—¤ë”íŒŒì¼
 //#include <conio.h> 
 
 using namespace std;
@@ -281,14 +281,14 @@ int pickNumByEasyAi(int *numbers, int size)
 
 int pickNumByHardAi(int *numbers, int size)
 {
-	// 60% Á¤µµ ¼ýÀÚ¼±ÅÃÇÏ¸é °ÔÀÓÀÌ °ÅÀÇ ³¡³­´Ù.
-	// µû¶ó¼­ 40% ¼±ÅÃ ÀÌÈÄ´Â ÈÄ¹ÝÀÌ¶ó ºÁ¾ßÇÑ´Ù.
+	// 60% ì •ë„ ìˆ«ìžì„ íƒí•˜ë©´ ê²Œìž„ì´ ê±°ì˜ ëë‚œë‹¤.
+	// ë”°ë¼ì„œ 40% ì„ íƒ ì´í›„ëŠ” í›„ë°˜ì´ë¼ ë´ì•¼í•œë‹¤.
 	int timeWeight = (turnCount > NUMBER_COUNT / 3) ? 1 : 0;
 
-	// °ÔÀÓ ÈÄ¹ÝÀÌ´Ù. ÇÑ Á¡¸¸ ´õ ¸ÔÀ¸¸é ½Â¸®´Ù. -> ¶óÀÎ¿Ï¼º ¿ì¼±
-	// °ÔÀÓ ÃÊ¹ÝÀÌ´Ù. -> ÁÁÀº ÀÚ¸® ¿ì¼±
+	// ê²Œìž„ í›„ë°˜ì´ë‹¤. í•œ ì ë§Œ ë” ë¨¹ìœ¼ë©´ ìŠ¹ë¦¬ë‹¤. -> ë¼ì¸ì™„ì„± ìš°ì„ 
+	// ê²Œìž„ ì´ˆë°˜ì´ë‹¤. -> ì¢‹ì€ ìžë¦¬ ìš°ì„ 
 
-	// ¶óÀÎÀÌ ¿¬°áµÉ È®·üÀÌ °¡Àå ³ôÀº °÷À» ÃßÃâ
+	// ë¼ì¸ì´ ì—°ê²°ë  í™•ë¥ ì´ ê°€ìž¥ ë†’ì€ ê³³ì„ ì¶”ì¶œ
 	int scores[NUMBER_COUNT] = {};
 	for (size_t i = 0; i < size; i++)
 	{
@@ -326,7 +326,7 @@ int pickNumByHardAi(int *numbers, int size)
 				score += lineScore * timeWeight;
 			}
 
-			// diagonal score : ÁÂ»ó -> ¿ìÇÏ
+			// diagonal score : ì¢Œìƒ -> ìš°í•˜
 			if (row == col) {
 				for (size_t j = 0; j < COL; j++)
 				{
@@ -339,7 +339,7 @@ int pickNumByHardAi(int *numbers, int size)
 					score += lineScore * timeWeight;
 				}
 			}
-			// diagonal score : ¿ì»ó -> ÁÂÇÏ
+			// diagonal score : ìš°ìƒ -> ì¢Œí•˜
 			if (row + col == COL - 1) {
 				for (size_t i = 0; i < COL; i++)
 				{
@@ -361,7 +361,7 @@ int pickNumByHardAi(int *numbers, int size)
 	printNumbers(scores, GetIntArrSize(scores));
 	cout << "time weight " << timeWeight;
 
-	// Á¡¼ö°¡ °¡Àå ³ôÀº °÷À» ¼±ÅÃ
+	// ì ìˆ˜ê°€ ê°€ìž¥ ë†’ì€ ê³³ì„ ì„ íƒ
 	int selectedNumber = 0;
 	int selectedPositionScore = 0;
 

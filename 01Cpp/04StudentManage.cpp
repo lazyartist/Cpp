@@ -33,30 +33,30 @@ int main() {
 		system("cls");
 
 		// menu
-		cout << "1. µî·Ï" << endl;
-		cout << "2. »èÁ¦" << endl;
-		cout << "3. Å½»ö" << endl;
-		cout << "4. Ãâ·Â" << endl;
-		cout << "5. Á¾·á" << endl;
-		cout << "¸Þ´º¸¦ ¼±ÅÃÇÏ¼¼¿ä" << endl;
+		cout << "1. ë“±ë¡" << endl;
+		cout << "2. ì‚­ì œ" << endl;
+		cout << "3. íƒìƒ‰" << endl;
+		cout << "4. ì¶œë ¥" << endl;
+		cout << "5. ì¢…ë£Œ" << endl;
+		cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”" << endl;
 
 		int iMenu;
 		cin >> iMenu;
 
-		// cinÀº ¿À¸¥ÂÊ¿¡ int º¯¼ö°¡ ¿À¸é Á¤¼ö¸¦ ÀÔ·ÂÇØ¾ßÇÑ´Ù.
-		// ¿À¸¥ÂÊ¿¡ ¿À´Â º¯¼ö Å¸ÀÔ¿¡ ¸ÂÃç¼­ °ªÀ» ÀÔ·ÂÇØ¾ß ÇÏ´Âµ¥ ½Ç¼ö·Î Á¤¼ö°¡ ¾Æ´Ñ ¹®ÀÚ¸¦ ÀÔ·ÂÇÒ °æ¿ì ¿¡·¯°¡ ¹ß»ýÇÑ´Ù.
-		// ±×·¸±â ¶§¹®¿¡ ¿¹¿ÜÃ³¸®·Î ¿¡·¯°¡ ¹ß»ýÇß´ÂÁö¸¦ ¿©±â¿¡¼­ Ã¼Å©ÇÏ¿© ¿¡·¯°¡ ¹ß»ýÇÏ¸é cin ³»ºÎÀÇ ¿¡·¯¹öÆÛ¸¦ ºñ¿öÁÖ°í
-		// cin ³»ºÎ¿¡ ÀÔ·Â¹öÆÛ°¡ ÀÖ´Âµ¥ ÀÔ·Â¹öÆÛ´Â ÀÔ·ÂÇÑ °ªÀ» ÀúÀåÇØ³õ°í ±× °ªÀ» º¯¼ö¿¡ ³Ö¾îÁÖ´Â ¿ªÇÒÀ» ÇÑ´Ù.
-		// ÀÌ ÀÔ·Â¹öÆÛ¿¡ \n ÀÌ ³²¾ÆÀÖÀ¸¹Ç·Î ¹öÆÛ¸¦ ¼øÈ¸ÇÏ¿© \nÀ» Áö¿öÁØ´Ù.
-		// ¿¡·¯Ã¼Å© : cin.fail() true ¹ÝÈ¯ ½Ã ¿¡·¯.
+		// cinì€ ì˜¤ë¥¸ìª½ì— int ë³€ìˆ˜ê°€ ì˜¤ë©´ ì •ìˆ˜ë¥¼ ìž…ë ¥í•´ì•¼í•œë‹¤.
+		// ì˜¤ë¥¸ìª½ì— ì˜¤ëŠ” ë³€ìˆ˜ íƒ€ìž…ì— ë§žì¶°ì„œ ê°’ì„ ìž…ë ¥í•´ì•¼ í•˜ëŠ”ë° ì‹¤ìˆ˜ë¡œ ì •ìˆ˜ê°€ ì•„ë‹Œ ë¬¸ìžë¥¼ ìž…ë ¥í•  ê²½ìš° ì—ëŸ¬ê°€ ë°œìƒí•œë‹¤.
+		// ê·¸ë ‡ê¸° ë•Œë¬¸ì— ì˜ˆì™¸ì²˜ë¦¬ë¡œ ì—ëŸ¬ê°€ ë°œìƒí–ˆëŠ”ì§€ë¥¼ ì—¬ê¸°ì—ì„œ ì²´í¬í•˜ì—¬ ì—ëŸ¬ê°€ ë°œìƒí•˜ë©´ cin ë‚´ë¶€ì˜ ì—ëŸ¬ë²„í¼ë¥¼ ë¹„ì›Œì£¼ê³ 
+		// cin ë‚´ë¶€ì— ìž…ë ¥ë²„í¼ê°€ ìžˆëŠ”ë° ìž…ë ¥ë²„í¼ëŠ” ìž…ë ¥í•œ ê°’ì„ ì €ìž¥í•´ë†“ê³  ê·¸ ê°’ì„ ë³€ìˆ˜ì— ë„£ì–´ì£¼ëŠ” ì—­í• ì„ í•œë‹¤.
+		// ì´ ìž…ë ¥ë²„í¼ì— \n ì´ ë‚¨ì•„ìžˆìœ¼ë¯€ë¡œ ë²„í¼ë¥¼ ìˆœíšŒí•˜ì—¬ \nì„ ì§€ì›Œì¤€ë‹¤.
+		// ì—ëŸ¬ì²´í¬ : cin.fail() true ë°˜í™˜ ì‹œ ì—ëŸ¬.
 		if (cin.fail()) {
-			// ¿¡·¯¹öÆÛ¸¦ ºñ¿öÁØ´Ù.
+			// ì—ëŸ¬ë²„í¼ë¥¼ ë¹„ì›Œì¤€ë‹¤.
 			cin.clear();
 
-			// ÀÔ·Â¹öÆÛ¿¡ \nÀÌ ³²¾ÆÀÖÀ¸¹Ç·Î ÀÔ·Â¹öÆÛ¸¦ °Ë»öÇÏ¿© \nÀ» Áö¿öÁØ´Ù.
-			// Ã¹¹øÂ°´Â °Ë»öÇÏ°íÀÚ ÇÏ´Â ¹öÆÛ Å©±â¸¦ ÁöÁ¤ÇÑ´Ù. ³Ë³ËÇÏ°Ô 1024¹ÙÀÌÆ® Á¤µµ ÁöÁ¤ÇØÁÖ¾ú´Ù.
-			// 2¹øÂ°´Â Ã£°íÀÚ ÇÏ´Â ¹®ÀÚ¸¦ ³Ö¾îÁØ´Ù. ±×·¡¼­ ÀÔ·Â¹öÆÛ Ã³À½ºÎÅÍ \nÀÌ ÀÖ´Â °÷±îÁö Ã£¾Æ¼­
-			// ±× ºÎºÐÀ» ¸ðµÎ Áö¿öÁà¼­ ´Ù½Ã ÀÔ·Â¹ÞÀ» ¼ö ÀÖµµ·Ï ÇØÁØ´Ù.
+			// ìž…ë ¥ë²„í¼ì— \nì´ ë‚¨ì•„ìžˆìœ¼ë¯€ë¡œ ìž…ë ¥ë²„í¼ë¥¼ ê²€ìƒ‰í•˜ì—¬ \nì„ ì§€ì›Œì¤€ë‹¤.
+			// ì²«ë²ˆì§¸ëŠ” ê²€ìƒ‰í•˜ê³ ìž í•˜ëŠ” ë²„í¼ í¬ê¸°ë¥¼ ì§€ì •í•œë‹¤. ë„‰ë„‰í•˜ê²Œ 1024ë°”ì´íŠ¸ ì •ë„ ì§€ì •í•´ì£¼ì—ˆë‹¤.
+			// 2ë²ˆì§¸ëŠ” ì°¾ê³ ìž í•˜ëŠ” ë¬¸ìžë¥¼ ë„£ì–´ì¤€ë‹¤. ê·¸ëž˜ì„œ ìž…ë ¥ë²„í¼ ì²˜ìŒë¶€í„° \nì´ ìžˆëŠ” ê³³ê¹Œì§€ ì°¾ì•„ì„œ
+			// ê·¸ ë¶€ë¶„ì„ ëª¨ë‘ ì§€ì›Œì¤˜ì„œ ë‹¤ì‹œ ìž…ë ¥ë°›ì„ ìˆ˜ ìžˆë„ë¡ í•´ì¤€ë‹¤.
 			cin.ignore(1024, '\n');
 			continue;
 		}
@@ -64,15 +64,15 @@ int main() {
 		switch (iMenu)
 		{
 		case MENU_INSERT:
-			// cinÀº Spaceµµ ÀÔ·ÂÀÇ ³¡À¸·Î ÀÎ½ÄÇÏ±â ¶§¹®¿¡ Space Æ÷ÇÔ ¹®ÀÚ¿­À» ¾ò¾î¿À·Á¸é cin.getlineÀ» »ç¿ëÇÑ´Ù.
-			cout << "ÀÌ¸§: ";
+			// cinì€ Spaceë„ ìž…ë ¥ì˜ ëìœ¼ë¡œ ì¸ì‹í•˜ê¸° ë•Œë¬¸ì— Space í¬í•¨ ë¬¸ìžì—´ì„ ì–»ì–´ì˜¤ë ¤ë©´ cin.getlineì„ ì‚¬ìš©í•œë‹¤.
+			cout << "ì´ë¦„: ";
 			cin >> tStudentArr[iStudentCount].strName;
 
-			// cin°ú cin.getlineÀ» °°ÀÌ ¾µ °æ¿ì cin¿¡ ÀÇÇØ enter°¡ ¹öÆÛ¿¡ ³²¾ÆÀÖ°í ÀÌ°Ô cin.getline È£Ãâ ½Ã ÀÔ·Â Á¾·á·Î ÀÎ½ÄÇØ ¹ö¸°´Ù.
-			// µû¶ó¼­ cin.ignore¸¦ »ç¿ëÇØ \nÀ» Á¦°ÅÇØÁØ´Ù.
+			// cinê³¼ cin.getlineì„ ê°™ì´ ì“¸ ê²½ìš° cinì— ì˜í•´ enterê°€ ë²„í¼ì— ë‚¨ì•„ìžˆê³  ì´ê²Œ cin.getline í˜¸ì¶œ ì‹œ ìž…ë ¥ ì¢…ë£Œë¡œ ì¸ì‹í•´ ë²„ë¦°ë‹¤.
+			// ë”°ë¼ì„œ cin.ignoreë¥¼ ì‚¬ìš©í•´ \nì„ ì œê±°í•´ì¤€ë‹¤.
 			cin.ignore(1024, '\n');
 
-			cout << "ÀÌ¸§2: ";
+			cout << "ì´ë¦„2: ";
 			cin.getline(tStudentArr[iStudentCount].strName, NAME_SIZE);
 
 			cout << tStudentArr[iStudentCount].strName << endl;
@@ -86,7 +86,7 @@ int main() {
 		case MENU_EXIT:
 			break;
 		default:
-			cout << "¸Þ´º¸¦ Àß¸ø ¼±ÅÃÇß½À´Ï´Ù." << endl;
+			cout << "ë©”ë‰´ë¥¼ ìž˜ëª» ì„ íƒí–ˆìŠµë‹ˆë‹¤." << endl;
 			break;
 		}
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-// ÄÜ¼ÖÃ¢¿¡¼­ ÀÔÃâ·ÂÇÏ´Â ±â´ÉÀ» Á¦°øÇÏ´Â Çì´õÆÄÀÏ
+// ì½˜ì†”ì°½ì—ì„œ ìž…ì¶œë ¥í•˜ëŠ” ê¸°ëŠ¥ì„ ì œê³µí•˜ëŠ” í—¤ë”íŒŒì¼
 //#include <conio.h> 
 
 using namespace std;

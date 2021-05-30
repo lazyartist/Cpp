@@ -20,9 +20,9 @@ int main() {
 	list.clear();
 	list.print();
 
-	// Æ÷ÀÎÅÍ¿¡ ´ëÇÑ ¿ÀÆÛ·¹ÀÌÅÍ ÀçÁ¤ÀÇ´Â ¾îÂ¥ÇÇ ¾ÈµÈ´Ù.
-	// Æ÷ÀÎÅÍ ¿¬»êÀº Æ÷ÀÎÅÍÀÇ ÀÌµ¿ÀÌÁö °´Ã¼ÀÇ ÇÔ¼ö¸¦ È£ÃâÇÏ´Â °ÍÀÌ ¾Æ´Ï±â ¶§¹®ÀÌ´Ù.
-	// µû¶ó¼­ IteratorÀÇ ¿¬»êÀ» À§ÇØ¼­´Â ¿ªÂüÁ¶¸¦ ÇØÁà¾ßÇÑ´Ù.
+	// í¬ì¸í„°ì— ëŒ€í•œ ì˜¤í¼ë ˆì´í„° ìž¬ì •ì˜ëŠ” ì–´ì§œí”¼ ì•ˆëœë‹¤.
+	// í¬ì¸í„° ì—°ì‚°ì€ í¬ì¸í„°ì˜ ì´ë™ì´ì§€ ê°ì²´ì˜ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ëŠ” ê²ƒì´ ì•„ë‹ˆê¸° ë•Œë¬¸ì´ë‹¤.
+	// ë”°ë¼ì„œ Iteratorì˜ ì—°ì‚°ì„ ìœ„í•´ì„œëŠ” ì—­ì°¸ì¡°ë¥¼ í•´ì¤˜ì•¼í•œë‹¤.
 	for (TDList<int>::Iterator iter = list.begin(); iter != list.end(); iter++) {
 		cout << "iter" << endl;
 	}

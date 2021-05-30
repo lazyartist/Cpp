@@ -7,14 +7,14 @@ using namespace std;
 void _0401_char() {
 	cout << "char, char[], const char*" << endl;
 	{
-		char c = 'c'; // char º¯¼ö »ý¼º ÈÄ 'c' ¸®ÅÍ·² º¹»ç
-		char cs[] = "Hello"; // "Hello" ±æÀÌ + 1 ¸¸Å­ char ¹è¿­ »ý¼º ÈÄ ¹è¿­ ¿ä¼Ò¿¡ "Hello\0" ¹®ÀÚ º¹»ç
-		const char* cp = "Hello"; // "Hello" ¸®ÅÍ·² ¹®ÀÚ¿­ÀÇ Æ÷ÀÎÅÍ¸¦ cp º¯¼ö¿¡ ÀúÀå. ¸®ÅÍ·²Àº º¯°æ ºÒ°¡ÀÌ±â ¶§¹®¿¡ const·Î ¹Þ¾Æ¾ßÇÑ´Ù.
+		char c = 'c'; // char ë³€ìˆ˜ ìƒì„± í›„ 'c' ë¦¬í„°ëŸ´ ë³µì‚¬
+		char cs[] = "Hello"; // "Hello" ê¸¸ì´ + 1 ë§Œí¼ char ë°°ì—´ ìƒì„± í›„ ë°°ì—´ ìš”ì†Œì— "Hello\0" ë¬¸ìž ë³µì‚¬
+		const char* cp = "Hello"; // "Hello" ë¦¬í„°ëŸ´ ë¬¸ìžì—´ì˜ í¬ì¸í„°ë¥¼ cp ë³€ìˆ˜ì— ì €ìž¥. ë¦¬í„°ëŸ´ì€ ë³€ê²½ ë¶ˆê°€ì´ê¸° ë•Œë¬¸ì— constë¡œ ë°›ì•„ì•¼í•œë‹¤.
 
 		// for breakpoint
 		int a = 0;
 
 
-		// ¸®ÅÍ·² °ü·ÃÇØ¼­´Â 1802 literal Âü°í
+		// ë¦¬í„°ëŸ´ ê´€ë ¨í•´ì„œëŠ” 1802 literal ì°¸ê³ 
 	}
 }

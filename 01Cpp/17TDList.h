@@ -6,18 +6,18 @@ using namespace std;
 template<typename T>
 class TDNode {
 	/*
-	»ı¼ºÀÚ¿Í ¼Ò¸êÀÚ¸¦ privateÇÏ°Ô µÇ¸é ¿ÜºÎ¿¡¼­ °´Ã¼¸¦ »ı¼ºÇÏ°í °´Ã¼¸¦ ÇØÁ¦ÇÒ ¼ö ¾ø´Ù.
-	»ı¼ºÀÚ´Â °´Ã¼¸¦ »ı¼ºÇÒ ¶§ ÀÚµ¿À¸·Î È£ÃâÀÌ µÇ´Â ÇÔ¼öÀÎµ¥ privateÀ¸·Î µÇ¸é 
-	°´Ã¼¸¦ »ı¼ºÇÏ¸é¼­ È£Ãâ½Ã Á¢±ÙÀÌ ºÒ°¡´ÉÇÏ´Ù.
+	ìƒì„±ìì™€ ì†Œë©¸ìë¥¼ privateí•˜ê²Œ ë˜ë©´ ì™¸ë¶€ì—ì„œ ê°ì²´ë¥¼ ìƒì„±í•˜ê³  ê°ì²´ë¥¼ í•´ì œí•  ìˆ˜ ì—†ë‹¤.
+	ìƒì„±ìëŠ” ê°ì²´ë¥¼ ìƒì„±í•  ë•Œ ìë™ìœ¼ë¡œ í˜¸ì¶œì´ ë˜ëŠ” í•¨ìˆ˜ì¸ë° privateìœ¼ë¡œ ë˜ë©´ 
+	ê°ì²´ë¥¼ ìƒì„±í•˜ë©´ì„œ í˜¸ì¶œì‹œ ì ‘ê·¼ì´ ë¶ˆê°€ëŠ¥í•˜ë‹¤.
 	*/
 private:
 	TDNode() :m_pPrev(NULL), m_pNext(NULL) {}
 	~TDNode(){}
 
 	/*
-	friend : Ä£±¸·Î ¸¸µé¾îÁØ´Ù.
-	friend·Î ÁöÁ¤ÇØÁØ Å¬·¡½º¿¡¼­ ÀÌ Å¬·¡½ºÀÇ privateÀÌ³ª protected¿¡ Á¢±ÙÀÌ °¡´ÉÇØÁø´Ù.
-	ÀÏ¹İ Å¬·¡½º´Â friend ¶óÀÎ¸¸ ÀûÀ¸¸é µÇÁö¸¸ template Å¬·¡½º´Â ¾Æ·¡Ã³·³ templateÀ» ÁöÁ¤ÇØ¾ßÇÑ´Ù.
+	friend : ì¹œêµ¬ë¡œ ë§Œë“¤ì–´ì¤€ë‹¤.
+	friendë¡œ ì§€ì •í•´ì¤€ í´ë˜ìŠ¤ì—ì„œ ì´ í´ë˜ìŠ¤ì˜ privateì´ë‚˜ protectedì— ì ‘ê·¼ì´ ê°€ëŠ¥í•´ì§„ë‹¤.
+	ì¼ë°˜ í´ë˜ìŠ¤ëŠ” friend ë¼ì¸ë§Œ ì ìœ¼ë©´ ë˜ì§€ë§Œ template í´ë˜ìŠ¤ëŠ” ì•„ë˜ì²˜ëŸ¼ templateì„ ì§€ì •í•´ì•¼í•œë‹¤.
 	*/
 	template<typename T>
 	friend class TDList;
@@ -50,7 +50,7 @@ public:
 	}
 
 	//TDListIterator<T> operator++ (PNode dummy) {
-	TDListIterator<T> operator++ (int dummy) { // dummy Å¸ÀÔÀº int ÀÌ¾î¾ß ÇÑ´Ù. ¾È±×·¯¸é ¿¡·¯³².
+	TDListIterator<T> operator++ (int dummy) { // dummy íƒ€ì…ì€ int ì´ì–´ì•¼ í•œë‹¤. ì•ˆê·¸ëŸ¬ë©´ ì—ëŸ¬ë‚¨.
 		TDListIterator<T> iter;
 		iter.m_pNode = m_pNode;
 
@@ -94,14 +94,14 @@ private:
 
 public:
 	/*
-	·¹ÆÛ·±½º´Â ÂüÁ¶ ´ë»óÀÇ °ªÀ» º¯°æÇÒ¼ö ÀÖÁö¸¸ const¸¦ ºÙ¿©ÁÖ¸é º¯°æÇÒ ¼ö ¾ø´Ù.
+	ë ˆí¼ëŸ°ìŠ¤ëŠ” ì°¸ì¡° ëŒ€ìƒì˜ ê°’ì„ ë³€ê²½í• ìˆ˜ ìˆì§€ë§Œ constë¥¼ ë¶™ì—¬ì£¼ë©´ ë³€ê²½í•  ìˆ˜ ì—†ë‹¤.
 	*/
 	void push_back(const T& data);
 	void push_front(const T& data);
 	void print();
 
 	/*
-	¸â¹öÇÔ¼ö µÚ¿¡ const¸¦ ºÙ¿©ÁÖ¸é ÀÌ ÇÔ¼ö ³»¿¡¼­ ¸â¹öº¯¼öÀÇ °ªÀ» º¯°æÇÒ ¼ö ¾ø´Ù.
+	ë©¤ë²„í•¨ìˆ˜ ë’¤ì— constë¥¼ ë¶™ì—¬ì£¼ë©´ ì´ í•¨ìˆ˜ ë‚´ì—ì„œ ë©¤ë²„ë³€ìˆ˜ì˜ ê°’ì„ ë³€ê²½í•  ìˆ˜ ì—†ë‹¤.
 	*/
 	unsigned int size() const;
 	bool empty() const;
@@ -110,8 +110,8 @@ public:
 	Iterator end();
 };
 
-// Å¬·¡½º ÅÛÇÃ¸´ »ı¼ºÀÚ/ÇÔ¼ö¸¦ ¿ÜºÎ¿¡ Á¤ÀÇÇÒ ¶§´Â TDList::TDList() ÀÌ·¸°Ô¸¸ ¾²¸é ¾ÈµÇ°í
-// ¾Æ·¡Ã³·³ template ÀÎ¼öÁ¤ÀÇ¿Í TDList<T>¸¦ ½áÁà¾ßÇÑ´Ù.
+// í´ë˜ìŠ¤ í…œí”Œë¦¿ ìƒì„±ì/í•¨ìˆ˜ë¥¼ ì™¸ë¶€ì— ì •ì˜í•  ë•ŒëŠ” TDList::TDList() ì´ë ‡ê²Œë§Œ ì“°ë©´ ì•ˆë˜ê³ 
+// ì•„ë˜ì²˜ëŸ¼ template ì¸ìˆ˜ì •ì˜ì™€ TDList<T>ë¥¼ ì¨ì¤˜ì•¼í•œë‹¤.
 template<typename T>
 TDList<T>::TDList()
 {
@@ -207,10 +207,10 @@ inline void TDList<T>::clear()
 }
 
 template<typename T>
-//inline TDList<T>::Iterator TDList<T>::begin()// Å¬·¡½º ³»ºÎ¿¡¼­ typedefÇÑ Iterator¸¦ »ç¿ë »ç¿ëÇÒ ¼ö ¾ø´Ù. ÇÏÁö¸¸ ÇÔ¼ö ³»¿¡¼­´Â »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+//inline TDList<T>::Iterator TDList<T>::begin()// í´ë˜ìŠ¤ ë‚´ë¶€ì—ì„œ typedefí•œ Iteratorë¥¼ ì‚¬ìš© ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤. í•˜ì§€ë§Œ í•¨ìˆ˜ ë‚´ì—ì„œëŠ” ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 inline TDListIterator<T> TDList<T>::begin() 
 {
-	Iterator iter; // Iterator°¡ privateÀ¸·Î typedef µÆÁö¸¸ ÇÔ¼ö ¿ÜºÎ Á¤ÀÇ¿¡¼­µµ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+	Iterator iter; // Iteratorê°€ privateìœ¼ë¡œ typedef ëì§€ë§Œ í•¨ìˆ˜ ì™¸ë¶€ ì •ì˜ì—ì„œë„ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 	iter.m_pNode = m_pBegin->m_pNext;
 	return iter;
 }

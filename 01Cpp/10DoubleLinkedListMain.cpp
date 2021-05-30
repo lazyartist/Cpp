@@ -1,15 +1,15 @@
-// »ç¿ëÀÚ°¡ ¸¸µç Çì´õÆÄÀÏÀ» Æ÷ÇÔ½ÃÅ³¶§´Â ""¾È¿¡ Àû¾îÁØ´Ù.
+// ì‚¬ìš©ìê°€ ë§Œë“  í—¤ë”íŒŒì¼ì„ í¬í•¨ì‹œí‚¬ë•ŒëŠ” ""ì•ˆì— ì ì–´ì¤€ë‹¤.
 #include "10DoubleLinkedList.h"
 
 int main() {
 	
-	// ¸®½ºÆ® »ı¼º
+	// ë¦¬ìŠ¤íŠ¸ ìƒì„±
 	PList pList = new List;
 	pList->pBegin = NULL;
 	pList->pEnd = NULL;
 	pList->iSize = 0;
 
-	// µ¥ÀÌÅÍ µÚ¿¡ Ãß°¡
+	// ë°ì´í„° ë’¤ì— ì¶”ê°€
 	for (size_t i = 0; i < 9; i++)
 	{
 		PNode pNode = new Node();
@@ -21,35 +21,35 @@ int main() {
 	}
 	PrintList("Push_Back", pList);
 
-	// µ¥ÀÌÅÍ ¾Õ¿¡ Ãß°¡
+	// ë°ì´í„° ì•ì— ì¶”ê°€
 	PNode addNode = new Node;
 	addNode->Data = 99;
 	Push_Front(pList, addNode);
 	PrintList("Push_Front", pList);
 
-	// Á¤·Ä
+	// ì •ë ¬
 	SortList_Bubble(pList, true);
 	PrintList("SortList", pList);
 
-	// ¸¶Áö¸· µ¥ÀÌÅÍ Á¦°Å
+	// ë§ˆì§€ë§‰ ë°ì´í„° ì œê±°
 	PopList(pList);
 	PrintList("PopList", pList);
 
-	// Æ¯Á¤ À§Ä¡ µ¥ÀÌÅÍ Á¦°Å
+	// íŠ¹ì • ìœ„ì¹˜ ë°ì´í„° ì œê±°
 	RemoveList(pList, 1);
 	PrintList("RemoveList", pList);
 	RemoveList(pList, 6);
 	PrintList("RemoveList", pList);
 
-	// µ¥ÀÌÅÍ Ã£±â
+	// ë°ì´í„° ì°¾ê¸°
 	PNode foundNode = SearchNode(pList, 8);
 	SearchNode(pList, 55);
 
-	// ¸ğµç µ¥ÀÌÅÍ Á¦°Å
+	// ëª¨ë“  ë°ì´í„° ì œê±°
 	RemoveAllList(pList);
 	PrintList("RemoveAllList", pList);
 
-	// ¸®½ºÆ® ¸Ş¸ğ¸® ÇØÁ¦
+	// ë¦¬ìŠ¤íŠ¸ ë©”ëª¨ë¦¬ í•´ì œ
 	delete pList;
 
 	return 0;

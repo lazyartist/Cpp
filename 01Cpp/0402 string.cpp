@@ -7,21 +7,21 @@ using namespace std;
 void _0402_string() {
 	char name[NAME_SIZE];
 
-	// ¹®ÀÚ¿­À» ¹è¿­¿¡ ³Ö¾îÁÙ ¶§¿¡´Â ´Ü¼ø ´ëÀÔ(name = "aa")À¸·Î´Â ºÒ°¡´ÉÇÏ´Ù.
-	// strcpy_s¶ó´Â ÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ ¹®ÀÚ¿­À» º¹»çÇØ ÁÖ¾î¾ßÇÑ´Ù.
+	// ë¬¸ìžì—´ì„ ë°°ì—´ì— ë„£ì–´ì¤„ ë•Œì—ëŠ” ë‹¨ìˆœ ëŒ€ìž…(name = "aa")ìœ¼ë¡œëŠ” ë¶ˆê°€ëŠ¥í•˜ë‹¤.
+	// strcpy_së¼ëŠ” í•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ ë¬¸ìžì—´ì„ ë³µì‚¬í•´ ì£¼ì–´ì•¼í•œë‹¤.
 	strcpy_s(name, 3, "aa");
 	cout << name << endl;
 
-	// strcat_s ÇÔ¼ö´Â ¹®ÀÚ¿­À» ºÙ¿©ÁÖ´Â ±â´É
-	// name¿¡ bb¸¦ ºÙ¿©¼­ ÀúÀåÇÑ´Ù.
+	// strcat_s í•¨ìˆ˜ëŠ” ë¬¸ìžì—´ì„ ë¶™ì—¬ì£¼ëŠ” ê¸°ëŠ¥
+	// nameì— bbë¥¼ ë¶™ì—¬ì„œ ì €ìž¥í•œë‹¤.
 	strcat_s(name, "bb");
 	cout << name << endl;
 
-	// strcmp ÇÔ¼ö´Â µÎ ¹®ÀÚ¿­À» ºñ±³ÇÏ¿© °°À» °æ¿ì 0À» ¹ÝÈ¯ÇÏ°í ´Ù¸¦ °æ¿ì 0ÀÌ ¾Æ´Ñ °ª(-1)À» ¹ÝÈ¯ÇÑ´Ù.
+	// strcmp í•¨ìˆ˜ëŠ” ë‘ ë¬¸ìžì—´ì„ ë¹„êµí•˜ì—¬ ê°™ì„ ê²½ìš° 0ì„ ë°˜í™˜í•˜ê³  ë‹¤ë¥¼ ê²½ìš° 0ì´ ì•„ë‹Œ ê°’(-1)ì„ ë°˜í™˜í•œë‹¤.
 	cout << strcmp(name, "aabbz") << endl;
 
 
-	// ¹®ÀÚ¿­ ¸®ÅÍ·² °ü·ÃÇØ¼­´Â 1802 literal Âü°í
+	// ë¬¸ìžì—´ ë¦¬í„°ëŸ´ ê´€ë ¨í•´ì„œëŠ” 1802 literal ì°¸ê³ 
 }
 
-// todo mystring Å¬·¡½º Á¦ÀÛ
+// todo mystring í´ëž˜ìŠ¤ ì œìž‘

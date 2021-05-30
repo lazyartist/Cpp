@@ -1,4 +1,4 @@
-// #include : Çì´õÆÄÀÏÀ» ¿©±â¿¡ Æ÷ÇÔ½ÃÅ°´Â ±â´ÉÀÌ´Ù.
+// #include : í—¤ë”íŒŒì¼ì„ ì—¬ê¸°ì— í¬í•¨ì‹œí‚¤ëŠ” ê¸°ëŠ¥ì´ë‹¤.
 #include <iostream>
 #include <time.h>
 
@@ -12,43 +12,43 @@ void lotto();
 void baseball();
 void printNumbers2(int *numbers, int size);
 
-// ½ÇÇà°úÁ¤ : ÄÄÆÄÀÏ -> ºôµå -> ½ÇÇà
-// ÄÄÆÄÀÏ : ¹ø¿ªÀÛ¾÷ÀÌ´Ù.
-// Ctrl + Shift + B¸¦ ÀÌ¿ëÇØ¼­ ºôµå¸¦ ÇÒ ¼ö ÀÖ´Ù.
+// ì‹¤í–‰ê³¼ì • : ì»´íŒŒì¼ -> ë¹Œë“œ -> ì‹¤í–‰
+// ì»´íŒŒì¼ : ë²ˆì—­ìž‘ì—…ì´ë‹¤.
+// Ctrl + Shift + Bë¥¼ ì´ìš©í•´ì„œ ë¹Œë“œë¥¼ í•  ìˆ˜ ìžˆë‹¤.
 
-// C++ÀÇ ½ÃÀÛÁ¡Àº mainÇÔ¼öÀÌ´Ù. mainÇÔ¼ö´Â ¹Ýµå½Ã ÀÖ¾î¾ßÇÑ´Ù.
+// C++ì˜ ì‹œìž‘ì ì€ mainí•¨ìˆ˜ì´ë‹¤. mainí•¨ìˆ˜ëŠ” ë°˜ë“œì‹œ ìžˆì–´ì•¼í•œë‹¤.
 int main2() 
 {
-	// C++ Ç¥ÁØ ±â´ÉÀÇ ´ëºÎºÐÀº std¶ó´Â namespace ¾È¿¡ Á¸ÀçÇÏ°í ÀÖ´Ù.
-	// ÀÌ¸§ÀÌ °ãÄ¡´Â °ÍÀ» ¹æÁöÇØÁÖ±â À§ÇØ¼­ÀÌ´Ù.
-	// cout : ÄÜ¼ÖÃ¢¿¡ Ãâ·ÂÇØÁÖ´Â ±â´ÉÀÌ´Ù. µÚ¿¡ ÀÖ´Â "" ¾È¿¡ ÀÖ´Â ¹®ÀÚµéÀ» È­¸é¿¡ Ãâ·ÂÇØÁØ´Ù.
-	// endl : °³Çà±â´É
+	// C++ í‘œì¤€ ê¸°ëŠ¥ì˜ ëŒ€ë¶€ë¶„ì€ stdë¼ëŠ” namespace ì•ˆì— ì¡´ìž¬í•˜ê³  ìžˆë‹¤.
+	// ì´ë¦„ì´ ê²¹ì¹˜ëŠ” ê²ƒì„ ë°©ì§€í•´ì£¼ê¸° ìœ„í•´ì„œì´ë‹¤.
+	// cout : ì½˜ì†”ì°½ì— ì¶œë ¥í•´ì£¼ëŠ” ê¸°ëŠ¥ì´ë‹¤. ë’¤ì— ìžˆëŠ” "" ì•ˆì— ìžˆëŠ” ë¬¸ìžë“¤ì„ í™”ë©´ì— ì¶œë ¥í•´ì¤€ë‹¤.
+	// endl : ê°œí–‰ê¸°ëŠ¥
 	std::cout << "test" << std::endl;
 
-	cout << "std namespace »ç¿ë" << endl;
+	cout << "std namespace ì‚¬ìš©" << endl;
 
 	/*
-	º¯¼ö : º¯ÇÏ´Â ¼ö
-	¿ë·®ÀÇ ÃÖ¼Ò´ÜÀ§ : bit
+	ë³€ìˆ˜ : ë³€í•˜ëŠ” ìˆ˜
+	ìš©ëŸ‰ì˜ ìµœì†Œë‹¨ìœ„ : bit
 	1byte = 8bit
 	1kbyte = 1024byte
 	1mbyte = 1024kbyte
 	1gbyte = 1024mbyte
 	1tbyte = 1024gbyte
 
-	¹®ÀÚ¸¦ Ç¥ÇöÇÏ´Â ¹æ¹ý : ASCII ÄÚµå Ç¥¸¦ °¡Áö°í ÀÖ´Ù.
-	true : 0ÀÌ ¾Æ´Ñ ¸ðµç ¼ö, false : 0
+	ë¬¸ìžë¥¼ í‘œí˜„í•˜ëŠ” ë°©ë²• : ASCII ì½”ë“œ í‘œë¥¼ ê°€ì§€ê³  ìžˆë‹¤.
+	true : 0ì´ ì•„ë‹Œ ëª¨ë“  ìˆ˜, false : 0
 
-	Á¾·ù		|	¿ë·®		|	µ¥ÀÌÅÍ	|	Ç¥Çö¹üÀ§			|	unsigned	|
-	char	|	1byte	|	¹®ÀÚ		|	-128~127		|	0~255		|
-	bool	|	1byte	|	Âü/°ÅÁþ	|	true/false		|	true/false	|
-	short	|	2byte	|	Á¤¼ö		|	-32768~32767	|	0~65535		|
-	int		|	4byte	|	Á¤¼ö		|	¾à -22¾ï ~ 21¾ï	|	0~¾à 43¾ï	|
-	float	|	4byte	|	½Ç¼ö		|
-	double	|	8byte	|	½Ç¼ö		|
+	ì¢…ë¥˜		|	ìš©ëŸ‰		|	ë°ì´í„°	|	í‘œí˜„ë²”ìœ„			|	unsigned	|
+	char	|	1byte	|	ë¬¸ìž		|	-128~127		|	0~255		|
+	bool	|	1byte	|	ì°¸/ê±°ì§“	|	true/false		|	true/false	|
+	short	|	2byte	|	ì •ìˆ˜		|	-32768~32767	|	0~65535		|
+	int		|	4byte	|	ì •ìˆ˜		|	ì•½ -22ì–µ ~ 21ì–µ	|	0~ì•½ 43ì–µ	|
+	float	|	4byte	|	ì‹¤ìˆ˜		|
+	double	|	8byte	|	ì‹¤ìˆ˜		|
 	*/
 
-	/* ¼ýÀÚ ¸®ÅÍ·² Á¢¹Ì»ç https://boycoding.tistory.com/155
+	/* ìˆ«ìž ë¦¬í„°ëŸ´ ì ‘ë¯¸ì‚¬ https://boycoding.tistory.com/155
 	Data Type		Suffix										Meaning
 	int				u or U										unsigned int
 	int				l or L										long
@@ -59,33 +59,33 @@ int main2()
 	double			l or L										long double
 	*/
 
-	// = : ´ëÀÔ¿¬»êÀÚ, ¿À¸¥ÂÊÀÇ °ªÀ» ¿ÞÂÊ¿¡ ´ëÀÔÇÑ´Ù.
+	// = : ëŒ€ìž…ì—°ì‚°ìž, ì˜¤ë¥¸ìª½ì˜ ê°’ì„ ì™¼ìª½ì— ëŒ€ìž…í•œë‹¤.
 	int number = 10;
 	cout << number << endl;
 
 	bool bTest = true;
 	cout << bTest << endl;
 
-	// ¿µ¹®ÀÌ³ª ¼ýÀÚ´Â 1byte¸¦ Â÷ÁöÇÑ´Ù. ÇÏÁö¸¸ ÇÑ±ÛÀÌ³ª ÇÑ¹®, µîÀÇ ¹®ÀÚµéÀº 2byte¸¦ Â÷ÁöÇÏ±â ¶§¹®¿¡ char º¯¼ö ÇÏ³ª¿¡ ÀúÀåÇÏ±â°¡ Èûµé´Ù.
+	// ì˜ë¬¸ì´ë‚˜ ìˆ«ìžëŠ” 1byteë¥¼ ì°¨ì§€í•œë‹¤. í•˜ì§€ë§Œ í•œê¸€ì´ë‚˜ í•œë¬¸, ë“±ì˜ ë¬¸ìžë“¤ì€ 2byteë¥¼ ì°¨ì§€í•˜ê¸° ë•Œë¬¸ì— char ë³€ìˆ˜ í•˜ë‚˜ì— ì €ìž¥í•˜ê¸°ê°€ íž˜ë“¤ë‹¤.
 	char cTest = 't';
 	cout << cTest << endl;
 
-	float fNumber = 3.14; // f ¾ÈºÙÀÌ¸é doubleÇüÀÌµÈ´Ù.
+	float fNumber = 3.14; // f ì•ˆë¶™ì´ë©´ doubleí˜•ì´ëœë‹¤.
 	cout << fNumber << endl;
 
-	double dNumber = 3.14; // f ¾ÈºÙÀÌ¸é doubleÇüÀÌµÈ´Ù.
+	double dNumber = 3.14; // f ì•ˆë¶™ì´ë©´ doubleí˜•ì´ëœë‹¤.
 	cout << dNumber << endl;
 
-	// ³­¼ö Å×ÀÌºí ¹ß»ý
+	// ë‚œìˆ˜ í…Œì´ë¸” ë°œìƒ
 	srand((unsigned int)time(0));
 	cout << "random number : " << rand() << endl;
 
-	// ¿­°ÅÃ¼ Å¸ÀÔÀÇ º¯¼ö´Â ¹«Á¶°Ç 4byte¸¦ Â÷ÁöÇÏ°Ô µÈ³ª.
-	// sizeof(Å¸ÀÔ or º¯¼ö)¸¦ ÇÏ°Ô µÇ¸é ÇØ´ç Å¸ÀÔ È¤Àº º¯¼öÀÇ ¸Þ¸ð¸® Å©±â¸¦ ±¸ÇØÁØ¤§.
+	// ì—´ê±°ì²´ íƒ€ìž…ì˜ ë³€ìˆ˜ëŠ” ë¬´ì¡°ê±´ 4byteë¥¼ ì°¨ì§€í•˜ê²Œ ëœë‚˜.
+	// sizeof(íƒ€ìž… or ë³€ìˆ˜)ë¥¼ í•˜ê²Œ ë˜ë©´ í•´ë‹¹ íƒ€ìž… í˜¹ì€ ë³€ìˆ˜ì˜ ë©”ëª¨ë¦¬ í¬ê¸°ë¥¼ êµ¬í•´ì¤€ã„·.
 	NUM eNum;
 	cout << sizeof(NUM) << endl;
 
-	// typeid(Å¸ÀÔ or º¯¼ö).name()À» ÇÏ°Ô µÇ¸é typeid¾È¿¡ µé¾î°£ Å¸ÀÔ È¤Àº º¯¼öÀÇ Å¸ÀÔÀ» ¹®ÀÚ¿­·Î ¹ÝÈ¯ÇØÁØ´Ù.
+	// typeid(íƒ€ìž… or ë³€ìˆ˜).name()ì„ í•˜ê²Œ ë˜ë©´ typeidì•ˆì— ë“¤ì–´ê°„ íƒ€ìž… í˜¹ì€ ë³€ìˆ˜ì˜ íƒ€ìž…ì„ ë¬¸ìžì—´ë¡œ ë°˜í™˜í•´ì¤€ë‹¤.
 	cout << typeid(eNum).name() << endl;
 
 	//lotto();
@@ -98,7 +98,7 @@ int main2()
 void baseball() {
 	cout << "=== baseball ===" << endl;
 
-	// ¹è¿­ ÀÎµ¦½º¸¦ ¹þ¾î³µ´Âµ¥ »¸Áö¸¦ ¾Ê¾Ò´Ù.
+	// ë°°ì—´ ì¸ë±ìŠ¤ë¥¼ ë²—ì–´ë‚¬ëŠ”ë° ë»—ì§€ë¥¼ ì•Šì•˜ë‹¤.
 
 	// fill 1~9
 	const int numberRange = 9;

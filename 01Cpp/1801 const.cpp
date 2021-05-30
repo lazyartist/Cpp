@@ -4,32 +4,32 @@ using namespace std;
 
 /*
 const
-	º¯¼öÀÇ °ªÀ» º¯°æÇÏÁö ¾Ê°Ú´Ù´Â ¶æ
-	º¯¼ö¿¡ °´Ã¼°¡ µé¾îÀÖÀ» °æ¿ì ¸â¹öµéµµ °´Ã¼ÀÇ °ªÀÌ±â ¶§¹®¿¡ º¯°æÇÒ ¼ö ¾ø´Ù.
-		ÇÏÁö¸¸ °´Ã¼ÀÇ ¸â¹ö°¡ Æ÷ÀÎÅÍÀÌ°í ¿ªÂüÁ¶·Î ±× °ª¿¡ Á¢±ÙÇÑ´Ù¸é º¯°æÀÌ °¡´ÉÇÏ´Ù.
-		¿Ö³ÄÇÏ¸é Æ÷ÀÎÅÍ ÁÖ¼Ò°ªÀÌ ¸â¹öÀÌÁö ¿ªÂüÁ¶µÈ °ªÀÌ ¸â¹ö°¡ ¾Æ´Ï±â ¶§¹®ÀÌ´Ù.
+	ë³€ìˆ˜ì˜ ê°’ì„ ë³€ê²½í•˜ì§€ ì•Šê² ë‹¤ëŠ” ëœ»
+	ë³€ìˆ˜ì— ê°ì²´ê°€ ë“¤ì–´ìžˆì„ ê²½ìš° ë©¤ë²„ë“¤ë„ ê°ì²´ì˜ ê°’ì´ê¸° ë•Œë¬¸ì— ë³€ê²½í•  ìˆ˜ ì—†ë‹¤.
+		í•˜ì§€ë§Œ ê°ì²´ì˜ ë©¤ë²„ê°€ í¬ì¸í„°ì´ê³  ì—­ì°¸ì¡°ë¡œ ê·¸ ê°’ì— ì ‘ê·¼í•œë‹¤ë©´ ë³€ê²½ì´ ê°€ëŠ¥í•˜ë‹¤.
+		ì™œëƒí•˜ë©´ í¬ì¸í„° ì£¼ì†Œê°’ì´ ë©¤ë²„ì´ì§€ ì—­ì°¸ì¡°ëœ ê°’ì´ ë©¤ë²„ê°€ ì•„ë‹ˆê¸° ë•Œë¬¸ì´ë‹¤.
 
-¸Å°³º¯¼ö¸¦ const·Î ¹Þ´Â ÀÌÀ¯
-	const°¡ ¾Æ´Ï¸é 1, "a" µîÀÇ ¸®ÅÍ·² Å¸ÀÔÀ» ¹ÞÁö ¸øÇÑ´Ù.
-		¸®ÅÍ·² »ó¼ö¸¦ ºñconst º¯¼ö¿¡ ³Ö´Ù´Ï... ÄÄÆÄÀÏ ¿¡·¯.
-	ÇÏÁö¸¸ const·Î ÁöÁ¤ÇÏ¸é ¸®ÅÍ·² »ó¼ö¸¦ ¹ÞÀ» ¼ö ÀÖ°í
-	(const ¾Æ´Ñ)ÀÏ¹Ý º¯¼öµµ ¹ÞÀ» ¼ö ÀÖ´Ù.
-		¸Å°³º¯¼ö´Â ÇÔ¼ö ³»ºÎ¿¡¼­ »õ·Î »ý±â´Â º¯¼öÀÌ´Ù.
-		µû¶ó¼­ º¹»çµÈ °ª, ÂüÁ¶, Æ÷ÀÎÆ®ÀÇ Á¦ÇÑÀÚ¸¦ ´Ù½Ã ¼³Á¤ÇÏ´Â °ÍÀÌ °¡´ÉÇÏ´Ù.
-		´Ù¸¸ const °´Ã¼¸¦ ºñconst °´Ã¼·Î ¹Þ´Â °ÍÀº º¸¾ÈÀÌ Ç®¸®´Â °ÍÀÌ±â ¶§¹®¿¡ ºÒ°¡´ÉÇÏ´Ù.
+ë§¤ê°œë³€ìˆ˜ë¥¼ constë¡œ ë°›ëŠ” ì´ìœ 
+	constê°€ ì•„ë‹ˆë©´ 1, "a" ë“±ì˜ ë¦¬í„°ëŸ´ íƒ€ìž…ì„ ë°›ì§€ ëª»í•œë‹¤.
+		ë¦¬í„°ëŸ´ ìƒìˆ˜ë¥¼ ë¹„const ë³€ìˆ˜ì— ë„£ë‹¤ë‹ˆ... ì»´íŒŒì¼ ì—ëŸ¬.
+	í•˜ì§€ë§Œ constë¡œ ì§€ì •í•˜ë©´ ë¦¬í„°ëŸ´ ìƒìˆ˜ë¥¼ ë°›ì„ ìˆ˜ ìžˆê³ 
+	(const ì•„ë‹Œ)ì¼ë°˜ ë³€ìˆ˜ë„ ë°›ì„ ìˆ˜ ìžˆë‹¤.
+		ë§¤ê°œë³€ìˆ˜ëŠ” í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ ìƒˆë¡œ ìƒê¸°ëŠ” ë³€ìˆ˜ì´ë‹¤.
+		ë”°ë¼ì„œ ë³µì‚¬ëœ ê°’, ì°¸ì¡°, í¬ì¸íŠ¸ì˜ ì œí•œìžë¥¼ ë‹¤ì‹œ ì„¤ì •í•˜ëŠ” ê²ƒì´ ê°€ëŠ¥í•˜ë‹¤.
+		ë‹¤ë§Œ const ê°ì²´ë¥¼ ë¹„const ê°ì²´ë¡œ ë°›ëŠ” ê²ƒì€ ë³´ì•ˆì´ í’€ë¦¬ëŠ” ê²ƒì´ê¸° ë•Œë¬¸ì— ë¶ˆê°€ëŠ¥í•˜ë‹¤.
 */
 
 void _1801_const() {
-	cout << "===== »ó¼ö(constant)¶õ? =====" << endl;
+	cout << "===== ìƒìˆ˜(constant)ëž€? =====" << endl;
 	{
 		/*
-		»ó¼ö´Â º¯ÇÏÁö ¾Ê´Â º¯¼ö¸¦ ¶æÇÑ´Ù.
-		º¯¼ö´Ù!!!
-		º¯¼öÀÇ °ª°ú ¸â¹ö°¡ º¯ÇÏ¸é ¾ÈµÈ´Ù.
+		ìƒìˆ˜ëŠ” ë³€í•˜ì§€ ì•ŠëŠ” ë³€ìˆ˜ë¥¼ ëœ»í•œë‹¤.
+		ë³€ìˆ˜ë‹¤!!!
+		ë³€ìˆ˜ì˜ ê°’ê³¼ ë©¤ë²„ê°€ ë³€í•˜ë©´ ì•ˆëœë‹¤.
 
-		ÇÏÁö¸¸ const°¡ ¾Æ´Ñ º¯¼öÀÇ const ÂüÁ¶ º¯¼öÀÏ °æ¿ì
-		ÀÌ ÂüÁ¶º¯¼ö°¡ °¡¸®Å°´Â ´ë»óÀ» º¯°æÇÒ ¼ö´Â ¾øÁö¸¸ ÂüÁ¶º¯¼öÀÇ °ªÀº º¯°æÀÌ °¡´ÉÇÏ´Ù.
-			todo ¾îÂ¥ÇÇ ÂüÁ¶º¯¼ö´Â Ã³À½ ¼³Á¤µÈ ´ë»óÀ» ´Ù½Ã º¯°æ ºÒ°¡ÇÏÁö ¾Ê³ª?
+		í•˜ì§€ë§Œ constê°€ ì•„ë‹Œ ë³€ìˆ˜ì˜ const ì°¸ì¡° ë³€ìˆ˜ì¼ ê²½ìš°
+		ì´ ì°¸ì¡°ë³€ìˆ˜ê°€ ê°€ë¦¬í‚¤ëŠ” ëŒ€ìƒì„ ë³€ê²½í•  ìˆ˜ëŠ” ì—†ì§€ë§Œ ì°¸ì¡°ë³€ìˆ˜ì˜ ê°’ì€ ë³€ê²½ì´ ê°€ëŠ¥í•˜ë‹¤.
+			todo ì–´ì§œí”¼ ì°¸ì¡°ë³€ìˆ˜ëŠ” ì²˜ìŒ ì„¤ì •ëœ ëŒ€ìƒì„ ë‹¤ì‹œ ë³€ê²½ ë¶ˆê°€í•˜ì§€ ì•Šë‚˜?
 		*/
 
 		class A {
@@ -45,93 +45,93 @@ void _1801_const() {
 			//void operator=(A a) const {}
 		};
 
-		cout << "--- ÀÏ¹Ý º¯¼ö" << endl;
+		cout << "--- ì¼ë°˜ ë³€ìˆ˜" << endl;
 		{
 			/*
-			ÀÏ¹Ý(ºñ const) º¯¼ö´Â °ªÀ» ÀÚÀ¯·Ó°Ô º¯°æ °¡´É
+			ì¼ë°˜(ë¹„ const) ë³€ìˆ˜ëŠ” ê°’ì„ ìžìœ ë¡­ê²Œ ë³€ê²½ ê°€ëŠ¥
 			*/
-			A a; // °´Ã¼ »ý¼º
+			A a; // ê°ì²´ ìƒì„±
 			a.print(); // 00CFF7F0, 0
 
-			a = A(1); // A(1) ÀÓ½Ã°´Ã¼ »ý¼º -> a º¯¼ö¿¡ (¾èÀº)º¹»ç, (14 Operator - Type Cast by constructor Âü°í)
+			a = A(1); // A(1) ìž„ì‹œê°ì²´ ìƒì„± -> a ë³€ìˆ˜ì— (ì–•ì€)ë³µì‚¬, (14 Operator - Type Cast by constructor ì°¸ê³ )
 			a.print(); // 00CFF7F0, 1
 
-			a.i = 9; // °´Ã¼ ¸â¹ö º¯°æ
+			a.i = 9; // ê°ì²´ ë©¤ë²„ ë³€ê²½
 			a.print(); // 00CFF7F0, 9
 		}
 
-		cout << "--- const º¯¼ö" << endl;
+		cout << "--- const ë³€ìˆ˜" << endl;
 		{
 			/*
-			const º¯¼ö´Â °ª ¶Ç´Â ¸â¹ö º¯°æ ºÒ°¡
+			const ë³€ìˆ˜ëŠ” ê°’ ë˜ëŠ” ë©¤ë²„ ë³€ê²½ ë¶ˆê°€
 			*/
-			const A a; // °´Ã¼ »ý¼º
-			a.print(); // print()ÇÔ¼ö¿¡ const ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ÄÄÆÄÀÏ ¿¡·¯.
+			const A a; // ê°ì²´ ìƒì„±
+			a.print(); // print()í•¨ìˆ˜ì— const ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ì»´íŒŒì¼ ì—ëŸ¬.
 
-			//a = A(); // a¿¡ »õ·Î¿î °ª ´ëÀÔ : ÄÄÆÄÀÏ ¿¡·¯, "ÀÌ·¯ÇÑ ÇÇ¿¬»êÀÚ¿Í ÀÏÄ¡ÇÏ´Â '=' ¿¬»êÀÚ°¡ ¾ø½À´Ï´Ù."
-			// operator=() const ÇÔ¼ö°¡ ÀÖÀ¸¸é °¡´É, ÇÏÁö¸¸ ÄÄÆÄÀÏÀÌ °¡´ÉÇÒ»Ó ´ëÀÔ¿¬»ê ±âÈ£·Î a°¡ ¹Ù²îÁö ¾ÊÀ¸´Ï È¥¶õ½º·´´Ù.
+			//a = A(); // aì— ìƒˆë¡œìš´ ê°’ ëŒ€ìž… : ì»´íŒŒì¼ ì—ëŸ¬, "ì´ëŸ¬í•œ í”¼ì—°ì‚°ìžì™€ ì¼ì¹˜í•˜ëŠ” '=' ì—°ì‚°ìžê°€ ì—†ìŠµë‹ˆë‹¤."
+			// operator=() const í•¨ìˆ˜ê°€ ìžˆìœ¼ë©´ ê°€ëŠ¥, í•˜ì§€ë§Œ ì»´íŒŒì¼ì´ ê°€ëŠ¥í• ë¿ ëŒ€ìž…ì—°ì‚° ê¸°í˜¸ë¡œ aê°€ ë°”ë€Œì§€ ì•Šìœ¼ë‹ˆ í˜¼ëž€ìŠ¤ëŸ½ë‹¤.
 			
-			//a.i = 9; // const°´Ã¼ÀÇ ¸â¹ö º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, const °´Ã¼´Â ¸â¹ö º¯°æ ºÒ°¡
+			//a.i = 9; // constê°ì²´ì˜ ë©¤ë²„ ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, const ê°ì²´ëŠ” ë©¤ë²„ ë³€ê²½ ë¶ˆê°€
 
-			const A& b = a; // ÂüÁ¶ º¯¼ö »ý¼º : const°¡ ¾Æ´Ï¸é ÄÄÆÄÀÏ ¿¡·¯
-			const A* p = &a; // Æ÷ÀÎÅÍ º¯¼ö »ý¼º : const°¡ ¾Æ´Ï¸é ÄÄÆÄÀÏ ¿¡·¯
-			//p->i = 0; // p º¯¼öÀÇ ¸â¹ö º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, const A* Å¸ÀÔÀº A Å¸ÀÔÀÇ °ªÀ» ¹Ù²ÙÁö ¸øÇÏ´Â Æ÷ÀÎÅÍ¶ó´Â ¶æ
-			p = nullptr; // p º¯¼ö¿¡ »õ·Î¿î ÁÖ¼Ò ÇÒ´ç : °ªÀº ¹Ù²Ü¼ö ¾øÁö¸¸ Æ÷ÀÎÅÍ´Â º¯°æ °¡´É
+			const A& b = a; // ì°¸ì¡° ë³€ìˆ˜ ìƒì„± : constê°€ ì•„ë‹ˆë©´ ì»´íŒŒì¼ ì—ëŸ¬
+			const A* p = &a; // í¬ì¸í„° ë³€ìˆ˜ ìƒì„± : constê°€ ì•„ë‹ˆë©´ ì»´íŒŒì¼ ì—ëŸ¬
+			//p->i = 0; // p ë³€ìˆ˜ì˜ ë©¤ë²„ ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, const A* íƒ€ìž…ì€ A íƒ€ìž…ì˜ ê°’ì„ ë°”ê¾¸ì§€ ëª»í•˜ëŠ” í¬ì¸í„°ë¼ëŠ” ëœ»
+			p = nullptr; // p ë³€ìˆ˜ì— ìƒˆë¡œìš´ ì£¼ì†Œ í• ë‹¹ : ê°’ì€ ë°”ê¿€ìˆ˜ ì—†ì§€ë§Œ í¬ì¸í„°ëŠ” ë³€ê²½ ê°€ëŠ¥
 
-			const A* const pp = &a; // constant pointer to constant º¯¼ö »ý¼º
-			//pp = nullptr; // p º¯¼ö¿¡ »õ·Î¿î ÁÖ¼Ò ÇÒ´ç : ÄÄÆÄÀÏ ¿¡·¯, Æ÷ÀÎÅÍ º¯°æ ºÒ°¡
-			//(*pp).i = 0; // p ¸â¹ö º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, const °´Ã¼´Â ¸â¹ö º¯°æ ºÒ°¡
+			const A* const pp = &a; // constant pointer to constant ë³€ìˆ˜ ìƒì„±
+			//pp = nullptr; // p ë³€ìˆ˜ì— ìƒˆë¡œìš´ ì£¼ì†Œ í• ë‹¹ : ì»´íŒŒì¼ ì—ëŸ¬, í¬ì¸í„° ë³€ê²½ ë¶ˆê°€
+			//(*pp).i = 0; // p ë©¤ë²„ ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, const ê°ì²´ëŠ” ë©¤ë²„ ë³€ê²½ ë¶ˆê°€
 		}
 
-		cout << "--- ÀÏ¹Ý º¯¼öÀÇ const ÂüÁ¶" << endl;
+		cout << "--- ì¼ë°˜ ë³€ìˆ˜ì˜ const ì°¸ì¡°" << endl;
 		{
 			/*
-			ÀÏ¹Ý º¯¼öÀÇ const ÂüÁ¶ º¯¼ö´Â °ª, ¸â¹ö º¯°æ ºÒ°¡
-			ÇÏÁö¸¸ ¿øº»ÀÎ ÀÏ¹Ý º¯¼ö´Â °ª º¯°æ °¡´É
+			ì¼ë°˜ ë³€ìˆ˜ì˜ const ì°¸ì¡° ë³€ìˆ˜ëŠ” ê°’, ë©¤ë²„ ë³€ê²½ ë¶ˆê°€
+			í•˜ì§€ë§Œ ì›ë³¸ì¸ ì¼ë°˜ ë³€ìˆ˜ëŠ” ê°’ ë³€ê²½ ê°€ëŠ¥
 			*/
-			A a; // ÀÏ¹Ý º¯¼ö
-			const A& b = a; // const ÂüÁ¶ º¯¼ö »ý¼º
+			A a; // ì¼ë°˜ ë³€ìˆ˜
+			const A& b = a; // const ì°¸ì¡° ë³€ìˆ˜ ìƒì„±
 			
-			a.i = 0; // ÀÏ¹Ý º¯¼ö ¸â¹ö º¯°æ
-			//b.i = 0; // const ÂüÁ¶ º¯¼ö ¸â¹ö º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, const ÂüÁ¶ º¯¼ö·Î ¸â¹ö º¯°æ ºÒ°¡.
+			a.i = 0; // ì¼ë°˜ ë³€ìˆ˜ ë©¤ë²„ ë³€ê²½
+			//b.i = 0; // const ì°¸ì¡° ë³€ìˆ˜ ë©¤ë²„ ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, const ì°¸ì¡° ë³€ìˆ˜ë¡œ ë©¤ë²„ ë³€ê²½ ë¶ˆê°€.
 		}
 
-		cout << "--- ÀÏ¹Ý º¯¼öÀÇ Æ÷ÀÎÅÍ »ó¼ö(pointer to constant)" << endl;
+		cout << "--- ì¼ë°˜ ë³€ìˆ˜ì˜ í¬ì¸í„° ìƒìˆ˜(pointer to constant)" << endl;
 		{
 			/*
-			Æ÷ÀÎÅÍ »ó¼ö(pointer to constant)´Â Æ÷ÀÎÅÍ´Â º¯°æ °¡´É, Æ÷ÀÎÅÍ°¡ °¡¸®Å°´Â °ª(»ó¼ö)Àº º¯°æ ºÒ°¡
+			í¬ì¸í„° ìƒìˆ˜(pointer to constant)ëŠ” í¬ì¸í„°ëŠ” ë³€ê²½ ê°€ëŠ¥, í¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ” ê°’(ìƒìˆ˜)ì€ ë³€ê²½ ë¶ˆê°€
 			*/
-			A a; // ÀÏ¹Ý º¯¼ö
-			const A* p = &a; // pointer to constant »ý¼º, °¡¸®Å°´Â °ªÀÌ const
+			A a; // ì¼ë°˜ ë³€ìˆ˜
+			const A* p = &a; // pointer to constant ìƒì„±, ê°€ë¦¬í‚¤ëŠ” ê°’ì´ const
 
-			//p->i = 0; // °ª(¸â¹ö) º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, °ªÀÌ const
-			p = nullptr; // Æ÷ÀÎÅÍ º¯°æ : Æ÷ÀÎÅÍ´Â const°¡ ¾Æ´Ï´Ù.
+			//p->i = 0; // ê°’(ë©¤ë²„) ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, ê°’ì´ const
+			p = nullptr; // í¬ì¸í„° ë³€ê²½ : í¬ì¸í„°ëŠ” constê°€ ì•„ë‹ˆë‹¤.
 		}
 
-		cout << "--- ÀÏ¹Ý º¯¼öÀÇ »ó¼ö Æ÷ÀÎÅÍ »ó¼ö(constant pointer to constant)" << endl;
+		cout << "--- ì¼ë°˜ ë³€ìˆ˜ì˜ ìƒìˆ˜ í¬ì¸í„° ìƒìˆ˜(constant pointer to constant)" << endl;
 		{
 			/*
-			»ó¼ö Æ÷ÀÎÅÍ »ó¼ö(constant pointer to constant)´Â Æ÷ÀÎÅÍ, °ª ¸ðµÎ º¯°æ ºÒ°¡
+			ìƒìˆ˜ í¬ì¸í„° ìƒìˆ˜(constant pointer to constant)ëŠ” í¬ì¸í„°, ê°’ ëª¨ë‘ ë³€ê²½ ë¶ˆê°€
 			*/
-			A a; // ÀÏ¹Ý º¯¼ö
-			const A* const p = &a; // constant pointer to constant Æ÷ÀÎÅÍ »ý¼º : °ª°ú Æ÷ÀÎÅÍ ¸ðµÎ const
+			A a; // ì¼ë°˜ ë³€ìˆ˜
+			const A* const p = &a; // constant pointer to constant í¬ì¸í„° ìƒì„± : ê°’ê³¼ í¬ì¸í„° ëª¨ë‘ const
 
-			//p->i = 0; // ¸â¹ö º¯°æ : ÄÄÆÄÀÏ ¿¡·¯, °ªÀÌ const
-			//p = nullptr; // Æ÷ÀÎÅÍ º¯°æ : Æ÷ÀÎÅÍ°¡ const
+			//p->i = 0; // ë©¤ë²„ ë³€ê²½ : ì»´íŒŒì¼ ì—ëŸ¬, ê°’ì´ const
+			//p = nullptr; // í¬ì¸í„° ë³€ê²½ : í¬ì¸í„°ê°€ const
 		}
 	}
 
-	cout << "const ¸â¹öÇÔ¼ö, ºñ const ¸â¹öÇÔ¼ö" << endl;
+	cout << "const ë©¤ë²„í•¨ìˆ˜, ë¹„ const ë©¤ë²„í•¨ìˆ˜" << endl;
 	{
 		/*
-		const ¸â¹öÇÔ¼ö: 
-			ÇÔ¼ö ³»¿¡¼­ ¸â¹ö º¯¼ö¸¦ º¯°æÇÏÁö ¾Ê´Â´Ù´Â °ÍÀ» º¸Àå
-			const °´Ã¼´Â const ¸â¹öÇÔ¼ö¸¸ È£Ãâ °¡´É
+		const ë©¤ë²„í•¨ìˆ˜: 
+			í•¨ìˆ˜ ë‚´ì—ì„œ ë©¤ë²„ ë³€ìˆ˜ë¥¼ ë³€ê²½í•˜ì§€ ì•ŠëŠ”ë‹¤ëŠ” ê²ƒì„ ë³´ìž¥
+			const ê°ì²´ëŠ” const ë©¤ë²„í•¨ìˆ˜ë§Œ í˜¸ì¶œ ê°€ëŠ¥
 		*/
 		class A {
 		public:
-			void cf() const /* ÀÌ ÇÔ¼ö¿¡¼­ ¸â¹öº¯¼ö¸¦ º¯°æÇÏÁö ¾ÊÀ½À» º¸Àå */ {
-				//i++; // ÄÄÆÄÀÏ ¿¡·¯
+			void cf() const /* ì´ í•¨ìˆ˜ì—ì„œ ë©¤ë²„ë³€ìˆ˜ë¥¼ ë³€ê²½í•˜ì§€ ì•ŠìŒì„ ë³´ìž¥ */ {
+				//i++; // ì»´íŒŒì¼ ì—ëŸ¬
 				cout << "cf" << endl;
 			}
 
@@ -148,37 +148,37 @@ void _1801_const() {
 
 		const A b;
 		b.cf(); // cf
-		//b.f(); // ÄÄÆÄÀÏ ¿¡·¯, const °´Ã¼´Â const ÇÔ¼ö¸¸ È£ÃâÇÒ ¼ö ÀÖ´Ù.
+		//b.f(); // ì»´íŒŒì¼ ì—ëŸ¬, const ê°ì²´ëŠ” const í•¨ìˆ˜ë§Œ í˜¸ì¶œí•  ìˆ˜ ìžˆë‹¤.
 	}
 
-	cout << "»ó¼ö Æ÷ÀÎÅÍ(constant pointer), »ó¼ö Áö½Ã Æ÷ÀÎÅÍ(pointer to constant), »ó¼ö Áö½Ã »ó¼ö Æ÷ÀÎÅÍ(constant pointer to constant), ¹è¿­ Æ÷ÀÎÅÍ, »ó¼ö ¹è¿­ Æ÷ÀÎÅÍ" << endl;
+	cout << "ìƒìˆ˜ í¬ì¸í„°(constant pointer), ìƒìˆ˜ ì§€ì‹œ í¬ì¸í„°(pointer to constant), ìƒìˆ˜ ì§€ì‹œ ìƒìˆ˜ í¬ì¸í„°(constant pointer to constant), ë°°ì—´ í¬ì¸í„°, ìƒìˆ˜ ë°°ì—´ í¬ì¸í„°" << endl;
 	{
 		// https://thrillfighter.tistory.com/88
 		char ch = 'a';
 
-		// »ó¼ö Æ÷ÀÎÅÍ(constant pointer): Æ÷ÀÎÅÍ°¡ »ó¼ö¶ó¼­ Æ÷ÀÎÅÍ¸¦ º¯°æÇÒ ¼ö ¾ø´Ù.
+		// ìƒìˆ˜ í¬ì¸í„°(constant pointer): í¬ì¸í„°ê°€ ìƒìˆ˜ë¼ì„œ í¬ì¸í„°ë¥¼ ë³€ê²½í•  ìˆ˜ ì—†ë‹¤.
 		char* const cp = &ch;
-		//cp = &ch; // Æ÷ÀÎÅÍ ÀçÇÒ´ç: ºÒ°¡
-		cp[0] = 'b'; // °ª ÇÒ´ç: °¡´É
+		//cp = &ch; // í¬ì¸í„° ìž¬í• ë‹¹: ë¶ˆê°€
+		cp[0] = 'b'; // ê°’ í• ë‹¹: ê°€ëŠ¥
 
-		// »ó¼ö Áö½Ã Æ÷ÀÎÅÍ(pointer to constant): Æ÷ÀÎÅÍ°¡ °¡¸®Å°´Â ´ë»óÀÌ »ó¼ö¶ó¼­ °ªÀ» º¯°æÇÒ ¼ö ¾ø´Ù. Æ÷ÀÎÅÍ´Â ´Ù¸¥°ªÀ» ÇÒ´çÇÒ ¼ö ÀÖ´Ù.
-		const char* p2c = &ch; // ÇÒ´çÇÏ´Â º¯¼ö°¡ const°¡ ¾Æ´Ï¾îµµ ÇÒ´çÇÏ´Â º¯¼ö¿Í »ó°ü¾øÀÌ p2c º¯¼ö´Â °ªÀ» º¯°æÇÏÁö ¾Ê°Ú´Ù´Â ¶æÀÌ¹Ç·Î ÇÒ´ç°¡´É.
-		p2c = &ch; // Æ÷ÀÎÅÍ ÀçÇÒ´ç: °¡´É
-		//p2c[0] = 'b'; // °ª ÇÒ´ç: ºÒ°¡(½ÄÀÌ ¼öÁ¤ÇÒ ¼ö ÀÖ´Â lvalue¿©¾ß ÇÕ´Ï´Ù.)
+		// ìƒìˆ˜ ì§€ì‹œ í¬ì¸í„°(pointer to constant): í¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ” ëŒ€ìƒì´ ìƒìˆ˜ë¼ì„œ ê°’ì„ ë³€ê²½í•  ìˆ˜ ì—†ë‹¤. í¬ì¸í„°ëŠ” ë‹¤ë¥¸ê°’ì„ í• ë‹¹í•  ìˆ˜ ìžˆë‹¤.
+		const char* p2c = &ch; // í• ë‹¹í•˜ëŠ” ë³€ìˆ˜ê°€ constê°€ ì•„ë‹ˆì–´ë„ í• ë‹¹í•˜ëŠ” ë³€ìˆ˜ì™€ ìƒê´€ì—†ì´ p2c ë³€ìˆ˜ëŠ” ê°’ì„ ë³€ê²½í•˜ì§€ ì•Šê² ë‹¤ëŠ” ëœ»ì´ë¯€ë¡œ í• ë‹¹ê°€ëŠ¥.
+		p2c = &ch; // í¬ì¸í„° ìž¬í• ë‹¹: ê°€ëŠ¥
+		//p2c[0] = 'b'; // ê°’ í• ë‹¹: ë¶ˆê°€(ì‹ì´ ìˆ˜ì •í•  ìˆ˜ ìžˆëŠ” lvalueì—¬ì•¼ í•©ë‹ˆë‹¤.)
 
-		// »ó¼ö Áö½Ã »ó¼ö Æ÷ÀÎÅÍ(constant pointer to constant) : Æ÷ÀÎÅÍ°¡ »ó¼öÀÌ°í °¡¸®Å°´Â ´ë»óµµ »ó¼ö
+		// ìƒìˆ˜ ì§€ì‹œ ìƒìˆ˜ í¬ì¸í„°(constant pointer to constant) : í¬ì¸í„°ê°€ ìƒìˆ˜ì´ê³  ê°€ë¦¬í‚¤ëŠ” ëŒ€ìƒë„ ìƒìˆ˜
 		const char* const cp2c = &ch;
-		//cp2c = &ch; // Æ÷ÀÎÅÍ ÀçÇÒ´ç: ºÒ°¡
-		//cp2c[0] = 'b'; // °ª ÇÒ´ç: ºÒ°¡
+		//cp2c = &ch; // í¬ì¸í„° ìž¬í• ë‹¹: ë¶ˆê°€
+		//cp2c[0] = 'b'; // ê°’ í• ë‹¹: ë¶ˆê°€
 
-		// ¹è¿­ Æ÷ÀÎÅÍ: ¹è¿­Àº Æ÷ÀÎÅÍ ÁÖ¼Ò¸¦ º¯°æÇÒ ¼ö ¾ø´Â Æ÷ÀÎÅÍ·Î¼­ constant pointer¿Í °°Àº ±â´ÉÀ» ÇÑ´Ù.
+		// ë°°ì—´ í¬ì¸í„°: ë°°ì—´ì€ í¬ì¸í„° ì£¼ì†Œë¥¼ ë³€ê²½í•  ìˆ˜ ì—†ëŠ” í¬ì¸í„°ë¡œì„œ constant pointerì™€ ê°™ì€ ê¸°ëŠ¥ì„ í•œë‹¤.
 		char ap[] = "a";
-		//ap = &ch; // Æ÷ÀÎÅÍ ÀçÇÒ´ç: ºÒ°¡
-		ap[0] = 'b'; // °ª ÇÒ´ç: °¡´É
+		//ap = &ch; // í¬ì¸í„° ìž¬í• ë‹¹: ë¶ˆê°€
+		ap[0] = 'b'; // ê°’ í• ë‹¹: ê°€ëŠ¥
 
-		// »ó¼ö ¹è¿­ Æ÷ÀÎÅÍ: »ó¼ö¸¦ ¿ä¼Ò·Î °¡Áö´Â ¹è¿­
+		// ìƒìˆ˜ ë°°ì—´ í¬ì¸í„°: ìƒìˆ˜ë¥¼ ìš”ì†Œë¡œ ê°€ì§€ëŠ” ë°°ì—´
 		const char cap[] = "a";
-		//cap = &ch; // Æ÷ÀÎÅÍ ÀçÇÒ´ç: ºÒ°¡
-		//cap[0] = 'b'; // °ª ÇÒ´ç: ºÒ°¡
+		//cap = &ch; // í¬ì¸í„° ìž¬í• ë‹¹: ë¶ˆê°€
+		//cap[0] = 'b'; // ê°’ í• ë‹¹: ë¶ˆê°€
 	}
 }

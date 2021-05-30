@@ -9,11 +9,11 @@ void _1201_reference() {
 	cout << "reference" << endl;
 	{
 		/*
-		·¹ÆÛ·±½º : ´Ù¸¥ ´ë»óÀ» ÂüÁ¶ÇÏ°Ô ¸¸µé¾îÁÖ´Â ±â´É
-		ÂüÁ¶¸¦ ÇÏ°Ô µÇ¸é ±× ´ë»ó¿¡ Á¢±ÙÇÏ¿© °ªÀ» º¯°æÇÒ ¼ö ÀÖ´Ù.
-		´Ü, ·¹ÆÛ·±½º´Â Ã³À½ ·¹ÆÛ·±½º º¯¼ö »ý¼º½Ã ÂüÁ¶ÇÏ´Â ´ë»óÀ» ÁöÁ¤ÇØ ÁÖ¾î¾ß ÇÑ´Ù.
-		´Ù¸¥ ´ë»óÀ¸·Î º¯°æÇÒ ¼ö ¾ø´Ù.
-		º¯¼öÅ¸ÀÔ &·¹ÆÛ·±½º¸í = ÂüÁ¶ÇÒ º¯¼ö¸í;
+		ë ˆí¼ëŸ°ìŠ¤ : ë‹¤ë¥¸ ëŒ€ìƒì„ ì°¸ì¡°í•˜ê²Œ ë§Œë“¤ì–´ì£¼ëŠ” ê¸°ëŠ¥
+		ì°¸ì¡°ë¥¼ í•˜ê²Œ ë˜ë©´ ê·¸ ëŒ€ìƒì— ì ‘ê·¼í•˜ì—¬ ê°’ì„ ë³€ê²½í•  ìˆ˜ ìžˆë‹¤.
+		ë‹¨, ë ˆí¼ëŸ°ìŠ¤ëŠ” ì²˜ìŒ ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜ ìƒì„±ì‹œ ì°¸ì¡°í•˜ëŠ” ëŒ€ìƒì„ ì§€ì •í•´ ì£¼ì–´ì•¼ í•œë‹¤.
+		ë‹¤ë¥¸ ëŒ€ìƒìœ¼ë¡œ ë³€ê²½í•  ìˆ˜ ì—†ë‹¤.
+		ë³€ìˆ˜íƒ€ìž… &ë ˆí¼ëŸ°ìŠ¤ëª… = ì°¸ì¡°í•  ë³€ìˆ˜ëª…;
 		int &num = num;
 		*/
 		int iNumber = 100;
@@ -26,36 +26,36 @@ void _1201_reference() {
 	{
 		// https://modoocode.com/227
 		/*
-		lvalue : ÁÖ¼Ò°ªÀ» ÃëÇÒ ¼ö ÀÖ´Â °ª. ¿ÞÂÊ, ¿À¸¥ÂÊ¿¡ ¿Ã ¼ö ÀÖ´Ù.
-		rvalue : ÁÖ¼Ò°ªÀ» ÃëÇÒ ¼ö ¾ø´Â °ª. ¿À¸¥ÂÊ¿¡¸¸ ¿Ã ¼ö ÀÖ´Ù. ¹®Àå ½ÇÇà ½Ã¿¡¸¸ Á¸ÀçÇÏ°í ¹®Àå ½ÇÇàÀÌ ³¡³ª¸é »ç¶óÁø´Ù.
+		lvalue : ì£¼ì†Œê°’ì„ ì·¨í•  ìˆ˜ ìžˆëŠ” ê°’. ì™¼ìª½, ì˜¤ë¥¸ìª½ì— ì˜¬ ìˆ˜ ìžˆë‹¤.
+		rvalue : ì£¼ì†Œê°’ì„ ì·¨í•  ìˆ˜ ì—†ëŠ” ê°’. ì˜¤ë¥¸ìª½ì—ë§Œ ì˜¬ ìˆ˜ ìžˆë‹¤. ë¬¸ìž¥ ì‹¤í–‰ ì‹œì—ë§Œ ì¡´ìž¬í•˜ê³  ë¬¸ìž¥ ì‹¤í–‰ì´ ëë‚˜ë©´ ì‚¬ë¼ì§„ë‹¤.
 		*/
 
-		// todo : rvalue reference Á¤¸®
-		// ´ëÀÔ, ÇÒ´ç ½Ã º¹»ç »ý¼ºÀÚ°¡ È£ÃâµÈ´Ù.
-		// lvalue = lvalue; // ÀÓ½Ã°´Ã¼ »ý¼º -> º¹»ç »ý¼ºÀÚ È£Ãâ -> ±íÀº º¹»ç
-		// lvalue = rvalue; // ±âÁ¸¿¡´Â À§¿Í µ¿ÀÏÇÏ°Ô ±íÀº º¹»ç¸¦ ÇÏ¿´´Ù.
-		// C++11¿¡¼­ »ý±ä rvalue reference(&&)·Î ÀÎÇØ ÀÎÀÚ Å¸ÀÔ¿¡ &&¸¦ ³ÖÀ¸¸é rvalue°ªÀ» ¹ÞÀ» ¼ö ÀÖ´Ù.
-		// µû¶ó¼­ rvalue·Î ¹ÞÀº °ªÀ» (±íÀº)º¹»çÇÏÁö ¾Ê°í Æ÷ÀÎÅÍ º¹»ç¸¸ÇÏ°í ¿øº»°ªÀ» nullptr·Î ¸¸µé¾îÁØ´Ù.
-		// ¿øº» °´Ã¼°¡ ¼Ò¸êµÉ¶§ destructor¿¡ ÀÇÇØ nullptrÀÎ º¯¼öÀÇ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇÏÁö ¾Ê°Ô µÈ´Ù.
-		// µû¶ó¼­ º¹»çµÈ °´Ã¼´Â ¿øº» °´Ã¼ÀÇ ¸Þ¸ð¸®ÀÇ °ªÀ» »ç¿ëÇÒ ¼ö ÀÖ°Ô µÈ´Ù.
-		// °á·ÐÀûÀ¸·Î &&·Î ÀÎÇØ rvalue¸¦ ±¸ºÐÇÒ ¼ö ÀÖ°Ô µÆ°í rvalue´Â ÀÓ½Ã°´Ã¼·Î ¹Ù·Î »ç¶óÁú °´Ã¼ÀÌ±â ¶§¹®¿¡ 
-		// move¶ó´Â ¹æ½ÄÀ¸·Î ¿øº» °´Ã¼ÀÇ °ªÀ» ÀÌµ¿½ÃÄÑ¼­ ÇÊ¿ä¾ø´Â ºÎÇÏ¸¦ ÁÙ¿©ÁÙ ¼ö ÀÖ°Ô µÆ´Ù.
+		// todo : rvalue reference ì •ë¦¬
+		// ëŒ€ìž…, í• ë‹¹ ì‹œ ë³µì‚¬ ìƒì„±ìžê°€ í˜¸ì¶œëœë‹¤.
+		// lvalue = lvalue; // ìž„ì‹œê°ì²´ ìƒì„± -> ë³µì‚¬ ìƒì„±ìž í˜¸ì¶œ -> ê¹Šì€ ë³µì‚¬
+		// lvalue = rvalue; // ê¸°ì¡´ì—ëŠ” ìœ„ì™€ ë™ì¼í•˜ê²Œ ê¹Šì€ ë³µì‚¬ë¥¼ í•˜ì˜€ë‹¤.
+		// C++11ì—ì„œ ìƒê¸´ rvalue reference(&&)ë¡œ ì¸í•´ ì¸ìž íƒ€ìž…ì— &&ë¥¼ ë„£ìœ¼ë©´ rvalueê°’ì„ ë°›ì„ ìˆ˜ ìžˆë‹¤.
+		// ë”°ë¼ì„œ rvalueë¡œ ë°›ì€ ê°’ì„ (ê¹Šì€)ë³µì‚¬í•˜ì§€ ì•Šê³  í¬ì¸í„° ë³µì‚¬ë§Œí•˜ê³  ì›ë³¸ê°’ì„ nullptrë¡œ ë§Œë“¤ì–´ì¤€ë‹¤.
+		// ì›ë³¸ ê°ì²´ê°€ ì†Œë©¸ë ë•Œ destructorì— ì˜í•´ nullptrì¸ ë³€ìˆ˜ì˜ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•˜ì§€ ì•Šê²Œ ëœë‹¤.
+		// ë”°ë¼ì„œ ë³µì‚¬ëœ ê°ì²´ëŠ” ì›ë³¸ ê°ì²´ì˜ ë©”ëª¨ë¦¬ì˜ ê°’ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆê²Œ ëœë‹¤.
+		// ê²°ë¡ ì ìœ¼ë¡œ &&ë¡œ ì¸í•´ rvalueë¥¼ êµ¬ë¶„í•  ìˆ˜ ìžˆê²Œ ëê³  rvalueëŠ” ìž„ì‹œê°ì²´ë¡œ ë°”ë¡œ ì‚¬ë¼ì§ˆ ê°ì²´ì´ê¸° ë•Œë¬¸ì— 
+		// moveë¼ëŠ” ë°©ì‹ìœ¼ë¡œ ì›ë³¸ ê°ì²´ì˜ ê°’ì„ ì´ë™ì‹œì¼œì„œ í•„ìš”ì—†ëŠ” ë¶€í•˜ë¥¼ ì¤„ì—¬ì¤„ ìˆ˜ ìžˆê²Œ ëë‹¤.
 		// 
 		// https://spikez.tistory.com/305
 
 
 
 		/*
-		º¹»ç »ý¼ºÀÚÀÇ ÀÎÀÚ°¡ constÀÎ °æ¿ì rvalue°ªÀÌ¶óµµ º¹»ç »ý¼ºÀÚ°¡ È£ÃâµÉ ¼ö ÀÖ´Ù.
-			ÀÎÀÚ°¡ constÀÌ¸é ÇÔ¼ö ³»ºÎ¿¡¼­ lvalue·Î »ç¿ëÇÒ ¼ö ¾ø±â ¶§¹®¿¡ 
-			¿¹¿ÜÀûÀ¸·Î const ÀÎÀÚ¶ó¸é rvalueµµ ¹ÞÀ» ¼ö ÀÖ´Ù.
+		ë³µì‚¬ ìƒì„±ìžì˜ ì¸ìžê°€ constì¸ ê²½ìš° rvalueê°’ì´ë¼ë„ ë³µì‚¬ ìƒì„±ìžê°€ í˜¸ì¶œë  ìˆ˜ ìžˆë‹¤.
+			ì¸ìžê°€ constì´ë©´ í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ lvalueë¡œ ì‚¬ìš©í•  ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— 
+			ì˜ˆì™¸ì ìœ¼ë¡œ const ì¸ìžë¼ë©´ rvalueë„ ë°›ì„ ìˆ˜ ìžˆë‹¤.
 
-		vector¿¡ ÀÌµ¿»ý¼ºÀÚ°¡ Á¤ÀÇµÈ °´Ã¼¸¦ ³ÖÀ¸·Á¸é ÀÌµ¿ »ý¼ºÀÚ¸¦ ¹Ýµå½Ã noexcept·Î ¸í½ÃÇØ¾ßÇÑ´Ù.
-			vector´Â ¸Þ¸ð¸®°¡ ºÎÁ·ÇÒ ¶§ ´õ Å« ¸Þ¸ð¸®¸¦ ÇÒ´çÇÏ°í ±âÁ¸ ¿ø¼Ò¸¦ »õ·Î¿î ¸Þ¸ð¸®·Î ¿Å±â¸ç º¹»ç»ý¼ºÀ» ÇÑ´Ù.
-			ÀÌ ¶§ ¿¡·¯°¡ ³ª¸é »õ·Î¿î ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇÏ´Âµ¥ ¿øº»ÀÌ ³²¾ÆÀÖ±â ¶§¹®¿¡ ¾Æ¹«·± ¹®Á¦°¡ ¾ø´Ù.
-			ÇÏÁö¸¸ ÀÌµ¿ »ý¼ºÀÚ·Î ÀÌµ¿À» ½ÃÄ×´Ù¸é ±âÁ¸ ¸Þ¸ð¸®¿¡ ¿øº»ÀÌ ³²¾ÆÀÖÁö ¾Ê±â ¶§¹®¿¡ Ã³¸®ÇÒ ¼ö°¡ ¾ø°ÔµÈ´Ù.
-			µû¶ó¼­ vector¿Í °°Àº ÄÁÅ×ÀÌ³ÊµéÀº noexcept·Î ¿¡·¯°¡ ¾È³­´Ù°í ¸í½ÃµÈ °æ¿ì¿¡´Â ÀÌµ¿ »ý¼ºÀÚ¸¦ »ç¿ëÇÏ°í
-			±×·¸Áö ¾ÊÀº °æ¿ì º¹»ç »ý¼ºÀÚ¸¦ »ç¿ëÇÑ´Ù.
+		vectorì— ì´ë™ìƒì„±ìžê°€ ì •ì˜ëœ ê°ì²´ë¥¼ ë„£ìœ¼ë ¤ë©´ ì´ë™ ìƒì„±ìžë¥¼ ë°˜ë“œì‹œ noexceptë¡œ ëª…ì‹œí•´ì•¼í•œë‹¤.
+			vectorëŠ” ë©”ëª¨ë¦¬ê°€ ë¶€ì¡±í•  ë•Œ ë” í° ë©”ëª¨ë¦¬ë¥¼ í• ë‹¹í•˜ê³  ê¸°ì¡´ ì›ì†Œë¥¼ ìƒˆë¡œìš´ ë©”ëª¨ë¦¬ë¡œ ì˜®ê¸°ë©° ë³µì‚¬ìƒì„±ì„ í•œë‹¤.
+			ì´ ë•Œ ì—ëŸ¬ê°€ ë‚˜ë©´ ìƒˆë¡œìš´ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•˜ëŠ”ë° ì›ë³¸ì´ ë‚¨ì•„ìžˆê¸° ë•Œë¬¸ì— ì•„ë¬´ëŸ° ë¬¸ì œê°€ ì—†ë‹¤.
+			í•˜ì§€ë§Œ ì´ë™ ìƒì„±ìžë¡œ ì´ë™ì„ ì‹œì¼°ë‹¤ë©´ ê¸°ì¡´ ë©”ëª¨ë¦¬ì— ì›ë³¸ì´ ë‚¨ì•„ìžˆì§€ ì•Šê¸° ë•Œë¬¸ì— ì²˜ë¦¬í•  ìˆ˜ê°€ ì—†ê²Œëœë‹¤.
+			ë”°ë¼ì„œ vectorì™€ ê°™ì€ ì»¨í…Œì´ë„ˆë“¤ì€ noexceptë¡œ ì—ëŸ¬ê°€ ì•ˆë‚œë‹¤ê³  ëª…ì‹œëœ ê²½ìš°ì—ëŠ” ì´ë™ ìƒì„±ìžë¥¼ ì‚¬ìš©í•˜ê³ 
+			ê·¸ë ‡ì§€ ì•Šì€ ê²½ìš° ë³µì‚¬ ìƒì„±ìžë¥¼ ì‚¬ìš©í•œë‹¤.
 		*/
 
 	}

@@ -1,11 +1,11 @@
-// #pragma once : ÀÌ Çì´õÆÄÀÏÀ» µü 1¹ø¸¸ Æ÷ÇÔ½ÃÅ°°Ú´Ù ¶ó´Â ÀÇ¹Ì
+// #pragma once : ì´ í—¤ë”íŒŒì¼ì„ ë”± 1ë²ˆë§Œ í¬í•¨ì‹œí‚¤ê² ë‹¤ ë¼ëŠ” ì˜ë¯¸
 #pragma once
 
 #include <iostream>
 
 using namespace std;
 
-// Çì´õÆÄÀÏ¿¡´Â º¸Åë ÇÔ¼ö ¼±¾ð ºÎºÐÀ» ¸¸µé¾îÁØ´Ù.
+// í—¤ë”íŒŒì¼ì—ëŠ” ë³´í†µ í•¨ìˆ˜ ì„ ì–¸ ë¶€ë¶„ì„ ë§Œë“¤ì–´ì¤€ë‹¤.
 
 typedef struct _Node {
 	int Data = 0;
@@ -28,15 +28,15 @@ PNode SearchNode(PList pList, int keyword);
 void SortList_Bubble(PList pList, bool bAsc);
 void PrintList(const char * title, PList pList);
 
-// Çì´õÆÄÀÏÀº ÇÔ¼öµîÀ» ¼±¾ðÇÏ´Â °÷ÀÌ´Ù.
-// cpp ÆÄÀÏÀº ±¸ÇöÇÏ´Â °÷À¸·Î °¢ cpp ¸¶´Ù ÇÏ³ª¾¿ obj ÆÄÀÏÀÌ ¸¸µé¾îÁø´Ù.
-// ÄÄÆÄÀÏ ½Ã Ã¹¹øÂ°·Î ¼Ò½ºÄÚµå¸¦ obj ÆÄÀÏ·Î ¸¸µé°í ÀÌ obj ÆÄÀÏÀ» ¿¬°á(¸µÅ©)ÇÏ¿© exe ÆÄÀÏÀ» ¸¸µé°Ô µÈ´Ù.
-// ¸µÅ©°úÁ¤Àº ºôµå°úÁ¤ÀÎ°¡?
+// í—¤ë”íŒŒì¼ì€ í•¨ìˆ˜ë“±ì„ ì„ ì–¸í•˜ëŠ” ê³³ì´ë‹¤.
+// cpp íŒŒì¼ì€ êµ¬í˜„í•˜ëŠ” ê³³ìœ¼ë¡œ ê° cpp ë§ˆë‹¤ í•˜ë‚˜ì”© obj íŒŒì¼ì´ ë§Œë“¤ì–´ì§„ë‹¤.
+// ì»´íŒŒì¼ ì‹œ ì²«ë²ˆì§¸ë¡œ ì†ŒìŠ¤ì½”ë“œë¥¼ obj íŒŒì¼ë¡œ ë§Œë“¤ê³  ì´ obj íŒŒì¼ì„ ì—°ê²°(ë§í¬)í•˜ì—¬ exe íŒŒì¼ì„ ë§Œë“¤ê²Œ ëœë‹¤.
+// ë§í¬ê³¼ì •ì€ ë¹Œë“œê³¼ì •ì¸ê°€?
 
-// Çì´õÆÄÀÏ¿¡¼­ ÇÔ¼öÀÇ ±¸Çö±îÁö ÇÒ °æ¿ì Çì´õÆÄÀÏÀ» includeÇÏ´Â ÆÄÀÏÀÌ ¿©·¯°³ÀÌ¸é ¸µÅ©¿¡·¯°¡ ³­´Ù.
-// includeÇÏ´Â ÆÄÀÏÀÌ °¢°¢ obj°¡ »ý¼ºµÇ°í ÀÌ obj¿¡ °°Àº ³»¿ëÀÇ ÇÔ¼ö±¸ÇöºÎ°¡ ÀÖ±â ¶§¹®¿¡ Áßº¹¼±¾ð(±¸Çö?) ¹®Á¦°¡ ¹ß»ýÇÑ´Ù.
-// ÀÌ¸¦ ÇØ°áÇÏ±â À§ÇØ¼­´Â static Å°¿öµå¸¦ ºÙÀÌ¸é °¢ obj ¸¶´Ù µ¶¸³ÀûÀ¸·Î Ã³¸®ÇÏ°ÔµÈ´Ù.
-// µû¶ó¼­ Çì´õÆÄÀÏ¿¡ ÇÔ¼ö¸¦ ±¸ÇöÇÒ °æ¿ì staticÀ» ºÙ¿©Áà¾ß ¾ÈÀüÇÏ´Ù.
-// °¢°¢ÀÇ obj ÆÄÀÏ¿¡ ÇÔ¼ö°¡ Æ÷ÇÔµÇ°í ¸µÅ© ½Ã ¾çÂÊ¿¡ ÀÖ´Â ÇÔ¼öÁß ¾î¶² ÇÔ¼ö¸¦ ¿¬°á½ÃÄÑ¾ßÇÒÁö ¸ô¶ó¼­ ³ª´Â ¿¡·¯´Ù.
+// í—¤ë”íŒŒì¼ì—ì„œ í•¨ìˆ˜ì˜ êµ¬í˜„ê¹Œì§€ í•  ê²½ìš° í—¤ë”íŒŒì¼ì„ includeí•˜ëŠ” íŒŒì¼ì´ ì—¬ëŸ¬ê°œì´ë©´ ë§í¬ì—ëŸ¬ê°€ ë‚œë‹¤.
+// includeí•˜ëŠ” íŒŒì¼ì´ ê°ê° objê°€ ìƒì„±ë˜ê³  ì´ objì— ê°™ì€ ë‚´ìš©ì˜ í•¨ìˆ˜êµ¬í˜„ë¶€ê°€ ìžˆê¸° ë•Œë¬¸ì— ì¤‘ë³µì„ ì–¸(êµ¬í˜„?) ë¬¸ì œê°€ ë°œìƒí•œë‹¤.
+// ì´ë¥¼ í•´ê²°í•˜ê¸° ìœ„í•´ì„œëŠ” static í‚¤ì›Œë“œë¥¼ ë¶™ì´ë©´ ê° obj ë§ˆë‹¤ ë…ë¦½ì ìœ¼ë¡œ ì²˜ë¦¬í•˜ê²Œëœë‹¤.
+// ë”°ë¼ì„œ í—¤ë”íŒŒì¼ì— í•¨ìˆ˜ë¥¼ êµ¬í˜„í•  ê²½ìš° staticì„ ë¶™ì—¬ì¤˜ì•¼ ì•ˆì „í•˜ë‹¤.
+// ê°ê°ì˜ obj íŒŒì¼ì— í•¨ìˆ˜ê°€ í¬í•¨ë˜ê³  ë§í¬ ì‹œ ì–‘ìª½ì— ìžˆëŠ” í•¨ìˆ˜ì¤‘ ì–´ë–¤ í•¨ìˆ˜ë¥¼ ì—°ê²°ì‹œì¼œì•¼í• ì§€ ëª°ë¼ì„œ ë‚˜ëŠ” ì—ëŸ¬ë‹¤.
 
 

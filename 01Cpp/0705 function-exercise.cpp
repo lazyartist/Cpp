@@ -3,11 +3,11 @@
 using namespace std;
 
 void _0705_function_exercise() {
-	cout << "====== ¹®Á¦1 =====" << endl;
+	cout << "====== ë¬¸ì œ1 =====" << endl;
 	{
 		/*
-		´ÙÀ½ Equal Å¬·¡½ºÀÇ °´Ã¼°¡ cmpÀÏ ¶§ µÎ Á¤¼ö°¡ °°À¸¸é true, ¾Æ´Ï¸é false¸¦
-		¹ÝÈ¯ÇÏ´Â Equal Å¬·¡½º¸¦ ÀÛ¼ºÇÏ¼¼¿ä.
+		ë‹¤ìŒ Equal í´ëž˜ìŠ¤ì˜ ê°ì²´ê°€ cmpì¼ ë•Œ ë‘ ì •ìˆ˜ê°€ ê°™ìœ¼ë©´ true, ì•„ë‹ˆë©´ falseë¥¼
+		ë°˜í™˜í•˜ëŠ” Equal í´ëž˜ìŠ¤ë¥¼ ìž‘ì„±í•˜ì„¸ìš”.
 		*/
 		struct Equal {
 			bool operator()(int l, int r) {
@@ -24,10 +24,10 @@ void _0705_function_exercise() {
 		}
 	}
 
-	cout << "====== ¹®Á¦2 =====" << endl;
+	cout << "====== ë¬¸ì œ2 =====" << endl;
 	{
 		/*
-		´ÙÀ½ Adder Å¬·¡½ºÀÇ °´Ã¼°¡ addÀÏ ¶§ µÎ Á¤¼öÀÇ ÇÕÀ» ¹ÝÈ¯ÇÏ´Â Adder Å¬·¡½º¸¦ ÀÛ¼ºÇÏ¼¼¿ä.
+		ë‹¤ìŒ Adder í´ëž˜ìŠ¤ì˜ ê°ì²´ê°€ addì¼ ë•Œ ë‘ ì •ìˆ˜ì˜ í•©ì„ ë°˜í™˜í•˜ëŠ” Adder í´ëž˜ìŠ¤ë¥¼ ìž‘ì„±í•˜ì„¸ìš”.
 		*/
 		struct Adder {
 			int operator()(int l, int r) {

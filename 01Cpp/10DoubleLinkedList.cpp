@@ -76,18 +76,18 @@ void RemoveList(PList pList, int index) {
 		it = it->pNext;
 	}
 
-	// ¸®½ºÆ®ÀÇ ½ÃÀÛÀÌ¸é¼­ ³¡ÀÏ ¼öµµ ÀÖ±â ¶§¹®¿¡ else if·Î ¹­Áö ¾Ê´Â´Ù.
-	// ¸®½ºÆ® ½ÃÀÛ
+	// ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ì´ë©´ì„œ ëì¼ ìˆ˜ë„ ìžˆê¸° ë•Œë¬¸ì— else ifë¡œ ë¬¶ì§€ ì•ŠëŠ”ë‹¤.
+	// ë¦¬ìŠ¤íŠ¸ ì‹œìž‘
 	if (it->pPrev == NULL) {
 		pList->pBegin = it->pNext;
 		pList->pBegin->pPrev = NULL;
 	}
-	// ¸®½ºÆ® ³¡
+	// ë¦¬ìŠ¤íŠ¸ ë
 	if (it->pNext == NULL) {
 		pList->pEnd = it->pPrev;
 		pList->pEnd->pNext = NULL;
 	}
-	// ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡ÀÌ ¾Æ´Ï¶ó¸é
+	// ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ëì´ ì•„ë‹ˆë¼ë©´
 	if (it->pPrev != NULL && it->pNext != NULL) {
 		it->pPrev->pNext = it->pNext;
 	}
@@ -139,8 +139,8 @@ PNode SearchNode(PList pList, int keyword)
 }
 
 void SortList_Bubble(PList pList, bool bAsc) {
-	// for¹® ´ë½Å while¹®À» »ç¿ëÇÏ·Á¸é ¹öÇÃÁ¤·Ä ´ë½Å ¼±ÅÃÁ¤·ÄÀÌ ´õ ³´´Ù.
-	// ¹öºíÁ¤·ÄÀ» for¹®À¸·Î ±¸ÇöÇÏ·Á¸é pEnd¸¦ ÇÑÄ­¾¿ ¾ÕÀ¸·Î ¿Å°ÜÁÖ´Â°Ô ³Ê¹« Èûµé´Ù.
+	// forë¬¸ ëŒ€ì‹  whileë¬¸ì„ ì‚¬ìš©í•˜ë ¤ë©´ ë²„í”Œì •ë ¬ ëŒ€ì‹  ì„ íƒì •ë ¬ì´ ë” ë‚«ë‹¤.
+	// ë²„ë¸”ì •ë ¬ì„ forë¬¸ìœ¼ë¡œ êµ¬í˜„í•˜ë ¤ë©´ pEndë¥¼ í•œì¹¸ì”© ì•žìœ¼ë¡œ ì˜®ê²¨ì£¼ëŠ”ê²Œ ë„ˆë¬´ íž˜ë“¤ë‹¤.
 	for (size_t i = 0; i < pList->iSize; i++)
 	{
 		PNode pFirst = pList->pBegin;
@@ -169,7 +169,7 @@ void SortList_Bubble(PList pList, bool bAsc) {
 				pSecond->pPrev = pFirstPrev;
 				pSecond->pNext = pFirst;
 
-				// first prev, second next ¼³Á¤
+				// first prev, second next ì„¤ì •
 				if (pFirstPrev != NULL) {
 					pFirstPrev->pNext = pSecond;
 				}
@@ -177,7 +177,7 @@ void SortList_Bubble(PList pList, bool bAsc) {
 					pSecondNext->pPrev = pFirst;
 				}
 
-				// begin, end ¼³Á¤
+				// begin, end ì„¤ì •
 				if (pSecond->pPrev == NULL) {
 					pList->pBegin = pSecond;
 				}
@@ -185,10 +185,10 @@ void SortList_Bubble(PList pList, bool bAsc) {
 					pList->pEnd = pFirst;
 				}
 
-				// swapÇØ¼­ first°¡ ÇÑÄ­ ÀÌµ¿ÇßÀ¸¹Ç·Î first´Â ±×´ë·Î µÐ´Ù.
+				// swapí•´ì„œ firstê°€ í•œì¹¸ ì´ë™í–ˆìœ¼ë¯€ë¡œ firstëŠ” ê·¸ëŒ€ë¡œ ë‘”ë‹¤.
 			}
 			else {
-				// swapÇÏÁö ¾Ê¾ÒÀ¸¹Ç·Î first¸¦ ÇÑÄ­ ÀÌµ¿ÇØÁØ´Ù.
+				// swapí•˜ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ firstë¥¼ í•œì¹¸ ì´ë™í•´ì¤€ë‹¤.
 				pFirst = pFirst->pNext;
 			}
 

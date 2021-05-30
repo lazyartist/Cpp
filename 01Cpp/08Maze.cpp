@@ -18,19 +18,19 @@ void RenderMaze(PPOINT playerPos);
 
 int main() {
 	/*
-	char m[1][2] = { { 'a', 'b' } }; // °³º° ¹®ÀÚ¸¦ ±¸ºÐÇØ¼­ ³Ö¾î¾ßÇÏ°í ¹®ÀÚ¿­Àº ¾Æ·¡Ã³·³ {} ¾øÀÌ ³Ö¾î¾ßÇÑ´Ù.
-	char a[1][MAZE_SIZE] = { "a" }; // char[]Àº ¹®ÀÚ¿­ "a"¸¦ ³ÖÀ» ¼ö ÀÖ´Ù. ¹®ÀÚ¿­Àº Ä³¸¯ÅÍ ¹è¿­ÀÌ´Ù. "aa"´Â char[3]ÀÌ¹Ç·Î ³ÖÀ» ¼ö ¾ø´Ù.
-	//a[1] = "a"; // ÃÊ±âÈ­ ÀÌÈÄ ¹è¿­¿¡ ¹®ÀÚ¿­ÀÌ ÀÚµ¿À¸·Î µé¾î°¡Áö ¾Ê´Â´Ù. ¶ÇÇÑ = {}Çü½ÄÀ¸·Î °ªÀ» ÇÒ´ç ÇÒ ¼ö ¾ø´Ù.
+	char m[1][2] = { { 'a', 'b' } }; // ê°œë³„ ë¬¸ìžë¥¼ êµ¬ë¶„í•´ì„œ ë„£ì–´ì•¼í•˜ê³  ë¬¸ìžì—´ì€ ì•„ëž˜ì²˜ëŸ¼ {} ì—†ì´ ë„£ì–´ì•¼í•œë‹¤.
+	char a[1][MAZE_SIZE] = { "a" }; // char[]ì€ ë¬¸ìžì—´ "a"ë¥¼ ë„£ì„ ìˆ˜ ìžˆë‹¤. ë¬¸ìžì—´ì€ ìºë¦­í„° ë°°ì—´ì´ë‹¤. "aa"ëŠ” char[3]ì´ë¯€ë¡œ ë„£ì„ ìˆ˜ ì—†ë‹¤.
+	//a[1] = "a"; // ì´ˆê¸°í™” ì´í›„ ë°°ì—´ì— ë¬¸ìžì—´ì´ ìžë™ìœ¼ë¡œ ë“¤ì–´ê°€ì§€ ì•ŠëŠ”ë‹¤. ë˜í•œ = {}í˜•ì‹ìœ¼ë¡œ ê°’ì„ í• ë‹¹ í•  ìˆ˜ ì—†ë‹¤.
 	
-	// a : a[0][] ¸Þ¸ð¸®ÀÇ Æ÷ÀÎÅÍ
-	// a[0] : a[0][0] ¸Þ¸ð¸®ÀÇ Æ÷ÀÎÅÍ
-	// a[0][0] : a[0]ÀÇ Ã¹¹øÂ° °ª
-	// *a : a[0]ÀÇ °ª, Áï a[0][0]ÀÇ Æ÷ÀÎÅÍ
-	// **a : aÀÇ °ª(Æ÷ÀÎÅÍ)ÀÇ °ª, Áï a[0][0]ÀÇ °ª
+	// a : a[0][] ë©”ëª¨ë¦¬ì˜ í¬ì¸í„°
+	// a[0] : a[0][0] ë©”ëª¨ë¦¬ì˜ í¬ì¸í„°
+	// a[0][0] : a[0]ì˜ ì²«ë²ˆì§¸ ê°’
+	// *a : a[0]ì˜ ê°’, ì¦‰ a[0][0]ì˜ í¬ì¸í„°
+	// **a : aì˜ ê°’(í¬ì¸í„°)ì˜ ê°’, ì¦‰ a[0][0]ì˜ ê°’
 
-	strcpy_s(m[0], "a"); // ¹®ÀÚ¿­Àº =´ëÀÔ¿¬»êÀÚ·Î ÇÒ´çµÇÁö ¾Ê±â ¶§¹®¿¡ strcpy¸¦ »ç¿ëÇØ¾ßÇÑ´Ù. "aa"´Â char[3]ÀÌ¶ó¼­ ¿¡·¯³­´Ù.
-	m[0][1] = 'a'; // [a, \0] ÀÌ·¸°Ô µé¾îÀÖ´Âµ¥ [a, a]·Î ¹Ù²Û´Ù.
-	cout << m[0] << endl; // \0ÀÌ ¾ø±â ¶§¹®¿¡ a´ÙÀ½¿¡ ÀÌ»óÇÑ ¹®ÀÚ¸¦ °è¼Ó Ãâ·ÂÇÑ´Ù.
+	strcpy_s(m[0], "a"); // ë¬¸ìžì—´ì€ =ëŒ€ìž…ì—°ì‚°ìžë¡œ í• ë‹¹ë˜ì§€ ì•Šê¸° ë•Œë¬¸ì— strcpyë¥¼ ì‚¬ìš©í•´ì•¼í•œë‹¤. "aa"ëŠ” char[3]ì´ë¼ì„œ ì—ëŸ¬ë‚œë‹¤.
+	m[0][1] = 'a'; // [a, \0] ì´ë ‡ê²Œ ë“¤ì–´ìžˆëŠ”ë° [a, a]ë¡œ ë°”ê¾¼ë‹¤.
+	cout << m[0] << endl; // \0ì´ ì—†ê¸° ë•Œë¬¸ì— aë‹¤ìŒì— ì´ìƒí•œ ë¬¸ìžë¥¼ ê³„ì† ì¶œë ¥í•œë‹¤.
 	*/
 
 	POINT playerPos;
@@ -115,16 +115,16 @@ int main() {
 		if (bPlaying == false) break;
 	}
 
-	// todo ±æÃ£´Â AI ³Ö±â
+	// todo ê¸¸ì°¾ëŠ” AI ë„£ê¸°
 
 	return 0;
 }
 
-// 0:º®, 1:±æ, 2:½ÃÀÛÁ¡, 3:µµÂøÁ¡, 4:ÆøÅº
+// 0:ë²½, 1:ê¸¸, 2:ì‹œìž‘ì , 3:ë„ì°©ì , 4:í­íƒ„
 void SetMaze(PPOINT playerPos, PPOINT startPos, PPOINT endPos) {
-	//maze = {}; // maze°¡ °¡Áö°í ÀÖ´Â ¸Þ¸ð¸® ÁÖ¼Ò¸¦ 0x0000000À¸·Î ¸¸µç´Ù.
-	//maze = { 0 }; // À§¿Í µ¿ÀÎÇÑ °á°ú
-	// char*¸¦ °¡Áø ¹è¿­ÀÌ ¾Æ´Ï±â ¶§¹®¿¡ °³º° ÀÎµ¦½º¿¡ °ªÀ» ³Ö¾îÁà¾ßÇÑ´Ù.
+	//maze = {}; // mazeê°€ ê°€ì§€ê³  ìžˆëŠ” ë©”ëª¨ë¦¬ ì£¼ì†Œë¥¼ 0x0000000ìœ¼ë¡œ ë§Œë“ ë‹¤.
+	//maze = { 0 }; // ìœ„ì™€ ë™ì¸í•œ ê²°ê³¼
+	// char*ë¥¼ ê°€ì§„ ë°°ì—´ì´ ì•„ë‹ˆê¸° ë•Œë¬¸ì— ê°œë³„ ì¸ë±ìŠ¤ì— ê°’ì„ ë„£ì–´ì¤˜ì•¼í•œë‹¤.
 
 	startPos->x = 0;
 	startPos->y = 0;
@@ -142,11 +142,11 @@ void SetMaze(PPOINT playerPos, PPOINT startPos, PPOINT endPos) {
 		char cMazeCount;
 		fread_s(&cMazeCount, 1, sizeof(char), 1, pFile);
 
-		// atoi : ¹®ÀÚ¿­À» ¼ýÀÚ·Î ¹Ù²Ü¶§ »ç¿ë
+		// atoi : ë¬¸ìžì—´ì„ ìˆ«ìžë¡œ ë°”ê¿€ë•Œ ì‚¬ìš©
 		int iMazeCount = atoi(&cMazeCount);
 
 		pMazeList = new char*[iMazeCount];
-		//char* pMazeList[9] = {}; // ¹è¿­ °³¼ö¸¦ µ¿ÀûÀ¸·Î ÀÔ·ÂÇÏ·Á¸é new·Î »ý¼ºÇØ¾ßÇÑ´Ù.
+		//char* pMazeList[9] = {}; // ë°°ì—´ ê°œìˆ˜ë¥¼ ë™ì ìœ¼ë¡œ ìž…ë ¥í•˜ë ¤ë©´ newë¡œ ìƒì„±í•´ì•¼í•œë‹¤.
 
 		fread_s(&cMazeCount, 1, sizeof(char), 1, pFile);
 
@@ -157,9 +157,9 @@ void SetMaze(PPOINT playerPos, PPOINT startPos, PPOINT endPos) {
 			char iNameCount = 0;
 			while (true)
 			{
-				// ÇÑ ±ÛÀÚ¾¿ ÀÐ¾î¼­ ÀúÀåÇÏ°í \nÀ» ¸¸³ª¸é ´ÙÀ½ º¯¼ö¿¡ ÀúÀåÇÏ±â À§ÇØ while¹®À» ºüÁ®³ª°£´Ù.
+				// í•œ ê¸€ìžì”© ì½ì–´ì„œ ì €ìž¥í•˜ê³  \nì„ ë§Œë‚˜ë©´ ë‹¤ìŒ ë³€ìˆ˜ì— ì €ìž¥í•˜ê¸° ìœ„í•´ whileë¬¸ì„ ë¹ ì ¸ë‚˜ê°„ë‹¤.
 				fread_s(&cCount, 1, sizeof(char), 1, pFile);
-				if (cCount == '\n') { // ¹®ÀÚ ºñ±³¿¡´Â ºñ±³¿¬»êÀÚ »ç¿ë, ¹®ÀÚ¿­ ºñ±³¿¡´Â strcmp¸¦ »ç¿ë
+				if (cCount == '\n') { // ë¬¸ìž ë¹„êµì—ëŠ” ë¹„êµì—°ì‚°ìž ì‚¬ìš©, ë¬¸ìžì—´ ë¹„êµì—ëŠ” strcmpë¥¼ ì‚¬ìš©
 					break;
 				}
 				pMazeList[i][iNameCount++] = cCount;
@@ -169,7 +169,7 @@ void SetMaze(PPOINT playerPos, PPOINT startPos, PPOINT endPos) {
 		fclose(pFile);
 	}
 
-	// MazeMap.txt ÀÐ±â
+	// MazeMap.txt ì½ê¸°
 	FILE* fMazeMapFile = NULL;
 	fopen_s(&fMazeMapFile, pMazeList[0], "rt");
 	if (fMazeMapFile != NULL) {
@@ -206,7 +206,7 @@ void RenderMaze(PPOINT playerPos) {
 		{
 			// player
 			if (playerPos->x == j && playerPos->y == i) {
-				cout << "¢Î";
+				cout << "â˜";
 				continue;
 			}
 
@@ -215,19 +215,19 @@ void RenderMaze(PPOINT playerPos) {
 			switch (ch)
 			{
 			case '0':
-				cout << "¡á";
+				cout << "â– ";
 				break;
 			case'1':
 				cout << "  ";
 				break;
 			case '2':
-				cout << "¡Ù";
+				cout << "â˜†";
 				break;
 			case '3':
-				cout << "¡Ø";
+				cout << "â€»";
 				break;
 			case '4':
-				cout << "¢Í";
+				cout << "â™¨";
 			default:
 				break;
 			}

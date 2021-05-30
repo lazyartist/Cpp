@@ -1,48 +1,48 @@
 #include <iostream>
-#include <functional> // C++11¿¡¼­ ÇÔ¼öÆ÷ÀÎÅÍ¸¦ ÆíÇÏ°Ô »ç¿ëÇÏ±â À§ÇØ Ãß°¡µÈ ±â´ÉÀ» »ç¿ëÇÏ±â À§ÇØ include
+#include <functional> // C++11ì—ì„œ í•¨ìˆ˜í¬ì¸í„°ë¥¼ íŽ¸í•˜ê²Œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì¶”ê°€ëœ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ include
 
 using namespace std;
 
 /*
-ÇÔ¼ö È£Ãâ ¹æ¹ý
-	1. Á¤ÀûÇÔ¼ö È£Ãâ(Àü¿ªÇÔ¼ö, namespace ³»ÀÇ Àü¿ªÇÔ¼ö, static ¸â¹ö ÇÔ¼ö) : f();
-	2. °´Ã¼·Î ¸â¹öÇÔ¼ö È£Ãâ : a.f();
-	3. °´Ã¼ÀÇ ÁÖ¼Ò·Î ¸â¹ö ÇÔ¼ö È£Ãâ : a->f();
+í•¨ìˆ˜ í˜¸ì¶œ ë°©ë²•
+	1. ì •ì í•¨ìˆ˜ í˜¸ì¶œ(ì „ì—­í•¨ìˆ˜, namespace ë‚´ì˜ ì „ì—­í•¨ìˆ˜, static ë©¤ë²„ í•¨ìˆ˜) : f();
+	2. ê°ì²´ë¡œ ë©¤ë²„í•¨ìˆ˜ í˜¸ì¶œ : a.f();
+	3. ê°ì²´ì˜ ì£¼ì†Œë¡œ ë©¤ë²„ í•¨ìˆ˜ í˜¸ì¶œ : a->f();
 
-ÇÔ¼ö È£Ãâ ±Ô¾à
-	ÇÔ¼ö È£Ãâ ½Ã Àü´ÞµÇ´Â ÀÎÀÚÀÇ ¼ø¼­³ª ÇÔ¼ö°¡ Á¾·áµÉ ¶§ ÇÔ¼öÀÇ ½ºÅÃÀ» Á¤¸®ÇÏ´Â ½ÃÁ¡ µîÀ» ¾à¼ÓÇÑ°Í.
-	Á¾·ù
-		Âü°í https://ko.wikipedia.org/wiki/X86_%ED%98%B8%EC%B6%9C_%EA%B7%9C%EC%95%BD
+í•¨ìˆ˜ í˜¸ì¶œ ê·œì•½
+	í•¨ìˆ˜ í˜¸ì¶œ ì‹œ ì „ë‹¬ë˜ëŠ” ì¸ìžì˜ ìˆœì„œë‚˜ í•¨ìˆ˜ê°€ ì¢…ë£Œë  ë•Œ í•¨ìˆ˜ì˜ ìŠ¤íƒì„ ì •ë¦¬í•˜ëŠ” ì‹œì  ë“±ì„ ì•½ì†í•œê²ƒ.
+	ì¢…ë¥˜
+		ì°¸ê³  https://ko.wikipedia.org/wiki/X86_%ED%98%B8%EC%B6%9C_%EA%B7%9C%EC%95%BD
 
 		stdcall
-			¸¶ÀÌÅ©·Î¼ÒÇÁÆ® Win32 API ¹× ¿ÀÇÂ ¿ÓÄÞ C++ÀÇ Ç¥ÁØ È£Ãâ ±Ô¾à
+			ë§ˆì´í¬ë¡œì†Œí”„íŠ¸ Win32 API ë° ì˜¤í”ˆ ì™“ì½¤ C++ì˜ í‘œì¤€ í˜¸ì¶œ ê·œì•½
 		
 		cdecl(C declaration)
-			C ÇÁ·Î±×·¡¹Ö ¾ð¾î°¡ ±â¿øÀÎ È£Ãâ ±Ô¾àÀ¸·Î¼­ x86 ¾ÆÅ°ÅØÃ³¿ëÀÇ ¼ö¸¹Àº C ÄÄÆÄÀÏ·¯°¡ »ç¿ëÇÑ´Ù.
+			C í”„ë¡œê·¸ëž˜ë° ì–¸ì–´ê°€ ê¸°ì›ì¸ í˜¸ì¶œ ê·œì•½ìœ¼ë¡œì„œ x86 ì•„í‚¤í…ì²˜ìš©ì˜ ìˆ˜ë§Žì€ C ì»´íŒŒì¼ëŸ¬ê°€ ì‚¬ìš©í•œë‹¤.
 			
 		fastcall
-			fastcallÀº Ç¥ÁØÈ­µÈ ±Ô¾àÀº ¾Æ´Ï¸ç ÄÄÆÄÀÏ·¯ ¾÷Ã¼¿¡ µû¶ó ´Ù¸£°Ô Ã³¸®µÈ´Ù.[1] ÀÏ¹ÝÀûÀ¸·Î fastcall È£Ãâ ±Ô¾àÀº ·¹Áö½ºÅÍ ³» ÇÏ³ª ÀÌ»óÀÇ ÀÎ¼ö¸¦ Åë°ú½ÃÅ°¸ç È£Ãâ¿¡ ÇÊ¿äÇÑ ¸Þ¸ð¸® Á¢±ÙÀÇ ¼ö¸¦ ÁÙÀÎ´Ù.
+			fastcallì€ í‘œì¤€í™”ëœ ê·œì•½ì€ ì•„ë‹ˆë©° ì»´íŒŒì¼ëŸ¬ ì—…ì²´ì— ë”°ë¼ ë‹¤ë¥´ê²Œ ì²˜ë¦¬ëœë‹¤.[1] ì¼ë°˜ì ìœ¼ë¡œ fastcall í˜¸ì¶œ ê·œì•½ì€ ë ˆì§€ìŠ¤í„° ë‚´ í•˜ë‚˜ ì´ìƒì˜ ì¸ìˆ˜ë¥¼ í†µê³¼ì‹œí‚¤ë©° í˜¸ì¶œì— í•„ìš”í•œ ë©”ëª¨ë¦¬ ì ‘ê·¼ì˜ ìˆ˜ë¥¼ ì¤„ì¸ë‹¤.
 		
 		thiscall
-			C++ ¸â¹ö ÇÔ¼öÀÇ È£Ãâ ±Ô¾àÀ¸·Î ºñÁ¤Àû ¸â¹ö ÇÔ¼ö¸¦ È£ÃâÇÏ´Âµ¥ »ç¿ëµÈ´Ù.
-			ºñÁ¤ÀûÀÌ¶õ C++ Å¬·¡½ºÀÇ ¸â¹ö ÇÔ¼ö¸¦ ¸¸µé ¶§ static Å°¿öµå¸¦ ÁÖÁö¾Ê°í ¸¸µç °æ¿ì(ÀÏ¹ÝÀûÀÎ °æ¿ì)¸¦ ÀÇ¹ÌÇÔ.
-			¸¸¾à, C++ ¸â¹ö ÇÔ¼ö¿¡ static Å°¿öµå°¡ ÁÖ¾îÁö¸é µ¶¸³ÇÔ¼ö°¡ µÇ¸ç(´ÜÀ§ÇÔ¼ö:¾²·¹µå ´ÜÀ§·Î ÀÛµ¿ÀÌ °¡´ÉÇÑ ÇÔ¼ö) ¸ðÃ¼¸¦ ÇÊ¿ä·ÎÇÏÁö ¾Ê°ÔµÈ´Ù.
-			¿©±â¼­ ¸ðÃ¼¶õ C++ Å¬·¡½º°¡ ¸Þ¸ð¸®¿¡ ÀÎ½ºÅÏ½ºÈ­ µÇ¾úÀ» ¶§ °¡»óÇÔ¼ö Å×ÀÌºí Æ÷ÀÎÅÍ °ªÀ» °®°í ÀÖ´Â Æ÷ÀÎÅÍÀÎ this Æ÷ÀÎÅÍ¸¦ ÀÇ¹ÌÇÑ´Ù.
-			Áï, static Å°¿öµå¿Í ÇÔ²² ¸â¹ö ÇÔ¼ö¸¦ ¸¸µé¸é ÀÏ¹Ý È£Ãâ ±Ô¾àÀ» µû¸£´Â µ¶¸³ÇÔ¼ö°¡ µÇ°í C++ °ú »ó°ü¾ø´Â µ¶¸³ÇÔ¼ö°¡ µÇ¸ç 
-			static Å°¿öµå°¡ ¾øÀ¸¸é ¸ðÃ¼¿¡ Á¾¼ÓÀûÀÎ ¸â¹ö ÇÔ¼ö°¡ µÈ´Ù. 
-			ÀÌ¶§ ¸ðÃ¼Á¾¼Ó ÀûÀÎ ÇÔ¼öµé Áï, Á¾¼ÓÀû ºñÁ¤Àû ¸â¹ö ÇÔ¼öµéÀº thiscall È£Ãâ ±Ô¾àÀ» µû¸£°Ô µÈ´Ù. 
-			thiscall È£Ãâ ±Ô¾àÀº this + call ÀÌ¸ç this Æ÷ÀÎÅÍ¸¦ ³Ñ±â°í call À» ÇÑ´Ù´Â ÀÇ¹ÌÀÌ´Ù.
+			C++ ë©¤ë²„ í•¨ìˆ˜ì˜ í˜¸ì¶œ ê·œì•½ìœ¼ë¡œ ë¹„ì •ì  ë©¤ë²„ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•˜ëŠ”ë° ì‚¬ìš©ëœë‹¤.
+			ë¹„ì •ì ì´ëž€ C++ í´ëž˜ìŠ¤ì˜ ë©¤ë²„ í•¨ìˆ˜ë¥¼ ë§Œë“¤ ë•Œ static í‚¤ì›Œë“œë¥¼ ì£¼ì§€ì•Šê³  ë§Œë“  ê²½ìš°(ì¼ë°˜ì ì¸ ê²½ìš°)ë¥¼ ì˜ë¯¸í•¨.
+			ë§Œì•½, C++ ë©¤ë²„ í•¨ìˆ˜ì— static í‚¤ì›Œë“œê°€ ì£¼ì–´ì§€ë©´ ë…ë¦½í•¨ìˆ˜ê°€ ë˜ë©°(ë‹¨ìœ„í•¨ìˆ˜:ì“°ë ˆë“œ ë‹¨ìœ„ë¡œ ìž‘ë™ì´ ê°€ëŠ¥í•œ í•¨ìˆ˜) ëª¨ì²´ë¥¼ í•„ìš”ë¡œí•˜ì§€ ì•Šê²Œëœë‹¤.
+			ì—¬ê¸°ì„œ ëª¨ì²´ëž€ C++ í´ëž˜ìŠ¤ê°€ ë©”ëª¨ë¦¬ì— ì¸ìŠ¤í„´ìŠ¤í™” ë˜ì—ˆì„ ë•Œ ê°€ìƒí•¨ìˆ˜ í…Œì´ë¸” í¬ì¸í„° ê°’ì„ ê°–ê³  ìžˆëŠ” í¬ì¸í„°ì¸ this í¬ì¸í„°ë¥¼ ì˜ë¯¸í•œë‹¤.
+			ì¦‰, static í‚¤ì›Œë“œì™€ í•¨ê»˜ ë©¤ë²„ í•¨ìˆ˜ë¥¼ ë§Œë“¤ë©´ ì¼ë°˜ í˜¸ì¶œ ê·œì•½ì„ ë”°ë¥´ëŠ” ë…ë¦½í•¨ìˆ˜ê°€ ë˜ê³  C++ ê³¼ ìƒê´€ì—†ëŠ” ë…ë¦½í•¨ìˆ˜ê°€ ë˜ë©° 
+			static í‚¤ì›Œë“œê°€ ì—†ìœ¼ë©´ ëª¨ì²´ì— ì¢…ì†ì ì¸ ë©¤ë²„ í•¨ìˆ˜ê°€ ëœë‹¤. 
+			ì´ë•Œ ëª¨ì²´ì¢…ì† ì ì¸ í•¨ìˆ˜ë“¤ ì¦‰, ì¢…ì†ì  ë¹„ì •ì  ë©¤ë²„ í•¨ìˆ˜ë“¤ì€ thiscall í˜¸ì¶œ ê·œì•½ì„ ë”°ë¥´ê²Œ ëœë‹¤. 
+			thiscall í˜¸ì¶œ ê·œì•½ì€ this + call ì´ë©° this í¬ì¸í„°ë¥¼ ë„˜ê¸°ê³  call ì„ í•œë‹¤ëŠ” ì˜ë¯¸ì´ë‹¤.
 
-	Á¤Àû ÇÔ¼öÀÇ ±âº» ÇÔ¼ö È£Ãâ ±Ô¾àÀº cdecl, ¸â¹öÇÔ¼ö´Â thiscall
-	µû¶ó¼­ Á¤Àû ÇÔ¼ö¿Í ¸â¹ö ÇÔ¼ö Æ÷ÀÎÅÍ¸¦ ´Ù¸£°Ô ¼±¾ðÇÔ.
+	ì •ì  í•¨ìˆ˜ì˜ ê¸°ë³¸ í•¨ìˆ˜ í˜¸ì¶œ ê·œì•½ì€ cdecl, ë©¤ë²„í•¨ìˆ˜ëŠ” thiscall
+	ë”°ë¼ì„œ ì •ì  í•¨ìˆ˜ì™€ ë©¤ë²„ í•¨ìˆ˜ í¬ì¸í„°ë¥¼ ë‹¤ë¥´ê²Œ ì„ ì–¸í•¨.
 
 
-ÇÔ¼öÆ÷ÀÎÅÍ : ÇÔ¼öÀÇ ¸Þ¸ð¸® ÁÖ¼Ò¸¦ ÀúÀåÇÏ±â À§ÇÑ Æ÷ÀÎÅÍ º¯¼ö
-Àü¿ªÇÔ¼öÀÇ °æ¿ì ÇÔ¼ö¸íÀÌ °ð ÇÔ¼öÀÇ ¸Þ¸ð¸® ÁÖ¼Ò
-ÇÔ¼öÆ÷ÀÎÅÍ ¼±¾ð¹æ¹ý : ¹ÝÈ¯Å¸ÀÔ (*Æ÷ÀÎÅÍº¯¼ö¸í)(ÀÎÀÚÅ¸ÀÔ);
+í•¨ìˆ˜í¬ì¸í„° : í•¨ìˆ˜ì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œë¥¼ ì €ìž¥í•˜ê¸° ìœ„í•œ í¬ì¸í„° ë³€ìˆ˜
+ì „ì—­í•¨ìˆ˜ì˜ ê²½ìš° í•¨ìˆ˜ëª…ì´ ê³§ í•¨ìˆ˜ì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œ
+í•¨ìˆ˜í¬ì¸í„° ì„ ì–¸ë°©ë²• : ë°˜í™˜íƒ€ìž… (*í¬ì¸í„°ë³€ìˆ˜ëª…)(ì¸ìžíƒ€ìž…);
 
-this Æ÷ÀÎÅÍ : Å¬·¡½º ¾È¿¡¼­ this¸¦ »ç¿ëÇÒ °æ¿ì ÇØ´ç °´Ã¼ÀÇ ¸Þ¸ð¸® ÁÖ¼Ò°¡µÈ´Ù. Áï ÀÚ±âÀÚ½ÅÀÇ Æ÷ÀÎÅÍÀÌ´Ù.
-¸â¹öÇÔ¼ö ³»¿¡¼­ ¸â¹öº¯¼ö È£Ãâ ½Ã this¸¦ »ý·«°¡´É(ÄÄÆÄÀÏ½Ã this¸¦ ºÙÀÎ´Ù)
+this í¬ì¸í„° : í´ëž˜ìŠ¤ ì•ˆì—ì„œ thisë¥¼ ì‚¬ìš©í•  ê²½ìš° í•´ë‹¹ ê°ì²´ì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œê°€ëœë‹¤. ì¦‰ ìžê¸°ìžì‹ ì˜ í¬ì¸í„°ì´ë‹¤.
+ë©¤ë²„í•¨ìˆ˜ ë‚´ì—ì„œ ë©¤ë²„ë³€ìˆ˜ í˜¸ì¶œ ì‹œ thisë¥¼ ìƒëžµê°€ëŠ¥(ì»´íŒŒì¼ì‹œ thisë¥¼ ë¶™ì¸ë‹¤)
 
 */
 
@@ -74,113 +74,113 @@ public :
 
 void _0702_function_pointer() {
 
-	cout << "===== Á¤Àû ÇÔ¼ö Æ÷ÀÎÅÍ ¼±¾ð ¹× ½ÇÇà =====" << endl;
+	cout << "===== ì •ì  í•¨ìˆ˜ í¬ì¸í„° ì„ ì–¸ ë° ì‹¤í–‰ =====" << endl;
 	{
 		/*
-		Á¤Àû ÇÔ¼ö(Àü¿ªÇÔ¼ö, namespace ³»ÀÇ Àü¿ªÇÔ¼ö, static ¸â¹ö ÇÔ¼ö)´Â ÇÔ¼ö Æ÷ÀÎÅÍ ¼±¾ðÀÌ °°´Ù.
+		ì •ì  í•¨ìˆ˜(ì „ì—­í•¨ìˆ˜, namespace ë‚´ì˜ ì „ì—­í•¨ìˆ˜, static ë©¤ë²„ í•¨ìˆ˜)ëŠ” í•¨ìˆ˜ í¬ì¸í„° ì„ ì–¸ì´ ê°™ë‹¤.
 		*/
 
-		// ¿øº» Á¤Àû ÇÔ¼ö È£Ãâ
-		gf(); // Àü¿ª
-		ns::f(); // ³×ÀÓ½ºÆäÀÌ½º Àü¿ª
-		A::sf(); // A Å¬·¡½ºÀÇ Á¤Àû ¸â¹ö ÇÔ¼ö
+		// ì›ë³¸ ì •ì  í•¨ìˆ˜ í˜¸ì¶œ
+		gf(); // ì „ì—­
+		ns::f(); // ë„¤ìž„ìŠ¤íŽ˜ì´ìŠ¤ ì „ì—­
+		A::sf(); // A í´ëž˜ìŠ¤ì˜ ì •ì  ë©¤ë²„ í•¨ìˆ˜
 
-		void (*fp)(); // Á¤Àû ÇÔ¼ö Æ÷ÀÎÅÍ ¼±¾ð
+		void (*fp)(); // ì •ì  í•¨ìˆ˜ í¬ì¸í„° ì„ ì–¸
 
-		fp = gf; // Àü¿ª ÇÔ¼ö ÇÒ´ç
-		fp(); // ½ÇÇà : gf()
+		fp = gf; // ì „ì—­ í•¨ìˆ˜ í• ë‹¹
+		fp(); // ì‹¤í–‰ : gf()
 
-		fp = ns::f; // namespace ³»ÀÇ Àü¿ªÇÔ¼ö ÇÒ´ç
-		fp(); // ½ÇÇà : ns f()
+		fp = ns::f; // namespace ë‚´ì˜ ì „ì—­í•¨ìˆ˜ í• ë‹¹
+		fp(); // ì‹¤í–‰ : ns f()
 
-		fp = A::sf; // static ¸â¹ö ÇÔ¼ö
-		fp(); // ½ÇÇà : A sf()
+		fp = A::sf; // static ë©¤ë²„ í•¨ìˆ˜
+		fp(); // ì‹¤í–‰ : A sf()
 		
-		// µ¿ÀÏÇÑ ½ÇÇà ¹®¹ý
-		(*fp)(); // ½ÇÇà : A sf()
+		// ë™ì¼í•œ ì‹¤í–‰ ë¬¸ë²•
+		(*fp)(); // ì‹¤í–‰ : A sf()
 	}
 
-	cout << "===== ¸â¹ö ÇÔ¼ö Æ÷ÀÎÅÍ ¼±¾ð ¹× ½ÇÇà =====" << endl;
+	cout << "===== ë©¤ë²„ í•¨ìˆ˜ í¬ì¸í„° ì„ ì–¸ ë° ì‹¤í–‰ =====" << endl;
 	{
 		/*
-		¸â¹ö ÇÔ¼ö Æ÷ÀÎÅÍ
-			¼±¾ð ½Ã Æ÷ÀÎÅÍ º¯¼ö ÀÌ¸§ ¾Õ¿¡ Å¬·¡½º¸í::À» ºÙ¿©ÁØ´Ù.
-			½ÇÇà ½Ã´Â this°¡ µÉ °´Ã¼¿¡¼­ ´ÙÀ½ ¿¬»êÀÚ¸¦ ÀÌ¿ëÇØ È£ÃâÇÑ´Ù.(¿¬»êÀÚ ¿ì¼± ¼øÀ§·Î ÀÎÇØ ()·Î °¨½Ñ´Ù.)
-				°´Ã¼·Î È£Ãâ : .* ¿¬»êÀÚ ÀÌ¿ë (a.*f());
-				ÁÖ¼Ò·Î È£Ãâ : ->* ¿¬»êÀÚ ÀÌ¿ë (a->*f());
+		ë©¤ë²„ í•¨ìˆ˜ í¬ì¸í„°
+			ì„ ì–¸ ì‹œ í¬ì¸í„° ë³€ìˆ˜ ì´ë¦„ ì•žì— í´ëž˜ìŠ¤ëª…::ì„ ë¶™ì—¬ì¤€ë‹¤.
+			ì‹¤í–‰ ì‹œëŠ” thisê°€ ë  ê°ì²´ì—ì„œ ë‹¤ìŒ ì—°ì‚°ìžë¥¼ ì´ìš©í•´ í˜¸ì¶œí•œë‹¤.(ì—°ì‚°ìž ìš°ì„  ìˆœìœ„ë¡œ ì¸í•´ ()ë¡œ ê°ì‹¼ë‹¤.)
+				ê°ì²´ë¡œ í˜¸ì¶œ : .* ì—°ì‚°ìž ì´ìš© (a.*f());
+				ì£¼ì†Œë¡œ í˜¸ì¶œ : ->* ì—°ì‚°ìž ì´ìš© (a->*f());
 				
 		*/
-		void (A::*mfp) (); // ¼±¾ð
-		mfp = &A::mf; // ¸â¹ö ÇÔ¼ö ÇÒ´ç
-		// todo ÇÔ¼ö Æ÷ÀÎÅÍ Àü´Þ ½Ã ¿Ö &¸¦ »ç¿ëÇØ Àü´ÞÇÏ³ª?
-		// ¼±¾ðÀÌ Æ÷ÀÎÅÍ·Î µÅÀÖ±â ¶§¹®¿¡ ÇÒ´çÀ» &¸¦ ÀÌ¿ëÇÑ Æ÷ÀÎÅÍ¸¦ ÇÒ´çÇÑ´Ù.
-			// Àü¿ª ÇÔ¼ö¸¦ ÀúÀåÇÒ º¯¼ö´Â Æ÷ÀÎÅÍ·Î ¼±¾ðÇØµµ Àü¿ªÇÔ¼ö¸¦ ¹Ù·Î ³Ö±â ¶§¹®¿¡ ÀÌ°Ç ¾Æ´Ñ°Å °°´Ù.
-			// ¸â¹ö ÇÔ¼ö(Æ÷ÀÎÅÍ)´Â È£Ãâ ½Ã this¸¦ ³Ö¾îÁà¾ßÇÏ´Âµ¥ ÀÌ°Í ¶§¹®ÀÌ ¾Æ´Ñ°¡ ½Í±âµµ ÇÏ°í...
-			// ¶Ç´Â ¸â¹ö ÇÔ¼ö Æ÷ÀÎÅÍ È£ÃâÀ» À§ÇØ .*, ->* ¿¬»êÀÚ¸¦ ¸¸µé¾ú°í ÀÌ¿Í Â¦À» ¸ÂÃß±â À§ÇØ¼­¶ó°í ÀÌÇØÇÏ°í ³Ñ¾î°¡ÀÚ.
-			// ÀÌÇØ°¡ ¾ÈµÇ´Ï ±×³É ¿Ü¿ì´Â ¼ö ¹Û¿¡..
+		void (A::*mfp) (); // ì„ ì–¸
+		mfp = &A::mf; // ë©¤ë²„ í•¨ìˆ˜ í• ë‹¹
+		// todo í•¨ìˆ˜ í¬ì¸í„° ì „ë‹¬ ì‹œ ì™œ &ë¥¼ ì‚¬ìš©í•´ ì „ë‹¬í•˜ë‚˜?
+		// ì„ ì–¸ì´ í¬ì¸í„°ë¡œ ë¼ìžˆê¸° ë•Œë¬¸ì— í• ë‹¹ì„ &ë¥¼ ì´ìš©í•œ í¬ì¸í„°ë¥¼ í• ë‹¹í•œë‹¤.
+			// ì „ì—­ í•¨ìˆ˜ë¥¼ ì €ìž¥í•  ë³€ìˆ˜ëŠ” í¬ì¸í„°ë¡œ ì„ ì–¸í•´ë„ ì „ì—­í•¨ìˆ˜ë¥¼ ë°”ë¡œ ë„£ê¸° ë•Œë¬¸ì— ì´ê±´ ì•„ë‹Œê±° ê°™ë‹¤.
+			// ë©¤ë²„ í•¨ìˆ˜(í¬ì¸í„°)ëŠ” í˜¸ì¶œ ì‹œ thisë¥¼ ë„£ì–´ì¤˜ì•¼í•˜ëŠ”ë° ì´ê²ƒ ë•Œë¬¸ì´ ì•„ë‹Œê°€ ì‹¶ê¸°ë„ í•˜ê³ ...
+			// ë˜ëŠ” ë©¤ë²„ í•¨ìˆ˜ í¬ì¸í„° í˜¸ì¶œì„ ìœ„í•´ .*, ->* ì—°ì‚°ìžë¥¼ ë§Œë“¤ì—ˆê³  ì´ì™€ ì§ì„ ë§žì¶”ê¸° ìœ„í•´ì„œë¼ê³  ì´í•´í•˜ê³  ë„˜ì–´ê°€ìž.
+			// ì´í•´ê°€ ì•ˆë˜ë‹ˆ ê·¸ëƒ¥ ì™¸ìš°ëŠ” ìˆ˜ ë°–ì—..
 
-		// mfp(); ÀÌ·¸°Ô¸¸ È£ÃâÇÏ¸é this ¸ÅÇÎÀÌ ¾ÈµÇ¾î È£ÃâÀÌ ¾ÈµÈ´Ù.
-		// "¸í¹éÇÑ È£ÃâÀÇ °ýÈ£ ¾Õ¿¡ ¿À´Â ½Ä¿¡´Â ÇÔ¼ö(Æ÷ÀÎÅÍ) Çü½ÄÀÌ ÀÖ¾î¾ßÇÕ´Ï´Ù." ¿¡·¯³²
-		// Àü¿ª ÇÔ¼ö Æ÷ÀÎÅÍ¿Í´Â ´Ù¸£°Ô this°¡ ²À ÇÊ¿äÇÏ´Ù.
+		// mfp(); ì´ë ‡ê²Œë§Œ í˜¸ì¶œí•˜ë©´ this ë§¤í•‘ì´ ì•ˆë˜ì–´ í˜¸ì¶œì´ ì•ˆëœë‹¤.
+		// "ëª…ë°±í•œ í˜¸ì¶œì˜ ê´„í˜¸ ì•žì— ì˜¤ëŠ” ì‹ì—ëŠ” í•¨ìˆ˜(í¬ì¸í„°) í˜•ì‹ì´ ìžˆì–´ì•¼í•©ë‹ˆë‹¤." ì—ëŸ¬ë‚¨
+		// ì „ì—­ í•¨ìˆ˜ í¬ì¸í„°ì™€ëŠ” ë‹¤ë¥´ê²Œ thisê°€ ê¼­ í•„ìš”í•˜ë‹¤.
 
-		// °´Ã¼·Î È£Ãâ
-		A a; //  this ¿ªÇÒÀ» ÇÒ °´Ã¼ »ý¼º
-		cout << &a << endl; // aÀÇ ¸Þ¸ð¸® ÁÖ¼Ò È®ÀÎ : 008FFA73
-		(a.*mfp)();  // ½ÇÇà : f() 008FFA73 <- a¿¡¼­ ½ÇÇàµÊÀ» È®ÀÎ
-		//a.mfp(); // ½ÇÇà ¾ÈµÊ, ÄÄÆÄÀÏ ¿¡·¯.
+		// ê°ì²´ë¡œ í˜¸ì¶œ
+		A a; //  this ì—­í• ì„ í•  ê°ì²´ ìƒì„±
+		cout << &a << endl; // aì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œ í™•ì¸ : 008FFA73
+		(a.*mfp)();  // ì‹¤í–‰ : f() 008FFA73 <- aì—ì„œ ì‹¤í–‰ë¨ì„ í™•ì¸
+		//a.mfp(); // ì‹¤í–‰ ì•ˆë¨, ì»´íŒŒì¼ ì—ëŸ¬.
 
-		// ÁÖ¼Ò·Î È£Ãâ
+		// ì£¼ì†Œë¡œ í˜¸ì¶œ
 		A* b = &a;
-		cout << b << endl; // bÀÇ ¸Þ¸ð¸® ÁÖ¼Ò È®ÀÎ : 008FFA73
-		(b->*mfp)();  // ½ÇÇà : f() 008FFA73 <- a¿¡¼­ ½ÇÇàµÊÀ» È®ÀÎ
+		cout << b << endl; // bì˜ ë©”ëª¨ë¦¬ ì£¼ì†Œ í™•ì¸ : 008FFA73
+		(b->*mfp)();  // ì‹¤í–‰ : f() 008FFA73 <- aì—ì„œ ì‹¤í–‰ë¨ì„ í™•ì¸
 	}
 
 
-	cout << "===== function Å¬·¡½º¸¦ ÀÌ¿ëÇÑ ÇÔ¼ö Æ÷ÀÎÅÍ ¹ÙÀÎµù =====" << endl;
+	cout << "===== function í´ëž˜ìŠ¤ë¥¼ ì´ìš©í•œ í•¨ìˆ˜ í¬ì¸í„° ë°”ì¸ë”© =====" << endl;
 	{
 		/*
-			function ±â´ÉÀº C++11ºÎÅÍ Áö¿øÇÏ´Â ±â´ÉÀÌ´Ù.
-			ÀÌ ±â´ÉÀº ÇÔ¼öÆ÷ÀÎÅÍ¸¦ Àü¿ª, ¸â¹ö °¡¸®Áö ¾Ê°í ½±°Ô ÁÖ¼Ò¸¦ ÁöÁ¤ÇØ¼­ È£ÃâÇÒ ¼ö ÀÖµµ·Ï ¸¸µé¾îÁÖ´Â ±â´ÉÀÌ´Ù.
-			¼±¾ð¹æ¹ý : function<¹ÝÈ¯Å¸ÀÔ(ÀÎÀÚÅ¸ÀÔ)> º¯¼ö¸í;
-			C++11¿¡¼­Ãß°¡µÈ function Å¬·¡½º ÀÌ¿ëÇÏ¿© ÇÔ¼öÆ÷ÀÎÅÍ »ç¿ëÇÏ±â
+			function ê¸°ëŠ¥ì€ C++11ë¶€í„° ì§€ì›í•˜ëŠ” ê¸°ëŠ¥ì´ë‹¤.
+			ì´ ê¸°ëŠ¥ì€ í•¨ìˆ˜í¬ì¸í„°ë¥¼ ì „ì—­, ë©¤ë²„ ê°€ë¦¬ì§€ ì•Šê³  ì‰½ê²Œ ì£¼ì†Œë¥¼ ì§€ì •í•´ì„œ í˜¸ì¶œí•  ìˆ˜ ìžˆë„ë¡ ë§Œë“¤ì–´ì£¼ëŠ” ê¸°ëŠ¥ì´ë‹¤.
+			ì„ ì–¸ë°©ë²• : function<ë°˜í™˜íƒ€ìž…(ì¸ìžíƒ€ìž…)> ë³€ìˆ˜ëª…;
+			C++11ì—ì„œì¶”ê°€ëœ function í´ëž˜ìŠ¤ ì´ìš©í•˜ì—¬ í•¨ìˆ˜í¬ì¸í„° ì‚¬ìš©í•˜ê¸°
 		*/
 
-		// Àü¿ª ÇÔ¼öÆ÷ÀÎÅÍ ¹ÙÀÎµù
-		function<int(int a, int b)> func1; // function °´Ã¼ »ý¼º
+		// ì „ì—­ í•¨ìˆ˜í¬ì¸í„° ë°”ì¸ë”©
+		function<int(int a, int b)> func1; // function ê°ì²´ ìƒì„±
 
-		// gfSum ÇÔ¼ö¿Í ÀÎÀÚ¸¦ ¹ÙÀÎµù : 
-		// ¹ÙÀÎµå ½Ã ±¸Ã¼ÀûÀÎ ÀÎÀÚ°ªÀ» ³ÖÀ¸¸é ÀÎÀÚ°¡ °íÁ¤µÇ¾î ¾Æ·¡ ¶óÀÎÃ³·³ ÀÎÀÚ¸¦ ³Ö¾î È£ÃâÇØµµ ÀÎÀÚ°ªÀº º¯ÇÏÁö ¾Ê´Â´Ù.
+		// gfSum í•¨ìˆ˜ì™€ ì¸ìžë¥¼ ë°”ì¸ë”© : 
+		// ë°”ì¸ë“œ ì‹œ êµ¬ì²´ì ì¸ ì¸ìžê°’ì„ ë„£ìœ¼ë©´ ì¸ìžê°€ ê³ ì •ë˜ì–´ ì•„ëž˜ ë¼ì¸ì²˜ëŸ¼ ì¸ìžë¥¼ ë„£ì–´ í˜¸ì¶œí•´ë„ ì¸ìžê°’ì€ ë³€í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		func1 = bind(&gfSum, 1, 1);
-		func1(2, 2); // ½ÇÇà : gfSum() 2
+		func1(2, 2); // ì‹¤í–‰ : gfSum() 2
 
-		// placeholders¸¦ ÀÌ¿ëÇÑ ÇÔ¼ö ¹ÙÀÎµù : 
-		// ¹ÙÀÎµå ½Ã ÀÎÀÚ¸¦ placeholders¸¦ ÀÌ¿ëÇØ ÁöÁ¤ÇÏ¸é È£Ãâ ½Ã ÀÎÀÚ¸¦ »ç¿ëÇÒ ¼ö ÀÖ°í placeholder ¼ø¼­·Î ÀÎÀÚÀÇ ¼ø¼­¸¦ ¹Ù²ãÁÙ ¼ö ÀÖ´Ù.
+		// placeholdersë¥¼ ì´ìš©í•œ í•¨ìˆ˜ ë°”ì¸ë”© : 
+		// ë°”ì¸ë“œ ì‹œ ì¸ìžë¥¼ placeholdersë¥¼ ì´ìš©í•´ ì§€ì •í•˜ë©´ í˜¸ì¶œ ì‹œ ì¸ìžë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆê³  placeholder ìˆœì„œë¡œ ì¸ìžì˜ ìˆœì„œë¥¼ ë°”ê¿”ì¤„ ìˆ˜ ìžˆë‹¤.
 		func1 = bind(&gfSum, placeholders::_1, placeholders::_2);
-		func1(2, 2); // ½ÇÇà : gfSum() 4
+		func1(2, 2); // ì‹¤í–‰ : gfSum() 4
 
-		// °´Ã¼ ÇÔ¼öÆ÷ÀÎÅÍ ¹ÙÀÎµù
+		// ê°ì²´ í•¨ìˆ˜í¬ì¸í„° ë°”ì¸ë”©
 		A a;
 		function<void()> func2;
-		// ÇÔ¼ö Æ÷ÀÎÅÍ¿Í °´Ã¼¸¦ ¹­¾îÁØ´Ù. 
-		// °´Ã¼ ÀÎÀÚ Àü´Þ ½Ã °´Ã¼¸¦ ±×´ë·Î ³Ñ±â¸é º¹»ç »ý¼ºµÈ °´Ã¼¿¡¼­ ½ÇÇàµÈ´Ù.
-		// µû¶ó¼­ Æ÷ÀÎÅÍ¸¦ ³Ñ°Ü¾ßÇÑ´Ù.
+		// í•¨ìˆ˜ í¬ì¸í„°ì™€ ê°ì²´ë¥¼ ë¬¶ì–´ì¤€ë‹¤. 
+		// ê°ì²´ ì¸ìž ì „ë‹¬ ì‹œ ê°ì²´ë¥¼ ê·¸ëŒ€ë¡œ ë„˜ê¸°ë©´ ë³µì‚¬ ìƒì„±ëœ ê°ì²´ì—ì„œ ì‹¤í–‰ëœë‹¤.
+		// ë”°ë¼ì„œ í¬ì¸í„°ë¥¼ ë„˜ê²¨ì•¼í•œë‹¤.
 		func2 = bind(&A::mf, &a);
 		cout << &a << endl; // 00EFFA37
-		func2(); // ½ÇÇà : A mf() 00EFFA37 <- a¿¡¼­ ½ÇÇàµÊÀ» È®ÀÎ, ¸¸¾à ¹ÙÀÎµå ½Ã °´Ã¼¸¦ ³Ñ±â¸é ÁÖ¼Ò°¡ ¼­·Î ´Ù¸§
+		func2(); // ì‹¤í–‰ : A mf() 00EFFA37 <- aì—ì„œ ì‹¤í–‰ë¨ì„ í™•ì¸, ë§Œì•½ ë°”ì¸ë“œ ì‹œ ê°ì²´ë¥¼ ë„˜ê¸°ë©´ ì£¼ì†Œê°€ ì„œë¡œ ë‹¤ë¦„
 	}
 
-	cout << "===== Å¬¶óÀÌ¾ðÆ® ÄÚµå¿Í ¼­¹ö ÄÚµå =====" << endl;
+	cout << "===== í´ë¼ì´ì–¸íŠ¸ ì½”ë“œì™€ ì„œë²„ ì½”ë“œ =====" << endl;
 	{
 		/*
-		±â´ÉÀÌ³ª ¼­ºñ½º¸¦ Á¦°øÇÏ´Â ÄÚµå ÃøÀ» ¼­¹ö ÄÚµå¶óÇÏ°í 
-		±â´ÉÀ» Á¦°ø¹Þ´Â ÄÚµå ÃøÀ» Å¬¶óÀÌ¾ðÆ® ÄÚµå¶óÇÑ´Ù.
-		¼­¹ö´Â ÇÏ³ªÁö¸¸ Å¬¶óÀÌ¾ðÆ®´Â ¿©·¯°³ÀÌ´Ù.
+		ê¸°ëŠ¥ì´ë‚˜ ì„œë¹„ìŠ¤ë¥¼ ì œê³µí•˜ëŠ” ì½”ë“œ ì¸¡ì„ ì„œë²„ ì½”ë“œë¼í•˜ê³  
+		ê¸°ëŠ¥ì„ ì œê³µë°›ëŠ” ì½”ë“œ ì¸¡ì„ í´ë¼ì´ì–¸íŠ¸ ì½”ë“œë¼í•œë‹¤.
+		ì„œë²„ëŠ” í•˜ë‚˜ì§€ë§Œ í´ë¼ì´ì–¸íŠ¸ëŠ” ì—¬ëŸ¬ê°œì´ë‹¤.
 
-		¼­¹ö Ãø ÄÚµå¿¡ Å¬¶óÀÌ¾ðÆ® ÇÔ¼ö¸¦ Àü´ÞÇÏ´Â ¹æ¹ý
-			ÇÔ¼ö Æ÷ÀÎÅÍ, ÇÔ¼ö °´Ã¼, ´ë¸®ÀÚ, Àü·« ÆÐÅÏ µî
+		ì„œë²„ ì¸¡ ì½”ë“œì— í´ë¼ì´ì–¸íŠ¸ í•¨ìˆ˜ë¥¼ ì „ë‹¬í•˜ëŠ” ë°©ë²•
+			í•¨ìˆ˜ í¬ì¸í„°, í•¨ìˆ˜ ê°ì²´, ëŒ€ë¦¬ìž, ì „ëžµ íŒ¨í„´ ë“±
 		*/
 
-		cout << "--- ÄÝ¹éÇÔ¼ö ±¸Çö : ÇÔ¼ö °´Ã¼" << endl;
+		cout << "--- ì½œë°±í•¨ìˆ˜ êµ¬í˜„ : í•¨ìˆ˜ ê°ì²´" << endl;
 		{
 			class Client {
 			public:
@@ -196,35 +196,35 @@ void _0702_function_pointer() {
 				}
 				void operator()(Client* c) {
 					cout << "Server() callback" << endl;
-					(*c)(); // ÄÝ¹é ÇÔ¼ö È£Ãâ
+					(*c)(); // ì½œë°± í•¨ìˆ˜ í˜¸ì¶œ
 				}
 			};
 
-			Server()(); // ¼­¹ö ÇÔ¼ö È£Ãâ : Server()
+			Server()(); // ì„œë²„ í•¨ìˆ˜ í˜¸ì¶œ : Server()
 
 			Client c; 
-			Server()(&c); // ¼­¹ö ÇÔ¼ö È£Ãâ ½Ã Å¬¶óÀÌ¾ðÆ® ÄÝ¹é ÇÔ¼ö Àü´Þ : Server() callback, Client()
+			Server()(&c); // ì„œë²„ í•¨ìˆ˜ í˜¸ì¶œ ì‹œ í´ë¼ì´ì–¸íŠ¸ ì½œë°± í•¨ìˆ˜ ì „ë‹¬ : Server() callback, Client()
 
-			// todo ¶÷´Ù ÇÔ¼ö ÄÝ¹éÇÔ¼ö·Î Àü´Þ
+			// todo ëžŒë‹¤ í•¨ìˆ˜ ì½œë°±í•¨ìˆ˜ë¡œ ì „ë‹¬
 			// https://blog.koriel.kr/modern-cpp-lambdayi-teugjinggwa-sayongbeob/
 		}
 
-		cout << "--- ÄÝ¹éÇÔ¼ö ±¸Çö : ÇÔ¼ö Æ÷ÀÎÅÍ" << endl;
+		cout << "--- ì½œë°±í•¨ìˆ˜ êµ¬í˜„ : í•¨ìˆ˜ í¬ì¸í„°" << endl;
 		{
 			struct Server {
 			public:
 				void operator()(int (*f)(int, int)) {
 					cout << "Server() callback" << endl;
-					i = (*f)(i, 1); // ÄÝ¹é ÇÔ¼ö È£Ãâ
+					i = (*f)(i, 1); // ì½œë°± í•¨ìˆ˜ í˜¸ì¶œ
 				}
 				int i = 0;
 			};
 
 			Server sv;
-			sv(gfSum); // ¼­¹ö ÇÔ¼ö È£Ãâ ½Ã Å¬¶óÀÌ¾ðÆ® ÄÝ¹é ÇÔ¼ö Àü´Þ : Server() callback, Client()
-			sv(&gfSum); // À§¿Í µ¿ÀÏ
+			sv(gfSum); // ì„œë²„ í•¨ìˆ˜ í˜¸ì¶œ ì‹œ í´ë¼ì´ì–¸íŠ¸ ì½œë°± í•¨ìˆ˜ ì „ë‹¬ : Server() callback, Client()
+			sv(&gfSum); // ìœ„ì™€ ë™ì¼
 
-			// todo ¶÷´Ù ÇÔ¼ö ÄÝ¹éÇÔ¼ö·Î Àü´Þ
+			// todo ëžŒë‹¤ í•¨ìˆ˜ ì½œë°±í•¨ìˆ˜ë¡œ ì „ë‹¬
 			// https://blog.koriel.kr/modern-cpp-lambdayi-teugjinggwa-sayongbeob/
 		}
 	}
